@@ -1,4 +1,4 @@
-package testngTeam05.tests.US015_VendorUrunEkleme;
+package testngTeam05.tests.US015_VendorUrunDetay;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
