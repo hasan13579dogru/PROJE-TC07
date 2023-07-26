@@ -32,32 +32,44 @@ public class Driver {
         ve seçtiğimiz driver calisir
          Testlerin baska browser'larda ne sonuc veriyor test etmek gerekebilir.
          */
-        if (driver == null) {//-->Driver'a değer atanmamışsa
+        if(driver==null){
             switch (ConfigReader.getProperty("browser")){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver= new ChromeDriver();
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
+                    driver= new EdgeDriver();
                     break;
                 case "safari":
                     WebDriverManager.safaridriver().setup();
-                    driver = new SafariDriver();
+                    driver= new SafariDriver();
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    driver= new FirefoxDriver();
                     break;
-                default:
+                default://yanlış bir şey girerse default olarak chrome driver çalışır
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver= new ChromeDriver();
+
             }
+            /*
+            Driver 'ı her cagırdıgımızda yeni bir pencere açılmasının önüne geçmek için if blogu
+            içinde Eger driver'a deger atanmamışsa değer ata,eğer deger atanmışsa
+            driver'ı aynı sayfada return et.
+             */
+
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
         }
+        //if bloguna koymamızın nedeni her biri için ayrı browser açmasın
+        //halihazırda değer atanmış bir browser varsa onun üzerinden işlemlerini yapsın
+        //yani diver.get() yaptıgımızda bir adrese gidiyorsa bu deger atanmış halidir.
         return driver;
+
     }
     public static void closeDriver(){
         if (driver!=null){//-->driver'a deger ATANMIŞSA
