@@ -61,6 +61,9 @@ public class Driver {
             driver'ı aynı sayfada return et.
              */
 
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
         }
         //if bloguna koymamızın nedeni her biri için ayrı browser açmasın
         //halihazırda değer atanmış bir browser varsa onun üzerinden işlemlerini yapsın
