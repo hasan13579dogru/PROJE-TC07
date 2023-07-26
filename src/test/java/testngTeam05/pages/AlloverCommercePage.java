@@ -701,10 +701,16 @@ public class AlloverCommercePage {
     public WebElement anasayfaSigninButon;
     @FindBy(xpath = "//input[@id='username']")
     public WebElement userNameEmailAddress;
-       @FindBy(xpath = "//button[@name='login']")
+    @FindBy(xpath = "//button[@name='login']")
     public WebElement password;
+
+
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signOut;
+
     //@FindBy(xpath = "//button[@name='login']")
     //public WebElement signIn;
+
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement myAccount;
