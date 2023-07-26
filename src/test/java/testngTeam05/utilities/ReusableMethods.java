@@ -15,7 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class ReusableMethods {
+public class
+ReusableMethods {
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
