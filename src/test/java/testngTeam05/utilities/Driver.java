@@ -60,8 +60,7 @@ public class Driver {
             içinde Eger driver'a deger atanmamışsa değer ata,eğer deger atanmışsa
             driver'ı aynı sayfada return et.
              */
-        WebDriverManager.chromedriver().setup();
-        driver= new ChromeDriver();
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
