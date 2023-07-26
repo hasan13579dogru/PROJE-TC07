@@ -13,8 +13,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
-public class ReusableMethods {
+public class
+ReusableMethods {
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
@@ -177,5 +179,20 @@ public class ReusableMethods {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
+    }
+    // Rastgele bir kullanıcı adı oluşturmak için metot
+    public static String generateRandomUsername() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.,€@#?$%^&abcdefghijklmnopqrstuvwxyz1234567890";
+        StringBuilder username = new StringBuilder();
+        Random rand = new Random();
+        int length = 12; // Kullanıcı adı uzunluğunu ayarlayın (örnekte 12 karakter)
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = rand.nextInt(characters.length());
+            char randomChar = characters.charAt(randomIndex);
+            username.append(randomChar);
+        }
+
+        return username.toString();
     }
 }
