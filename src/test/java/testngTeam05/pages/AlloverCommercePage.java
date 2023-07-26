@@ -9,7 +9,7 @@ public class AlloverCommercePage {
     public AlloverCommercePage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    //Ümran--11-100 satır aralığı 50 dahil
+
     /*
     @FindBy(xpath = )
     public WebElement loginbuton;
@@ -49,8 +49,6 @@ public class AlloverCommercePage {
 
 
 
-//Ümran atasoy son satır
-//Mustafa--51-100 satır aralığı
 
 
 
@@ -99,8 +97,106 @@ public class AlloverCommercePage {
 
 
 
-        //Musta hoca son satır
-    //Mehtap--101-150 satır aralığı
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @FindBy(xpath = "//span[text()='Sign In']")
     public WebElement anasayfaSigninButon;
