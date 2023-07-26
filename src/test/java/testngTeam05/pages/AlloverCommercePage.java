@@ -206,7 +206,8 @@ public class AlloverCommercePage {
     public WebElement password;
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signIn;
-
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signOut;
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement myAccount;
 
