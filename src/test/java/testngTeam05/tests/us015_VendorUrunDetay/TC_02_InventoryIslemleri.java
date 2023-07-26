@@ -1,4 +1,4 @@
-package testngTeam05.tests.US015_VendorUrunDetay;
+package testngTeam05.tests.us015_VendorUrunDetay;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -107,8 +107,11 @@ public class TC_02_InventoryIslemleri {
 //        System.out.println("Man. stok"+alloverPage.productManageStock.getText());
 
         Assert.assertTrue(alloverPage.productSku.isDisplayed());
-        Assert.assertTrue(alloverPage.productStockStatus.isDisplayed());
+
         Assert.assertTrue(alloverPage.productManageStock.isDisplayed());
+
+        //seçilen stock durumunun bu sayfada görünür oldugunu doğrular"
+        Assert.assertTrue(alloverPage.productStockStatus.isDisplayed());
 
 
 

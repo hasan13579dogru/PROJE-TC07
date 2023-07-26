@@ -596,6 +596,8 @@ public class AlloverCommercePage {
 
 
 
+
+
     // yusuf
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;
@@ -696,15 +698,37 @@ public class AlloverCommercePage {
     public WebElement productStockStatus;
     @FindBy(xpath = "//*[text()=' (100)']")
     public WebElement productManageStock;
-//=======
+    @FindBy(css = "[id=weight]")
+    public WebElement weight;
+    @FindBy(css = "[id=shipping_class]")
+    public WebElement shippingClass;
+
+    @FindBy(css = "[id=_wcfmmp_processing_time]")
+    public WebElement processingTime;
+
+    @FindBy(xpath = "(//*[@class='wcfm_submit_button'])[3]")
+    public WebElement view;
+
+    @FindBy(xpath = "(//*[@class='nav-link'])[2]")
+    public WebElement spesification;
+
+    @FindBy(xpath = "(//*[@class='nav-link'])[2]")
+    public WebElement spesificationWeight;
+
+    @FindBy(xpath = "(//tbody//tr//td)[2]")
+    public WebElement spesificationDimensions;
+
+
+
+
+ //=======
     @FindBy(xpath = "//span[text()='Sign In']")
     public WebElement anasayfaSigninButon;
     @FindBy(xpath = "//input[@id='username']")
     public WebElement userNameEmailAddress;
-       @FindBy(xpath = "//button[@name='login']")
+    @FindBy(xpath = "//button[@name='login']")
     public WebElement password;
-    //@FindBy(xpath = "//button[@name='login']")
-    //public WebElement signIn;
+
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement myAccount;
