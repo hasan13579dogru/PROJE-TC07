@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReusableMethods {
+public class
+ReusableMethods {
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
