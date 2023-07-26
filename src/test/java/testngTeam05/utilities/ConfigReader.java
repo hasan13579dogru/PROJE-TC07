@@ -14,7 +14,7 @@ public class ConfigReader {
     static Properties properties;
     static {
         try {
-            FileInputStream fis = new FileInputStream("C:\\Users\\LENOVO\\IdeaProjects\\testNGProjectTeam05\\configuration.properties");
+            FileInputStream fis = new FileInputStream("configuration.properties");
             properties = new Properties();
             properties.load(fis);//-->fis'in okuduğu bilgileri properties'e yükler
         } catch (IOException e) {
