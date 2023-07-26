@@ -50,7 +50,7 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver= new FirefoxDriver();
                     break;
-                    default://yanlış bir şey girerse default olarak chrome driver çalışır
+                default://yanlış bir şey girerse default olarak chrome driver çalışır
                     WebDriverManager.chromedriver().setup();
                     driver= new ChromeDriver();
 
@@ -61,10 +61,13 @@ public class Driver {
             driver'ı aynı sayfada return et.
              */
 
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
         }
         //if bloguna koymamızın nedeni her biri için ayrı browser açmasın
         //halihazırda değer atanmış bir browser varsa onun üzerinden işlemlerini yapsın
-       //yani diver.get() yaptıgımızda bir adrese gidiyorsa bu deger atanmış halidir.
+        //yani diver.get() yaptıgımızda bir adrese gidiyorsa bu deger atanmış halidir.
         return driver;
 
     }
