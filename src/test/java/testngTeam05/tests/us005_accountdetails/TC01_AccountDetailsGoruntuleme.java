@@ -53,7 +53,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
 
        //signin butonuna tıkla
-        alloverCommercePage.login.click();
+        alloverCommercePage.submitButton.click();
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
 
@@ -159,7 +159,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(1);
         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         ReusableMethods.bekle(1);
-        ReusableMethods.click(alloverCommercePage.login);
+        ReusableMethods.click(alloverCommercePage.submitButton);
         //giriş yapmak doğrulama için yeterli mi?????
 
         ReusableMethods.bekle(6);
