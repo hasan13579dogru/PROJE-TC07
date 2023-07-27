@@ -97,6 +97,7 @@ public class AlloverCommercePage {
 
 
 
+//mustafa dalkılıç  
 
 
 
@@ -197,15 +198,52 @@ public class AlloverCommercePage {
 
 
 
+    //mehtap
+    @FindBy(xpath = "//span[text()='Sign In']")
+    public WebElement anasayfaSigninButon;
+    @FindBy(xpath = "//input[@id='username']")
+    public WebElement userNameEmailAddress;
+    @FindBy(xpath = "//button[@name='login']")
+    public WebElement password;
 
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
+    @FindBy(xpath = "//span[text()='Sign Out']")
 
 
+    public WebElement signOut;
 
+    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    public WebElement myAccount;
+    @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
+    public WebElement logOut;
 
 
+    @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
+    public WebElement accountDetailsMenu;
 
+    @FindBy(xpath = "//input[@name='account_first_name']")
+    public WebElement accountFirstName;
+    @FindBy(xpath = "//*[@name='account_last_name']")
+    public WebElement accountLastName;
+    @FindBy(xpath = "//*[@name='account_display_name']")
+    public WebElement accountDisplayName;
+    @FindBy(xpath = "//*[@name='account_email']")
+    public WebElement accountEmail;
+    @FindBy(xpath = "//body[@id='tinymce']")
+    public WebElement biography;
+    @FindBy(xpath = "//input[@name='password_current']")
+    public WebElement currentPassword;
+    @FindBy(xpath = "//input[@name='password_1']")
+    public WebElement newPassword;
+    @FindBy(xpath = "//input[@name='password_2']")
+    public WebElement confirmPassword;
+    @FindBy(xpath = "//button[@name='save_account_details']")
+    public WebElement saveChangesButton;
 
+    @FindBy(xpath = "(//h4)[2]")
+    public WebElement accountDetailsSayfaYazısı;
 
 
 
@@ -259,6 +297,7 @@ public class AlloverCommercePage {
 
 
 
+//Salih
 
 
 
@@ -358,6 +397,7 @@ public class AlloverCommercePage {
 
 
 
+//enes
 
 
 
@@ -457,6 +497,7 @@ public class AlloverCommercePage {
 
 
 
+//seda
 
 
 
@@ -558,22 +599,7 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // yusuf
+  // yusuf
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;   // Anasayfa Sign In /
     @FindBy(css = "[id=username]")
@@ -674,53 +700,53 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//tbody//tr//td)[2]")
     public WebElement spesificationDimensions;
 
-    @FindBy(xpath = "//span[text()='Sign In']")
-    public WebElement anasayfaSigninButon;
-    @FindBy(xpath = "//input[@id='username']")
-    public WebElement userNameEmailAddress;
-    @FindBy(xpath = "//button[@name='login']")
-    public WebElement password;
-
-    @FindBy(xpath = "//input[@name='password']")
-    public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
-
-    @FindBy(xpath = "//span[text()='Sign Out']")
 
 
-    public WebElement signOut;
-
-    @FindBy(xpath = "//*[@id='menu-item-1079']")
-    public WebElement myAccount;
-    @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
-    public WebElement logOut;
 
 
-    @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
-    public WebElement accountDetailsMenu;
-
-    @FindBy(xpath = "//input[@name='account_first_name']")
-    public WebElement accountFirstName;
-    @FindBy(xpath = "//*[@name='account_last_name']")
-    public WebElement accountLastName;
-    @FindBy(xpath = "//*[@name='account_display_name']")
-    public WebElement accountDisplayName;
-    @FindBy(xpath = "//*[@name='account_email']")
-    public WebElement accountEmail;
-    @FindBy(xpath = "//body[@id='tinymce']")
-    public WebElement biography;
-    @FindBy(xpath = "//input[@name='password_current']")
-    public WebElement currentPassword;
-    @FindBy(xpath = "//input[@name='password_1']")
-    public WebElement newPassword;
-    @FindBy(xpath = "//input[@name='password_2']")
-    public WebElement confirmPassword;
-    @FindBy(xpath = "//button[@name='save_account_details']")
-    public WebElement saveChangesButton;
-
-    @FindBy(xpath = "(//h4)[2]")
-    public WebElement accountDetailsSayfaYazısı;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //livdemirci
     @FindBy(xpath = "//*[@class='register inline-type']")
     public WebElement register;
@@ -819,15 +845,7 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
-
-
-
-
-
+    
 
 //hasan
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
@@ -881,6 +899,56 @@ public class AlloverCommercePage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//murat
+    
 
 
 }
