@@ -67,7 +67,7 @@ public class Driver {
         }
         //if bloguna koymamızın nedeni her biri için ayrı browser açmasın
         //halihazırda değer atanmış bir browser varsa onun üzerinden işlemlerini yapsın
-        //yani diver.get() yaptıgımızda bir adrese gidiyorsa bu deger atanmış halidir.
+        //yani diver.get() yaptıgımızda bir adrese gidiyorsa bu deger atanmış halidir.....
         return driver;
 
     }

@@ -1,5 +1,6 @@
 package testngTeam05.pages;
 
+import com.github.javafaker.Commerce;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,11 +11,7 @@ public class AlloverCommercePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    /*
-    @FindBy(xpath = )
-    public WebElement loginbuton;
 
-     */
 
 
 
@@ -99,16 +96,25 @@ public class AlloverCommercePage {
 
 
 
+    //mustafa dalkılıç
 
+    //*[@id='username']
+    @FindBy(xpath = "//*[@id='username']")
+    public WebElement usernamemd;
 
 
 
+    @FindBy(xpath = "//*[text()='Sign Out']")
+    public WebElement MyAccountmd;
 
 
 
 
 
+    //*[text()='Addresses']
 
+    @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
+    public static WebElement adress;
 
 
 
@@ -202,14 +208,51 @@ public class AlloverCommercePage {
 
 
 
+    //mehtap
+    @FindBy(xpath = "//span[text()='Sign In']")
+    public WebElement anasayfaSigninButon;
+    @FindBy(xpath = "//input[@id='username']")
+    public WebElement userNameEmailAddress;
+    @FindBy(xpath = "//button[@name='login']")
+    public WebElement password;
 
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public static WebElement signOut;
 
+    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    public static WebElement myAccount;
 
 
+    @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
+    public WebElement logOut;
 
+    @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
+    public WebElement accountDetailsMenu;
 
+    @FindBy(xpath = "//input[@name='account_first_name']")
+    public WebElement accountFirstName;
+    @FindBy(xpath = "//*[@name='account_last_name']")
+    public WebElement accountLastName;
+    @FindBy(xpath = "//*[@name='account_display_name']")
+    public WebElement accountDisplayName;
+    @FindBy(xpath = "//*[@name='account_email']")
+    public WebElement accountEmail;
+    @FindBy(xpath = "//body[@id='tinymce']")
+    public WebElement biography;
+    @FindBy(xpath = "//input[@name='password_current']")
+    public WebElement currentPassword;
+    @FindBy(xpath = "//input[@name='password_1']")
+    public WebElement newPassword;
+    @FindBy(xpath = "//input[@name='password_2']")
+    public WebElement confirmPassword;
+    @FindBy(xpath = "//button[@name='save_account_details']")
+    public WebElement saveChangesButton;
 
+    @FindBy(xpath = "(//h4)[2]")
+    public WebElement accountDetailsSayfaYazısı;
 
 
 
@@ -259,6 +302,7 @@ public class AlloverCommercePage {
 
 
 
+//Salih
 
 
 
@@ -356,6 +400,7 @@ public class AlloverCommercePage {
 
 
 
+//enes
 
 
 
@@ -454,6 +499,8 @@ public class AlloverCommercePage {
 
 
 
+
+//seda
 
 
 
@@ -1000,7 +1047,10 @@ public class AlloverCommercePage {
 
 
 
-    // yusuf
+
+
+  // yusuf
+
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;   // Anasayfa Sign In /
     @FindBy(css = "[id=username]")
@@ -1101,43 +1151,271 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//tbody//tr//td)[2]")
     public WebElement spesificationDimensions;
 
-    @FindBy(xpath = "//span[text()='Sign In']")
-    public WebElement anasayfaSigninButon;
-    @FindBy(xpath = "//input[@id='username']")
-    public WebElement userNameEmailAddress;
-    @FindBy(xpath = "//button[@name='login']")
-    public WebElement password;
-    @FindBy(xpath = "//span[.='Sign Out']")
-    public WebElement signOut;
 
-    @FindBy(xpath = "//*[@id='menu-item-1079']")
-    public WebElement myAccount;
 
-    @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
-    public WebElement accountDetailsMenu;
 
-    @FindBy(xpath = "//input[@name='account_first_name']")
-    public WebElement accountFirstName;
-    @FindBy(xpath = "//*[@name='account_last_name']")
-    public WebElement accountLastName;
-    @FindBy(xpath = "//*[@name='account_display_name']")
-    public WebElement accountDisplayName;
-    @FindBy(xpath = "//*[@name='account_email']")
-    public WebElement accountEmail;
-    @FindBy(xpath = "//br")
-    public WebElement biography;
-    @FindBy(xpath = "//input[@name='password_current']")
-    public WebElement currentPassword;
-    @FindBy(xpath = "//input[@name='password_1']")
-    public WebElement newPassword;
-    @FindBy(xpath = "//input[@name='password_2']")
-    public WebElement confirmPassword;
-    @FindBy(xpath = "//button[@name='save_account_details']")
-    public WebElement saveChangesButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //livdemirci
+    @FindBy(xpath = "//*[@class='register inline-type']")
+    public WebElement register;
+
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement reg_username;
+
+    @FindBy(xpath = "//*[text()='An account is already registered with your email address. ']")
+    public WebElement accountAlreadyRegisteredText;
+
+
+    @FindBy(xpath = "//*[@class='register_as_vendor']")
+    public WebElement register_as_vendor;//signup sayfasindaki register as a vendor locate
+
+    @FindBy(xpath = "//*[@class='page-title-wrap']")
+    public WebElement vendorRegistration;//vendor sayfasindaki vendor registration yazisi
+
+    @FindBy(xpath = "//*[@id='user_email']")
+    public WebElement vendorRegistrationEmail;//vendor sayfasindaki vendor registration e-mail
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_button']")
+    public WebElement verificationEmailButton;//vendor sayfasindaki verification code butonu
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
+    public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
+
+    @FindBy(xpath = "//*[text()='Not right now']")
+    public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
+
+
+    public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//hasan
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement searchButton;//ana sayfanın en ustundeki
+
+    @FindBy(xpath = "//a[@class='wishlist block-type']")
+    public  WebElement wishList;//ana sayfanın sag ust
+
+    @FindBy(xpath = "(//i[@class='w-icon-cart'])[1]")
+    public WebElement CART;//ana sayfa sag ust
+
+    @FindBy(xpath = "(//img[@role='presentation'])[1]")
+    public  WebElement imgUrun;//secilen urun resmi(chair and kitchen table)
+
+    @FindBy(xpath = "(//a[@class='add_to_wishlist single_add_to_wishlist'])[1]")
+    public WebElement wishListButtonChair;//secilen urunun yanındaki wishlistchair
+
+    @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
+    public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
+
+    @FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
+    public WebElement addToCart;//urunun sag tarafındaki addtocartbutton
+
+    @FindBy(xpath = "//*[@class='button checkout wc-forward']")
+    public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
+
+    @FindBy(id = "//input[@id='billing_first_name']")
+    public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//murat
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
