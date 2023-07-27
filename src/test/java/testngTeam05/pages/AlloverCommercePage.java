@@ -96,7 +96,9 @@ public class AlloverCommercePage {
 
 
 
-    //mustafa dalkılıç
+
+    //mustafa dalkılıç  
+
 
     //*[@id='username']
     @FindBy(xpath = "//*[@id='username']")
@@ -226,6 +228,8 @@ public class AlloverCommercePage {
     public static WebElement myAccount;
 
 
+
+
     @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
     public WebElement logOut;
 
@@ -303,6 +307,7 @@ public class AlloverCommercePage {
 
 
 //Salih
+
 
 
 
@@ -848,6 +853,7 @@ public class AlloverCommercePage {
 
 
 
+//enes
 
 
 
