@@ -741,8 +741,15 @@ public class AlloverCommercePage {
     public WebElement accountDetailsSayfaYazısı;
 
 
+    //livdemirci
+    @FindBy(xpath = "//*[@class='register inline-type']")
+    public WebElement register;
 
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement reg_username;
 
+    @FindBy(xpath = "//*[text()='An account is already registered with your email address. ']")
+    public WebElement accountAlreadyRegisteredText;
 
 
 
@@ -822,12 +829,12 @@ public class AlloverCommercePage {
 
 
 
-//>>>>>>> 7e9e6cb59d75469fa0cf5f50162871578efdd4bd
+
+
 
 
 }
 
-//livdemirci
 
 
 
