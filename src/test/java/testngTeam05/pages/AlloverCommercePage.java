@@ -704,11 +704,20 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     public WebElement userNameEmailAddress;
     @FindBy(xpath = "//button[@name='login']")
     public WebElement password;
-    @FindBy(xpath = "//span[.='Sign Out']")
+
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
+
+    @FindBy(xpath = "//span[text()='Sign Out']")
+
+
     public WebElement signOut;
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement myAccount;
+    @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
+    public WebElement logOut;
+
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
     public WebElement accountDetailsMenu;
@@ -721,7 +730,7 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     public WebElement accountDisplayName;
     @FindBy(xpath = "//*[@name='account_email']")
     public WebElement accountEmail;
-    @FindBy(xpath = "//br")
+    @FindBy(xpath = "//body[@id='tinymce']")
     public WebElement biography;
     @FindBy(xpath = "//input[@name='password_current']")
     public WebElement currentPassword;
@@ -736,12 +745,12 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     public WebElement accountDetailsSayfaYazısı;
 
 
-//>>>>>>> 7e9e6cb59d75469fa0cf5f50162871578efdd4bd
+
 
 
 }
 
-//livdemirci
+
 
 
 
