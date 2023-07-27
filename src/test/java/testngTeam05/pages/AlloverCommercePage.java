@@ -98,13 +98,21 @@ public class AlloverCommercePage {
 
 
 
+//md
+
+    //*[@id='username']
+    @FindBy(xpath = "//*[@id='username']")
+    public WebElement usernamemd;
 
 
+    @FindBy(xpath = "//*[text()='Sign Out']")
+    public WebElement MyAccountmd;
 
 
+    //*[text()='Addresses']
 
-
-
+    @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
+    public static WebElement adress;
 
 
 
@@ -706,14 +714,14 @@ public class AlloverCommercePage {
 
 
     @FindBy(xpath = "//span[.='Sign Out']")
-    public WebElement signOut;
+    public static WebElement signOut;
 
     //@FindBy(xpath = "//button[@name='login']")
     //public WebElement signIn;
 
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
-    public WebElement myAccount;
+    public static WebElement myAccount;
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
     public WebElement accountDetailsMenu;
