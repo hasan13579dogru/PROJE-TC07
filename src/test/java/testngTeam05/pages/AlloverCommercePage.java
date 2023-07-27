@@ -95,27 +95,26 @@ public class AlloverCommercePage {
 
 
 
-//md
+
+    //mustafa dalkılıç  
 
     //*[@id='username']
     @FindBy(xpath = "//*[@id='username']")
     public WebElement usernamemd;
 
 
-<<<<<<< HEAD
+
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement MyAccountmd;
-=======
-//mustafa dalkılıç  
->>>>>>> master
+
+
+
 
 
     //*[text()='Addresses']
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
     public static WebElement adress;
-
-
 
 
 
@@ -220,25 +219,15 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='password']")
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
-    @FindBy(xpath = "//span[text()='Sign Out']")
-
-
-<<<<<<< HEAD
     @FindBy(xpath = "//span[.='Sign Out']")
     public static WebElement signOut;
-=======
-    public WebElement signOut;
->>>>>>> master
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
-<<<<<<< HEAD
     public static WebElement myAccount;
-=======
+
     public WebElement myAccount;
     @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
     public WebElement logOut;
-
->>>>>>> master
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
     public WebElement accountDetailsMenu;
@@ -313,13 +302,7 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
 //Salih
-
-
 
 
 
