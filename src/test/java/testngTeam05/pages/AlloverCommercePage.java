@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import testngTeam05.utilities.Driver;
 
+import java.util.List;
+
 public class AlloverCommercePage {
     public AlloverCommercePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -778,14 +780,20 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
 
+    @FindBy(xpath = "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
+    public WebElement myAccountOrders;//Myaccount sayfasindaki orders linki
 
+    @FindBy(xpath = "//*[@class=\"button product_type_simple add_to_cart_button ajax_add_to_cart\"]")
+    public List<WebElement> addToChart;//Urunler sayfasindaki addToChart linki
 
+    @FindBy(xpath = "//*[@class='woocommerce-Button button btn btn-link btn-underline btn-icon-right']")
+    public WebElement browseProduct;//Urunler sayfasindaki addToChart linki
 
+    @FindBy(xpath = "//*[@id=\"password_strength\" and contains(@class, 'good')]")
+    public WebElement passwordStrengthGood;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 
-
-
-
-
+    @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele '][1]")
+    public WebElement vendorPassword;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 
 
 
