@@ -78,7 +78,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
        extentTest.pass("My Account sayfasının açıldığı doğrulandı");
 
        //Account details menüsüne tıkla
-        ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
+            ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
         extentTest.info("Account details'e tıklandı");
 
         //Account details görünür oldugunu doğrula
