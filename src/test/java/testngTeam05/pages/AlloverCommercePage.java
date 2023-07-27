@@ -706,7 +706,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='password']")
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
-    @FindBy(xpath = "//span[.='Sign Out']")
+    @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement signOut;
 
     @FindBy(xpath = "//button[@name='login']")
@@ -718,6 +718,9 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//h2")//-->signout tıkladığımızda gelen My Account
     public WebElement myAccount;
+    @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
+    public WebElement logOut;
+
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
     public WebElement accountDetailsMenu;
@@ -730,7 +733,7 @@ public class AlloverCommercePage {
     public WebElement accountDisplayName;
     @FindBy(xpath = "//*[@name='account_email']")
     public WebElement accountEmail;
-    @FindBy(xpath = "//br")
+    @FindBy(xpath = "//body[@id='tinymce']")
     public WebElement biography;
     @FindBy(xpath = "//input[@name='password_current']")
     public WebElement currentPassword;
