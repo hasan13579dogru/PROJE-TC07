@@ -1,0 +1,94 @@
+package testngTeam05.tests.us017_vendoralisveris;
+
+import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+import testngTeam05.pages.AlloverCommercePage;
+import testngTeam05.utilities.ConfigReader;
+import testngTeam05.utilities.Driver;
+
+public class TC_01_VendorAlisVeris {
+    //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
+    //Ürün ve ürünler seçilip sepete eklenebilmeli
+    //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
+    //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
+    //Toplam ödenecek rakam görüntülebilmeli
+    //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+    //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
+    //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
+
+    AlloverCommercePage  alloverpage;
+    Faker faker;
+    @Test
+    public void test01() {
+        //Siteye git
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        alloverpage = new AlloverCommercePage();
+
+        //Register butonuna tikla
+        alloverpage.register.click();
+        //Username, Your Email address, Password alanlarini doldur ve "I agree to the privacy policy" checkbox'ina tikla
+        //SIGN UP butonuna bas
+        alloverpage.reg_username.sendKeys(ConfigReader.getProperty("alloverMusteriName"),
+                Keys.TAB,
+                ConfigReader.getProperty("alloverVendorEmail"),
+                Keys.TAB,
+                ConfigReader.getProperty("alloverVendorSifre"),
+                Keys.TAB,Keys.TAB,Keys.SPACE,Keys.TAB,Keys.ENTER);
+
+        String alreadyRegistered = alloverpage.accountAlreadyRegisteredText.getText();
+
+        if (alreadyRegistered.equals("An account is already registered with your email address. Please log in.")){
+            vendorRegister();
+        }
+
+    }
+
+    public void vendorRegister (){
+        faker = new Faker();
+        String vendorMusteriName = faker.name().toString();
+        String vendorEmailAdress = faker.internet().emailAddress();
+        String vendorPassword = faker.internet().password();
+        //Register butonuna tikla
+        alloverpage.register.click();
+        //Username, Your Email address, Password alanlarini doldur ve "I agree to the privacy policy" checkbox'ina tikla
+        //SIGN UP butonuna bas
+        alloverpage.reg_username.sendKeys(vendorMusteriName,
+                Keys.TAB,
+                vendorEmailAdress,
+                Keys.TAB,
+                vendorPassword,
+                Keys.TAB,Keys.TAB,Keys.SPACE,Keys.TAB,Keys.ENTER);
+    }
+}
+//livdemirci
+    @FindBy(xpath = "//*[@class='register inline-type']")
+    public WebElement register;
+
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement reg_username;
+
+    @FindBy(xpath = "//*[text()='An account is already registered with your email address. ']")
+    public WebElement accountAlreadyRegisteredText;
+
+    @FindBy(xpath = "//*[@class='register_as_vendor']")
+    public WebElement register_as_vendor;//signup sayfasindaki register as a vendor locate
+
+    @FindBy(xpath = "//*[@class='page-title-wrap']")
+    public WebElement vendorRegistration;//vendor sayfasindaki vendor registration yazisi
+
+    @FindBy(xpath = "//*[@id='user_email']")
+    public WebElement vendorRegistrationEmail;//vendor sayfasindaki vendor registration e-mail
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_button']")
+    public WebElement verificationEmailButton;//vendor sayfasindaki verification code butonu
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
+    public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
+
+    @FindBy(xpath = "//*[text()='Not right now']")
+    public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
+
+    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
