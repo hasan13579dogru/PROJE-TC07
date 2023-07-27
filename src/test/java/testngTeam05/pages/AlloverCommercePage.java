@@ -696,23 +696,27 @@ public class AlloverCommercePage {
     public WebElement productStockStatus;
     @FindBy(xpath = "//*[text()=' (100)']")
     public WebElement productManageStock;
-//=======
+
     @FindBy(xpath = "//span[text()='Sign In']")
     public WebElement anasayfaSigninButon;
     @FindBy(xpath = "//input[@id='username']")
     public WebElement userNameEmailAddress;
     @FindBy(xpath = "//button[@name='login']")
     public WebElement password;
-
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
     @FindBy(xpath = "//span[.='Sign Out']")
     public WebElement signOut;
+
+    @FindBy(xpath = "//button[@name='login']")
+    public WebElement login;//--> sayfaya girerken kullandığımız sign in butonu
 
     //@FindBy(xpath = "//button[@name='login']")
     //public WebElement signIn;
 
 
-    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    @FindBy(xpath = "//h2")//-->signout tıkladığımızda gelen My Account
     public WebElement myAccount;
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
@@ -750,6 +754,10 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//*[text()='An account is already registered with your email address. ']")
     public WebElement accountAlreadyRegisteredText;
+
+
+
+
 
 
 
