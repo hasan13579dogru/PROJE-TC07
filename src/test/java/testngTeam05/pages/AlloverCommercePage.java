@@ -10,32 +10,7 @@ public class AlloverCommercePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "(//input[@class='form-control'])[1]")
-    public WebElement searchButton;//ana sayfanın en ustundeki
 
-@FindBy(xpath = "//a[@class='wishlist block-type']")
-public  WebElement wishList;//ana sayfanın sag ust
-
-@FindBy(xpath = "(//i[@class='w-icon-cart'])[1]")
-public WebElement CART;//ana sayfa sag ust
-
-@FindBy(xpath = "(//img[@role='presentation'])[1]")
-public  WebElement imgUrun;//secilen urun resmi(chair and kitchen table)
-
-@FindBy(xpath = "(//a[@class='add_to_wishlist single_add_to_wishlist'])[1]")
-public WebElement wishListButtonChair;//secilen urunun yanındaki wishlistchair
-
-@FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
-public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
-
-@FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
-public WebElement addToCart;//urunun sag tarafındaki addtocartbutton
-
-@FindBy(xpath = "//*[@class='button checkout wc-forward']")
-public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
-
-@FindBy(id = "//input[@id='billing_first_name']")
-public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
 
 
 
@@ -799,6 +774,57 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//hasan
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement searchButton;//ana sayfanın en ustundeki
+
+    @FindBy(xpath = "//a[@class='wishlist block-type']")
+    public  WebElement wishList;//ana sayfanın sag ust
+
+    @FindBy(xpath = "(//i[@class='w-icon-cart'])[1]")
+    public WebElement CART;//ana sayfa sag ust
+
+    @FindBy(xpath = "(//img[@role='presentation'])[1]")
+    public  WebElement imgUrun;//secilen urun resmi(chair and kitchen table)
+
+    @FindBy(xpath = "(//a[@class='add_to_wishlist single_add_to_wishlist'])[1]")
+    public WebElement wishListButtonChair;//secilen urunun yanındaki wishlistchair
+
+    @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
+    public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
+
+    @FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
+    public WebElement addToCart;//urunun sag tarafındaki addtocartbutton
+
+    @FindBy(xpath = "//*[@class='button checkout wc-forward']")
+    public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
+
+    @FindBy(id = "//input[@id='billing_first_name']")
+    public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
 
 
 
