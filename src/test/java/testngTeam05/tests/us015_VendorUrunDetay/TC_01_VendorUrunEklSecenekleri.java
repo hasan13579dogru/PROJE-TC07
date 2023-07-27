@@ -19,32 +19,37 @@ public class TC_01_VendorUrunEklSecenekleri {
     public void test01() {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
-        //Vendor https://allovercommerce.com/ adresine gider
+        //Vendor https://allovercommerce.com/ adresine git
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
 
-        //Kayıtlı vendor email adresi ve şifresiyle sign in sekmesinden siteye giriş yapar
+        // sign in butonuna tıklayarak kayıtlı Vendor email adresi ve şifresiyle giriş yap
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
-                                                   ConfigReader.getProperty("alloverVendorSifre"));
+                ConfigReader.getProperty("alloverVendorSifre"));
         alloverPage.signInButton.click();
         ReusableMethods.bekle(5);
 
-        // my account'a tıklar
-        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
-        ReusableMethods.click(alloverPage.myAccountButton);
+        //My Account sayfasının açıldığını doğrula
+        Assert.assertTrue(alloverPage.myAccountBaslik.isDisplayed());
 
-        //"Açılan my account sayfasında Store Manager Menüsünün görünür oldugunu doğrular"
+        //Açılan my account sayfasında Store Manager Menüsünün görünür oldugunu doğrula
         Assert.assertTrue(alloverPage.storeManager.isDisplayed());
 
-        //Store manager'a tıklar
+        //Store manager'a tıkla
         alloverPage.storeManager.click();
 
-        //Açılan Store Manager sayfasında Products bölümünün görünür oldugunu doğrular
+        //Store Manager sayfasının açıldığını doğrula
+        Assert.assertTrue(alloverPage.storeManager.isDisplayed());
+
+        //Product butonunun görünür olduğunu doğrula
         Assert.assertTrue(alloverPage.product.isDisplayed());
 
-        //Products yazısının uzerine geldiğinde görünen Add New yazısına tıklar
+        //Products'ın üzerine gel açılan penceredeki Add New'e tıkla
         actions.moveToElement(alloverPage.product).perform();
         alloverPage.addNew.click();
+
+        //Add Product sayfasının açıldığını doğrula
+        Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
 
         //"Sayfanın altındaki Inventory, Shipping, Attributes, Linked, Seo, Advanced
         //menülerinin görünürlüğünü doğrular"
