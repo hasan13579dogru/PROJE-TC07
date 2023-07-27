@@ -3,6 +3,7 @@ package testngTeam05.tests.us015_VendorUrunDetay;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
@@ -10,12 +11,14 @@ import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ReusableMethods;
 
-public class TC_02_InventoryIslemleri {
+public class TC_04_AttributesIslemleri {
+
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+    Select select;
 
     @Test
-    public void test01() {
+    public void inventoryStokTest() {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //Vendor https://allovercommerce.com/ adresine git
@@ -24,7 +27,7 @@ public class TC_02_InventoryIslemleri {
         // sign in butonuna tıklayarak kayıtlı Vendor email adresi ve şifresiyle giriş yap
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
-        ConfigReader.getProperty("alloverVendorSifre"));
+                ConfigReader.getProperty("alloverVendorSifre"));
         alloverPage.signInButton.click();
         ReusableMethods.bekle(5);
 
@@ -50,10 +53,6 @@ public class TC_02_InventoryIslemleri {
         //Add Product sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
 
-
-
-
-
         //Product title alanına eklemek istediği ürün adını girer
         alloverPage.productTitle.sendKeys("mouse");
 
@@ -66,7 +65,7 @@ public class TC_02_InventoryIslemleri {
         alloverPage.selectFeature.click();
         ReusableMethods.bekle(3);
 
-       // actions.sendKeys(Keys.PAGE_DOWN,Keys.PAGE_DOWN).perform();
+        // actions.sendKeys(Keys.PAGE_DOWN,Keys.PAGE_DOWN).perform();
 
         //Sag tarafta yer alan galeri image bölümünden ürünün resmini ekler
         ReusableMethods.click(alloverPage.galeryImage);
@@ -83,50 +82,38 @@ public class TC_02_InventoryIslemleri {
         //Category Bölümünden eklediği ürünün ait oldugu kategoriyi seç
         ReusableMethods.click(alloverPage.categoriesCheckbox);
 
-        //Sayfanın altında yer alan Inventory" butonuna tıkla
-        ReusableMethods.click(alloverPage.inventory);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        //SKU değerini gir
-        alloverPage.sku.sendKeys("Team05");
+        //Sayfanın altında yer alan "Attributes" butonuna tıkla
+        ReusableMethods.click(alloverPage.attributes);
 
-        //Manage Stock checkbox'a tıkla
-        ReusableMethods.click(alloverPage.manageStockChecboxk);
+        //Color Checkbox'ına tıkla
+        alloverPage.colorCheckBox.click();
 
-        //Stock Qty alanına stok miktarını gir
-        alloverPage.stockQty.clear();
-        alloverPage.stockQty.sendKeys("100");
+        //Ürün rengini gir
+        alloverPage.colorSecim.sendKeys("Black",Keys.ENTER);
 
-        //Sold individually checkbox'a tıkla
-        ReusableMethods.click(alloverPage.soldIndividuallyChecboxk);
+        //Size Checkbox'ına tıkla
+        alloverPage.sizeCheckBox.click();
 
-        //Submit'e tıklar
+        //Ürün Size'ını seç
+        alloverPage.sizeSecim.sendKeys("EkstraSmall",Keys.TAB);
+
+        //"SUBMIT" butonuna tıkla
         ReusableMethods.click(alloverPage.submitButton);
-        ReusableMethods.bekle(2);
 
-        //Products' a tıkla gelen sayfada eklenen ürünün görüldüğünü doğrula
-        ReusableMethods.click(alloverPage.product);
-        Assert.assertTrue(alloverPage.productMouse.isDisplayed());
-        ReusableMethods.webElementResmi(alloverPage.productMouse);
+        //Yenilenen sayfada submit butonunun yanında yer alan view butonuna tıkla
+        ReusableMethods.click(alloverPage.viewButton);
 
-        //Product sayfasında eklenen ürünün yanında SKU degerinin yazılı olduğunu doğrula
-//        System.out.println("Sku = " + alloverPage.productSku.getText());
-//        System.out.println("StockStatus = " + alloverPage.productStockStatus.getText());
-//        System.out.println("Man. stok"+alloverPage.productManageStock.getText());
+        //Acılan sayfada urun resminin altında yer alan specificationa tıkla
+        ReusableMethods.switchToWindow(1);
+        ReusableMethods.click(alloverPage.spesification);
 
-        Assert.assertTrue(alloverPage.productSku.isDisplayed());
-
-        Assert.assertTrue(alloverPage.productManageStock.isDisplayed());
-
-        //seçilen stock durumunun bu sayfada görünür oldugunu doğrula
-        Assert.assertTrue(alloverPage.productStockStatus.isDisplayed());
+        //Color değerinin görüldüğünü doğrula
 
 
 
-
-
+        //Size değerinin görüldüğünü doğrula
 
 
     }
-
 }
