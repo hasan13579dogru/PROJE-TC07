@@ -1,5 +1,6 @@
 package testngTeam05.pages;
 
+import com.github.javafaker.Commerce;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -745,10 +746,118 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     public WebElement accountDetailsSayfaYazısı;
 
 
+    //livdemirci
+    @FindBy(xpath = "//*[@class='register inline-type']")
+    public WebElement register;
+
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement reg_username;
+
+    @FindBy(xpath = "//*[text()='An account is already registered with your email address. ']")
+    public WebElement accountAlreadyRegisteredText;
+
+
+    @FindBy(xpath = "//*[@class='register_as_vendor']")
+    public WebElement register_as_vendor;//signup sayfasindaki register as a vendor locate
+
+    @FindBy(xpath = "//*[@class='page-title-wrap']")
+    public WebElement vendorRegistration;//vendor sayfasindaki vendor registration yazisi
+
+    @FindBy(xpath = "//*[@id='user_email']")
+    public WebElement vendorRegistrationEmail;//vendor sayfasindaki vendor registration e-mail
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_button']")
+    public WebElement verificationEmailButton;//vendor sayfasindaki verification code butonu
+
+    @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
+    public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
+
+    @FindBy(xpath = "//*[text()='Not right now']")
+    public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
+
+    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }
+
+
+
+
 
 
 
