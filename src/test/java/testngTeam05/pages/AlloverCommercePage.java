@@ -596,6 +596,8 @@ public class AlloverCommercePage {
 
 
 
+
+
     // yusuf
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;
