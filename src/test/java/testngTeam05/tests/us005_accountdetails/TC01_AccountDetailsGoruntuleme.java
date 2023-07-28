@@ -121,7 +121,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
 
         //yeni sifre ve kullanici ismi bilgilerini mevcut excele yazdım
-        workbook.getSheet("Sayfa1").getRow(1).createCell(1).setCellValue(sifre);
+        workbook.getSheet("Sayfa1").getRow(1).createCell(5).setCellValue(sifre);
         workbook.getSheet("Sayfa1").getRow(1).createCell(0).setCellValue(newDisplayedName);
         //workbook.getSheet("Sayfa1").getRow(1).createCell(2).setCellValue(newEmail);
 
@@ -129,8 +129,6 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         workbook.write(fos);
         fos.close();
         workbook.close();
-
-
 
         System.out.println("sifre = " + sifre);
         extentTest.info("Change password alanındaki mevcut şifre, yeni şifre ve yeni şifrenin doğrulaması alanları dolduruldu");
@@ -144,6 +142,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         extentTest.info("Save butonuna tıklandı");
 
         //"Account details changed successfully" mesajının görünür oldugunu doğrula
+        Assert.assertTrue(alloverCommercePage.accountDetailsChangedMessage.isDisplayed());
         //screenshot ekle
 
         //siteden signout ardından logout tıkla
@@ -153,19 +152,6 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(3);
         alloverCommercePage.logOut.click();
         ReusableMethods.bekle(2);
-
-
-        //değişmiş sifre ile siteye giriş yapılabildiğini doğrula
-        alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
-        ReusableMethods.bekle(1);
-        alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
-        ReusableMethods.bekle(1);
-       alloverCommercePage.submitButton.click();
-        //giriş yapmak doğrulama için yeterli mi?????
-
-        ReusableMethods.bekle(6);
-
-
 
     }
 
