@@ -46,9 +46,9 @@ public class TC_01 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
 
         //Kayıtlı vendor email adresi ve şifresiyle sign in sekmesinden siteye giriş yapar
-        alloverPage.signIn.click();
-        alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
-                ConfigReader.getProperty("alloverVendorSifre"));
+        alloverPage.signIn1.click();
+        alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverMusteriEmailAdresi"), Keys.TAB,
+                ConfigReader.getProperty("alloverMusteriSifresi"));
         alloverPage.signInButton.click();
         ReusableMethods.bekle(3);
 
