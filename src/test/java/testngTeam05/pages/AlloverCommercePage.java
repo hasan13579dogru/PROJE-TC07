@@ -189,18 +189,34 @@ public class AlloverCommercePage {
 
 
 
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement emailAdresAlanı; //diğer locatelerde sıkıntı yaşadığım için bunu oluşturdum(Mehtap)
 
+    @FindBy(xpath = "(//figure)[2]")
+    public WebElement ilkKulaklıkResmi; //kulaklık aradıktan sonra çıkan ilk ürün
 
+    @FindBy(xpath = "//div[@ class=\"woocommerce-message alert alert-simple alert-icon alert-close-top alert-success\"]")
+    public WebElement accountDetailsChangedMessage;
 
+    @FindBy(xpath = "//a[text()='View cart']")
+    public WebElement viewCart;//-->CART icona tıklandıktan sonra sepeti gözden geçirme için buton
 
+    @FindBy(xpath = "//td[@class='product-thumbnail']")
+    public WebElement sepettekiIlkUrun;
 
+    @FindBy(xpath = "//*[@title='Plus']")
+    public WebElement plusButton; //--> to increase quantitiy of product
 
+    @FindBy(xpath = "//button[@name='update_cart']")
+    public WebElement updateCart; //sepette ürün miktarı artırıp azalttıktan sonra güncelleme için
 
+    @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement cartUpdateMessage;
+    @FindBy(xpath = "//*[@title='Minus']")
+    public WebElement minusButton;
 
-
-
-
-
+    @FindBy(xpath = "//*[@class='wc-proceed-to-checkout']")
+    public WebElement proceedToCheckoutButton;
 
 
 
@@ -1156,6 +1172,15 @@ public class AlloverCommercePage {
     public WebElement spesificationWeight;
     @FindBy(xpath = "(//tbody//tr//td)[2]")
     public WebElement spesificationDimensions;
+
+
+
+
+
+
+
+
+
 
 
 
