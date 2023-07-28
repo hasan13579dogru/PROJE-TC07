@@ -1,6 +1,5 @@
 package testngTeam05.pages;
 
-import com.github.javafaker.Commerce;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -1604,8 +1603,8 @@ public class AlloverCommercePage {
 
 
     //murat
-//    @FindBy(xpath = "//input[@type='text']")
-//    public  WebElement userName;
+    @FindBy(xpath = "//input[@type='text']")
+    public  WebElement username;
 
     @FindBy(xpath = "//*[@type='search']")
     public  WebElement search;

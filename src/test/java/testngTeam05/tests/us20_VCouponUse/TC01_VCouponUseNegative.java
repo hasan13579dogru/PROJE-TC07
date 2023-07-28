@@ -22,7 +22,7 @@ import testngTeam05.utilities.ReusableMethods;
 
 //        3-Login with valid username and valid password to be vendor
 
-              alloversPage.userName.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
+              alloversPage.username.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
               ReusableMethods.bekle(3);
 
 //        4-Write "earphone" to searchBox click to enter

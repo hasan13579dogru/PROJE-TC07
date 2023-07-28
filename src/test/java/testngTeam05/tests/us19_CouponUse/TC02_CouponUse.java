@@ -19,7 +19,7 @@ public class TC02_CouponUse {
 
 
 //        3-Enter a valid username and valid password to be user
-        alloversPage.userName.sendKeys(ConfigReader.getProperty("userName"), Keys.TAB, ConfigReader.getProperty("passwordAllo"), Keys.ENTER);
+        alloversPage.username.sendKeys(ConfigReader.getProperty("userName"), Keys.TAB, ConfigReader.getProperty("passwordAllo"), Keys.ENTER);
         ReusableMethods.bekle(3);
 
 //        4-Write "earphone" to searchBox click to enter
