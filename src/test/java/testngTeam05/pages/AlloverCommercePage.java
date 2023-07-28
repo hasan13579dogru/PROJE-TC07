@@ -5,10 +5,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import testngTeam05.utilities.Driver;
 
+import java.util.List;
+
 public class AlloverCommercePage {
     public AlloverCommercePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+
+
+
+
+
+
 
 
 
@@ -30,6 +39,7 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//input[@id='register-policy']")
     public WebElement iAgreeClick; //register islemindeki I agree to the privacy policy kutusu
+
 
     @FindBy(xpath = "//button[@name='register']")
     public WebElement registerSignUp; //register islemindeki signup button
@@ -120,27 +130,23 @@ public class AlloverCommercePage {
 
 
 
-    @FindBy(xpath = "//*[text()='Sign Out']")
-    public WebElement MyAccountmd;
-
-
-
-/*
-
-
-
-
 
 
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement MyAccountmd;
-*/
 
 
 
 
 
-    //*[text()='Addresses']
+
+
+
+
+
+
+
+
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
     public static WebElement adress;
@@ -251,8 +257,6 @@ public class AlloverCommercePage {
 
 
 
-
-
     //mehtap
     @FindBy(xpath = "//span[text()='Sign In']")
     public WebElement anasayfaSigninButon;
@@ -264,12 +268,12 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='password']")
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
+
     @FindBy(xpath = "//span[.='Sign Out']")
     public static WebElement signOut;
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public static WebElement myAccount;
-
 
 
 
@@ -300,6 +304,8 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "(//h4)[2]")
     public WebElement accountDetailsSayfaYazısı;
+
+
 
 
 
@@ -443,12 +449,8 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
-
 //enes
+
 
 
 
@@ -682,7 +684,6 @@ public class AlloverCommercePage {
 
 
 
-//livdemirci
 
 
 
@@ -691,7 +692,15 @@ public class AlloverCommercePage {
 
 
 
-//Salih
+
+
+
+
+
+
+
+
+
 
 
 
@@ -993,6 +1002,7 @@ public class AlloverCommercePage {
 
 
     // yusuf
+
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;   // Anasayfa Sign In /
     @FindBy(css = "[id=username]")
@@ -1173,22 +1183,26 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
 
+    @FindBy(xpath = "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
+    public WebElement myAccountOrders;//Myaccount sayfasindaki orders linki
 
+    @FindBy(xpath = "//*[@class=\"button product_type_simple add_to_cart_button ajax_add_to_cart\"]")
+    public List<WebElement> addToChart;//Urunler sayfasindaki addToChart linki
 
+    @FindBy(xpath = "//*[@class='woocommerce-Button button btn btn-link btn-underline btn-icon-right']")
+    public WebElement browseProduct;//Urunler sayfasindaki addToChart linki
 
+    @FindBy(xpath = "//*[@id=\"password_strength\" and contains(@class, 'good')]")
+    public WebElement passwordStrengthGood;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 
+    @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele '][1]")
+    public WebElement vendorPassword;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement fiyatsizUrunAlert;//Satin alinamayan urun alert'i
 
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement cartIcon;//Sepetteki urunler
 
 
 
@@ -1281,6 +1295,89 @@ public class AlloverCommercePage {
 
     @FindBy(id = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//murat
+    
+
+
+
+
+
+
+
+
 
 
 
