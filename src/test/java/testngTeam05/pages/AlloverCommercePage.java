@@ -322,8 +322,7 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "'payment_method_bacs'")
     public WebElement eftButton;
-    @FindBy(xpath = "(//button[@type='submit'])[3]")
-    public WebElement placeOrderButton;
+
 
 
 
