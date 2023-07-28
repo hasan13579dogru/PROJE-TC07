@@ -825,7 +825,7 @@ public class AlloverCommercePage {
 //>>>>>>> 7e9e6cb59d75469fa0cf5f50162871578efdd4bd
 
 
-}
+
 
 //livdemirci
 
@@ -851,6 +851,235 @@ public class AlloverCommercePage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //murat
+    @FindBy(xpath = "//input[@type='text']")
+    public  WebElement userName;
+
+    @FindBy(xpath = "//*[@type='search']")
+    public  WebElement search;
+
+    @FindBy(xpath = "(//h3)[2]")
+    public  WebElement searchedFirstItem;
+
+    @FindBy(xpath = "//*[@name='add-to-cart']")
+    public  WebElement addToCart;
+
+    @FindBy(xpath = "//*[@class='w-icon-cart']")
+    public  WebElement cart;
+
+    @FindBy(xpath = "//a[@class='button wc-forward']")
+    public  WebElement viewToCart;
+
+    @FindBy(xpath = "//input[@type='text']")
+    public  WebElement enterCoupon;
+
+    @FindBy(xpath = "//*[@role='alert']")
+    public  WebElement couponAlert;
+    @FindBy(xpath = "//*[@name='apply_coupon']")
+    public  WebElement applyCoupon;
+
+    @FindBy(xpath = "//*[@class=\"remove remove_from_cart_button\"]")
+    public  WebElement cartInClearProduct;//cart ici sil butonu
+
+    @FindBy(xpath = "//*[text()='Log out']")
+    public WebElement logout;
+
+    @FindBy(xpath = "//*[text()='Close']")
+    public WebElement close;  //cart ici close buton
+
+    @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[6]")
+    public WebElement subtotalPrice;//indirimsiz fiyat
+
+
+    @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[7]")
+    public WebElement totalPrice;//indirimli fiyat
+
+    @FindBy(xpath = "//*[@class='wc-proceed-to-checkout']")
+    public WebElement proceedToCheckout; //satın almayı onayla
+
+    @FindBy(xpath = "//*[@id='place_order']")
+    public WebElement placeOrderButton; //billing adress onayla enson sayfa
+
+    @FindBy(xpath = "//*[@id='billing_first_name']")
+    public WebElement endBillingFirstName; //billing first name  enson sayfa
+
+    @FindBy(xpath = "//*[@id='payment_method_bacs']")
+    public WebElement endPaymentMethods; //billing ödeme türü secimi wire transfer  enson sayfa
+
+    @FindBy(xpath = "//p//i")
+    public WebElement orderHasBeenReceived;//siparisiniz alindi yazısı
+    @FindBy(xpath = "//*[@class='quantity-plus w-icon-plus']")
+    public WebElement qantityPlus;//urun mikraını arttır
+
+    @FindBy(xpath = "//*[@class='button checkout wc-forward']")
+    public WebElement checkoutBoton;//urunleri ödeme ekranına gecis butonu
+
+    @FindBy(xpath = "//*[@class='showcoupon']")
+    public WebElement enterTCouponBillAdress;//urunleri ödeme ekranına gecis butonu
+    @FindBy(xpath = "//*[@name='apply_coupon']")
+    public WebElement applyCouponBillAdress;//urunleri ödeme ekranına gecis butonu
+    @FindBy(xpath = "//input[@id='coupon_code']")
+    public WebElement enterCouponBoxBillAdress;//urunleri ödeme ekranına gecis butonu
+
+    @FindBy(xpath = "//*[@role='alert']")
+    public WebElement coupounAlertBillAdress;
+
+    @FindBy(xpath = "//*[@id='payment_method_cod']")
+    public WebElement paymentAtDoor;
+    @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[6]")
+    public WebElement totalPricePayBill;//indirimli fiyat
+    @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[4]")
+    public WebElement subtotalPricePayBill;//indirimsiz fiyat
+    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/\"]")
+    public WebElement myAccountmurat ;
+
+    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
+    public WebElement storeManagermurat ;
+    @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
+    public WebElement orderInMyaccount  ;//myaccount taki order butonu
+    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")
+    public WebElement orderinFirstidNo  ;//myaccount taki order daki ilk urun id
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
