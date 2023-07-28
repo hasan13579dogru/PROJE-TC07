@@ -87,7 +87,7 @@ public class TC_01_VendorAlisVeris {
                 } else {
                     alloverpage.vendorPassword.clear();
                 }
-            }catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 System.out.println("deneniyor...");
             }
 
@@ -132,42 +132,42 @@ public class TC_01_VendorAlisVeris {
 
         //Vendor sayfasindaki sifreyi gir
         String sifre = sifreOlustur().toString();
-        alloverpage.vendorPassword.sendKeys(sifre,Keys.TAB,sifre, Keys.TAB,Keys.ENTER);
-
+        alloverpage.vendorPassword.sendKeys(sifre, Keys.TAB, sifre, Keys.TAB, Keys.ENTER);
 
 
     }
-        @Test
-        public void test02() {
-            //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
-            //Ürün ve ürünler seçilip sepete eklenebilmeli
-            //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
-            //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
-            //Toplam ödenecek rakam görüntülebilmeli
-            //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
-            //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
-            //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
-            //Siteye git
-            vendorOlarakKayitOl();
-            //vendor olarak giris yapildi
-            alloverpage.WelcometoAlloverCommerce.click();
 
-            //Sayfa altindaki My Account'a tiklat
-            JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-            js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
-            ReusableMethods.click(alloverpage.myAccountButton);
+    @Test
+    public void test02() {
+        //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
+        //Ürün ve ürünler seçilip sepete eklenebilmeli
+        //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
+        //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
+        //Toplam ödenecek rakam görüntülebilmeli
+        //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+        //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
+        //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
+        //Siteye git
+        vendorOlarakKayitOl();
+        //vendor olarak giris yapildi
+        alloverpage.WelcometoAlloverCommerce.click();
 
-            //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
-            alloverpage.myAccountOrders.click();
-            alloverpage.browseProduct.click();
+        //Sayfa altindaki My Account'a tiklat
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.click(alloverpage.myAccountButton);
 
-            //Urun ve urunleri ekle
-            List<WebElement> urunListesi = alloverpage.addToChart;
+        //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
+        alloverpage.myAccountOrders.click();
+        alloverpage.browseProduct.click();
 
-            for (WebElement each : urunListesi) {
-                ReusableMethods.click(each);
+        //Urun ve urunleri ekle
+        List<WebElement> urunListesi = alloverpage.addToChart;
 
-            }
+        for (WebElement each : urunListesi) {
+            ReusableMethods.click(each);
+
         }
     }
+}
 
