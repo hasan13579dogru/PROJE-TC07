@@ -49,11 +49,16 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         //kullanıcıadı ve sifre alanlarına mevcut isim ve sifre bilgilerini girer
         alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
         ReusableMethods.bekle(1);
-        alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
+       // alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
         ReusableMethods.bekle(2);
        //signin butonuna tıkla
+
+      
         alloverCommercePage.signInButton.click();
+
+
+
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
 
@@ -78,7 +83,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
        extentTest.pass("My Account sayfasının açıldığı doğrulandı");
 
        //Account details menüsüne tıkla
-        ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
+            ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
         extentTest.info("Account details'e tıklandı");
 
         //Account details görünür oldugunu doğrula
