@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
@@ -93,7 +94,7 @@ public class TC_01_VendorAlisVeris {
             }
 
         }
-
+        ReusableMethods.bekle(1);
         return sifre;
     }
 
@@ -142,7 +143,7 @@ public class TC_01_VendorAlisVeris {
     public void test02() {
         //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
         //Ürün ve ürünler seçilip sepete eklenebilmeli--
-        //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
+        //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli--
         //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
         //Toplam ödenecek rakam görüntülebilmeli
         //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
@@ -166,28 +167,30 @@ public class TC_01_VendorAlisVeris {
 
         //Urun ve urunleri sepete ekle
         List<WebElement> urunListesi = alloverpage.addToChart;
-        boolean flag = true;
+
         int i = 0;
-        while (flag) {
+        while (i<urunListesi.size()) {
             try {
                 ReusableMethods.click(urunListesi.get(i));
-                if (alloverpage.fiyatsizUrunAlert.isDisplayed()) {
-                    Driver.getDriver().navigate().back();
-                    i++;
-                } else {
-                    continue;
-                }
+                ReusableMethods.bekle(1);
+//                if (alloverpage.fiyatsizUrunAlert.isDisplayed()) {
+//                    ReusableMethods.bekle(1);
+//                    Driver.getDriver().navigate().back();
+//
+//                } else {
+//
+//                }
+            i++;
 
-            } catch (NoSuchElementException e) {
-                i++;
-            } catch (ElementClickInterceptedException e) {
+            } catch (NoSuchElementException | ElementClickInterceptedException e) {
                 i++;
             } catch (IndexOutOfBoundsException e) {
                 break;
             }
         }
 
-        ReusableMethods.click(alloverpage.cartIcon);//
+        ReusableMethods.click(alloverpage.cartIcon);
+        ReusableMethods.bekle(1);
         //Urunlerin sepete eklendigini dogrula
         Assert.assertTrue(alloverpage.viewCart.isDisplayed());
 
@@ -195,6 +198,25 @@ public class TC_01_VendorAlisVeris {
         alloverpage.checkoutCart.click();
 
         //alınacak ürün ve ürünler görülebilmeli
+        int urunSayisi = Integer.parseInt(alloverpage.sepetSayaci.getText());
+        SoftAssert softAssert = new SoftAssert();
+        for (int j = 1; j < urunSayisi; j++) {
+
+           softAssert.assertTrue(alloverpage.sepeteEklenenUrunler.get(j).isDisplayed());
+            System.out.println(alloverpage.sepeteEklenenUrunler.get(j+1).getText());;
+        }
+        
+        //Billing details
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1204,9 +1204,11 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='cart-toggle']")
     public WebElement cartIcon;//Sepetteki urunler
 
+    @FindBy(xpath = "//span[@class='cart-count'][1]")
+    public WebElement sepetSayaci;//Sepetteki urun sayisi icin
 
-
-
+    @FindBy(xpath = "//*[@class='product-name']")
+    public List<WebElement> sepeteEklenenUrunler;//Sepetteki urun listesi
 
 
 
