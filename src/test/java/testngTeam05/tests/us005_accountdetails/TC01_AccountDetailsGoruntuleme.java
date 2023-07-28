@@ -54,8 +54,12 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(2);
        //signin butonuna tıkla
 
+        alloverCommercePage.signIn.click();
+
+
       
         alloverCommercePage.signInButton.click();
+
 
 
 
