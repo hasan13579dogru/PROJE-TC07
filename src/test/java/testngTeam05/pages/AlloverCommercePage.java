@@ -1,6 +1,5 @@
 package testngTeam05.pages;
 
-import com.github.javafaker.Commerce;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,11 +34,16 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//button[@name='register']")
     public WebElement registerSignUp; //register islemindeki signup button
 
+
     @FindBy(xpath = "//div[@id='customer_login']")
-    public WebElement ilerlemekIcinTikla;
+    public WebElement ilerlemekIcinTiklaYazisi;
+
 
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
+
+    @FindBy(xpath = "//a[@class='showlogin']")
+    public WebElement pleaseLoginYazisi;
 
 
 
@@ -121,10 +125,16 @@ public class AlloverCommercePage {
 
 
 
+/*
 
 
 
 
+
+
+    @FindBy(xpath = "//*[text()='Sign Out']")
+    public WebElement MyAccountmd;
+*/
 
 
 
@@ -539,12 +549,6 @@ public class AlloverCommercePage {
 
 
 //seda
-
-
-
-
-
-
 
 
 
@@ -1250,11 +1254,6 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
-
     //hasan
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
     public WebElement searchButton;//ana sayfanın en ustundeki
@@ -1282,34 +1281,6 @@ public class AlloverCommercePage {
 
     @FindBy(id = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

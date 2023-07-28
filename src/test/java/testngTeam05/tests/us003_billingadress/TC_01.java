@@ -1,6 +1,5 @@
 package testngTeam05.tests.us003_billingadress;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -69,9 +68,9 @@ public class TC_01 {
 
         //"Açılan my account sayfasında adress Menüsünün görünür oldugunu doğrular"
         ReusableMethods.bekle(3);
-        Assert.assertTrue(alloverPage.adress.isDisplayed());
+        Assert.assertTrue(alloverPage.address.isDisplayed());
 
-        AlloverCommercePage.adress.click();
+        AlloverCommercePage.address.click();
 
 
 
