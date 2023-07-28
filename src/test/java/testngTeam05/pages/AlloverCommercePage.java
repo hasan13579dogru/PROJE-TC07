@@ -799,10 +799,14 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele '][1]")
     public WebElement vendorPassword;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement fiyatsizUrunAlert;//Satin alinamayan urun alert'i
 
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement cartIcon;//Sepetteki urunler
 
-
-
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement viewCart;//Sepetteki urunleri goruntule
 
 
 
