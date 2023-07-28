@@ -1202,8 +1202,6 @@ public class AlloverCommercePage {
 
 
 
-
-
     //livdemirci
     @FindBy(xpath = "//*[@class='register inline-type']")
     public WebElement register;
