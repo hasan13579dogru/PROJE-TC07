@@ -18,6 +18,8 @@ public class TC01_Search_AddToCartPaymentTest {
     @Test
     public void test01() throws IOException {
 
+
+
         //Kullanıcı https://allovercommerce.com sitesine gider
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
 
@@ -27,15 +29,11 @@ public class TC01_Search_AddToCartPaymentTest {
         alloverCommercePage.anasayfaSigninButon.click();
         ReusableMethods.bekle(1);
 
-        String dosyaYolu ="src/test/java/testngTeam05/musteriBilgileri.xlsx";
-        FileInputStream fis = new FileInputStream(dosyaYolu);
-        Workbook workbook = WorkbookFactory.create(fis);
 
 
         //kullanıcıadı ve sifre alanlarına mevcut isim ve sifre bilgilerini girer
-        alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
-        ReusableMethods.bekle(2);
-        alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(5).toString());
+        alloverCommercePage.userNameEmailAddress.sendKeys(ConfigReader.getProperty("mehtapEmail"));
+        alloverCommercePage.ilkSayfapassword.sendKeys(ConfigReader.getProperty("mehtapPassword"));
         ReusableMethods.bekle(2);
 
         //signin butonuna tıkla
@@ -56,6 +54,7 @@ public class TC01_Search_AddToCartPaymentTest {
         ReusableMethods.bekle(2);
 
         alloverCommercePage.addToCart.click();
+        ReusableMethods.bekle(2);
 
         //ürünün sepete eklendiğini doğrula(önce cart icon a tıkla-->view cart tıkla
         alloverCommercePage.CART.click();
@@ -63,13 +62,15 @@ public class TC01_Search_AddToCartPaymentTest {
 
         alloverCommercePage.viewCart.click();
         Assert.assertTrue(alloverCommercePage.sepettekiIlkUrun.isDisplayed());
+        ReusableMethods.bekle(2);
 
         //ürün mıktarını artır
         alloverCommercePage.plusButton.click();
-        alloverCommercePage.updateCart.click();
-       Assert.assertTrue(alloverCommercePage.cartUpdateMessage.isDisplayed());
         ReusableMethods.bekle(2);
-       //sayısal bir doğrulama eklenebilir !!!!!
+        ReusableMethods.click(alloverCommercePage.updateCart);
+        Assert.assertTrue(alloverCommercePage.cartUpdateMessage.isDisplayed());
+        ReusableMethods.bekle(2);
+
 
         //ürün miktarını azalt
         alloverCommercePage.minusButton.click();
@@ -78,14 +79,49 @@ public class TC01_Search_AddToCartPaymentTest {
         ReusableMethods.bekle(2);
 
         //proceed to checkout yap ve odeme kısmına geç
+        ReusableMethods.click(alloverCommercePage.proceedToCheckoutButton);//SIKINTI
 
-        alloverCommercePage.proceedToCheckoutButton.click();
+
+
         ReusableMethods.bekle(3);
 
         //Billing Details sayfasının açıldığını doğrula
         String actualCheckoutTitle =Driver.getDriver().getTitle();
         String expectedCheckoutTitle = "Checkout - Allover Commerce";
         Assert.assertEquals(expectedCheckoutTitle,actualCheckoutTitle);
+
+        alloverCommercePage.billingFirstNamee.sendKeys("Nathan",Keys.TAB,"Clou");
+      ReusableMethods.ddmIndex(alloverCommercePage.billingCountryddm,5);
+      alloverCommercePage.billingAddress.sendKeys("Norway",Keys.TAB,
+              "Begie",Keys.TAB,
+              //city name
+              "Malatya",Keys.TAB,
+
+//  Enter your State / County
+              "doyran",Keys.TAB,
+//  Enter zip code
+              "87495",Keys.TAB,
+//  Enter phone number
+              "08888888888",Keys.TAB,
+//  Enter e-mail
+              Keys.TAB);
+
+      //Payment seceneklerinin görünür oldugunu dogrula
+        Assert.assertTrue(alloverCommercePage.paymentMethods.isDisplayed());
+
+        //  Click on "Pay at the door" if it isn't sellected
+        Actions action = new Actions(Driver.getDriver());
+        action.click(alloverCommercePage.payAtTheDoorButton).perform();
+        Assert.assertTrue(alloverCommercePage.payAtTheDoorButton.isSelected());
+
+//  Click on "Wire tranfer/EFT" if it is sellected
+        action.click(alloverCommercePage.eftButton).perform();
+        Assert.assertTrue(alloverCommercePage.eftButton.isSelected());
+
+//  Click on "Place order" button
+        alloverCommercePage.placeOrderButton.click();
+//  Verify the message of "thank you . Your order has been received
+
 
 
 
