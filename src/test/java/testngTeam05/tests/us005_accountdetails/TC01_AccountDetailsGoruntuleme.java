@@ -53,7 +53,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
 
        //signin butonuna tıkla
-        alloverCommercePage.login.click();
+        alloverCommercePage.signIn.click();
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
 
