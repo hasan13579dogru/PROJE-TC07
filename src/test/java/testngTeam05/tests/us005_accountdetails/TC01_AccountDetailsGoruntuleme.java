@@ -21,7 +21,7 @@ import java.io.IOException;
 public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
     Faker faker=new Faker();
     String rastgeleKelime = faker.lorem().word();
-    String rastgeleSayi = faker.number().digits(4);
+    String rastgeleSayi = faker.number().digits(8);
     String sifre = rastgeleKelime + rastgeleSayi;
 
     @Test
@@ -51,9 +51,9 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(1);
         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
-
+        ReusableMethods.bekle(2);
        //signin butonuna tıkla
-        alloverCommercePage.submitButton.click();
+        alloverCommercePage.signInButton.click();
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
 
@@ -154,12 +154,13 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         alloverCommercePage.logOut.click();
         ReusableMethods.bekle(2);
 
-        //değişmiş sifre ile siteye giriş yap
+
+        //değişmiş sifre ile siteye giriş yapılabildiğini doğrula
         alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
         ReusableMethods.bekle(1);
         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         ReusableMethods.bekle(1);
-        ReusableMethods.click(alloverCommercePage.submitButton);
+       alloverCommercePage.submitButton.click();
         //giriş yapmak doğrulama için yeterli mi?????
 
         ReusableMethods.bekle(6);

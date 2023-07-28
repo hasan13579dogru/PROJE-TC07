@@ -709,8 +709,6 @@ public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
     @FindBy(xpath = "//span[text()='Sign Out']")
-
-
     public WebElement signOut;
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
