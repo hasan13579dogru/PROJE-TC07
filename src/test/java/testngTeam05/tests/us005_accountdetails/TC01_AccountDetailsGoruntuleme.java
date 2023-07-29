@@ -42,14 +42,14 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //dataları excel tablosundan alacağız
         String dosyaYolu ="src/test/java/testngTeam05/musteriBilgileri.xlsx";
-     FileInputStream fis = new FileInputStream(dosyaYolu);
+        FileInputStream fis = new FileInputStream(dosyaYolu);
         Workbook workbook = WorkbookFactory.create(fis);
 
 
         //kullanıcıadı ve sifre alanlarına mevcut isim ve sifre bilgilerini girer
         alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
         ReusableMethods.bekle(1);
-       // alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
+         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
         ReusableMethods.bekle(2);
        //signin butonuna tıkla
@@ -94,7 +94,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         Assert.assertTrue(alloverCommercePage.accountDetailsSayfaYazısı.isDisplayed());
         extentTest.pass("Account details'in görünür oldugu doğrulandı");
 
-        //action class ile sayfayı az aşağı indirip take screenshot al!!!!!!!!!!1
+
         //Kullanıcı hesap detaylarını görebilmeli
 
         ReusableMethods.bekle(2);
@@ -130,7 +130,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
 
         //yeni sifre ve kullanici ismi bilgilerini mevcut excele yazdım
-        workbook.getSheet("Sayfa1").getRow(1).createCell(5).setCellValue(sifre);
+        workbook.getSheet("Sayfa1").getRow(1).createCell(1).setCellValue(sifre);
         workbook.getSheet("Sayfa1").getRow(1).createCell(0).setCellValue(newDisplayedName);
         //workbook.getSheet("Sayfa1").getRow(1).createCell(2).setCellValue(newEmail);
 
