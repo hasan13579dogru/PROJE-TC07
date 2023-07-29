@@ -1,3 +1,4 @@
+
 package testngTeam05.pages;
 
 import org.openqa.selenium.WebElement;
@@ -248,7 +249,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@title='Minus']")
     public WebElement minusButton;
 
-    @FindBy(xpath = "//*[@class='wc-proceed-to-checkout']")
+    @FindBy(xpath = "//a[@class='checkout-button button alt wc-forward']")
     public WebElement proceedToCheckoutButton;
 
 
@@ -306,10 +307,25 @@ public class AlloverCommercePage {
     public WebElement accountDetailsSayfaYazısı;
 
 
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement billingFirstNamee;
 
+    @FindBy(xpath = "//select[@name='billing_country']")
+    public WebElement billingCountryddm;
+    @FindBy(xpath = "//input[@name='billing_address_1']")
+    public WebElement billingAddress;
 
+    @FindBy(xpath = "(//h4)[2]")
+    public WebElement paymentMethods;
 
+    @FindBy(xpath = "//input[@id='payment_method_cod']")
+    public WebElement payAtTheDoorButton;
 
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement eftButton;
+
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement orderSuccessMessage;//ürün satın alma işleminin başarılı oldugunun mesajı
 
 
 
@@ -1779,6 +1795,7 @@ public class AlloverCommercePage {
 
 
 }
+
 
 
 

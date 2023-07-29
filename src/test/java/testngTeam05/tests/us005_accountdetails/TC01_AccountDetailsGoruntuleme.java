@@ -9,10 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
-import testngTeam05.utilities.ConfigReader;
-import testngTeam05.utilities.Driver;
-import testngTeam05.utilities.ExtentReport;
-import testngTeam05.utilities.ReusableMethods;
+import testngTeam05.utilities.*;
+
 import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -42,17 +40,19 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //dataları excel tablosundan alacağız
         String dosyaYolu ="src/test/java/testngTeam05/musteriBilgileri.xlsx";
-     FileInputStream fis = new FileInputStream(dosyaYolu);
-        Workbook workbook = WorkbookFactory.create(fis);
+        String sayfaIsmi ="Sayfa1";
+        ExcelReader reader = new ExcelReader(dosyaYolu,sayfaIsmi);
+        System.out.println(reader.getCellData(1, 0));
 
 
         //kullanıcıadı ve sifre alanlarına mevcut isim ve sifre bilgilerini girer
-        alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
+        alloverCommercePage.userNameEmailAddress.sendKeys(reader.getCellData(1,2));
         ReusableMethods.bekle(1);
-       // alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
+         alloverCommercePage.ilkSayfapassword.sendKeys(reader.getCellData(1,1));
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
         ReusableMethods.bekle(2);
-       //signin butonuna tıkla
+
+        //signin butonuna tıkla
 
         alloverCommercePage.signIn.click();
 
@@ -81,7 +81,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //My Account sayfasının açıldığını sayfa title ile doğrula
         String expectedTitle="My Account - Allover Commerce";
-        String actualTitle=Driver.getDriver().getTitle().toString();
+        String actualTitle=Driver.getDriver().getTitle();
         System.out.println(actualTitle);
        Assert.assertEquals(actualTitle,expectedTitle);
        extentTest.pass("My Account sayfasının açıldığı doğrulandı");
@@ -94,7 +94,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         Assert.assertTrue(alloverCommercePage.accountDetailsSayfaYazısı.isDisplayed());
         extentTest.pass("Account details'in görünür oldugu doğrulandı");
 
-        //action class ile sayfayı az aşağı indirip take screenshot al!!!!!!!!!!1
+
         //Kullanıcı hesap detaylarını görebilmeli
 
         ReusableMethods.bekle(2);
@@ -108,14 +108,16 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         String newDisplayedName= faker.name().username();
         System.out.println("newDisplayedName = " + newDisplayedName);
 
+        //Mevcut bilgileri temizleyip yeni bilgiler gönder
         alloverCommercePage.accountFirstName.clear();
         alloverCommercePage.accountLastName.clear();
-        //email alanını değiştirmedim aynısını yazdırdım!!!!!!!!!!!!!!!!!
+
+        //email değişmemeli!!!!!!!!!!!!!!!!!
         alloverCommercePage.accountFirstName.sendKeys(newName,Keys.TAB,newLastName,
-                Keys.TAB,newDisplayedName,Keys.TAB,workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
+                Keys.TAB,newDisplayedName,Keys.TAB,reader.getCellData(1,2));
         extentTest.info("firstname,lastname,displayedname,email alanlarına değiştirilmek istenilen bilgiler girildi");
 
-        //Biography alanına text gir(iframe içinde oldugu için geçiş yapmak gerekiyor
+        //Biography alanına text gir
         Driver.getDriver().switchTo().frame(0);
         alloverCommercePage.biography.clear();
         alloverCommercePage.biography.sendKeys(ConfigReader.getProperty("biography"));
@@ -125,21 +127,14 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(2);
 
         //Change password alanındaki mevcut şifre, yeni şifre ve yeni şifrenin doğrulaması alanlarını doldur
-        alloverCommercePage.currentPassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
+        alloverCommercePage.currentPassword.sendKeys(reader.getCellData(1,1));
         alloverCommercePage.newPassword.sendKeys(sifre,Keys.TAB,sifre);
 
-
+        System.out.println(sifre);
         //yeni sifre ve kullanici ismi bilgilerini mevcut excele yazdım
-        workbook.getSheet("Sayfa1").getRow(1).createCell(5).setCellValue(sifre);
-        workbook.getSheet("Sayfa1").getRow(1).createCell(0).setCellValue(newDisplayedName);
-        //workbook.getSheet("Sayfa1").getRow(1).createCell(2).setCellValue(newEmail);
+        reader.writeCell(1,1,dosyaYolu,sifre);
+        reader.writeCell(1,0,dosyaYolu,newDisplayedName);
 
-        FileOutputStream fos = new FileOutputStream(dosyaYolu);
-        workbook.write(fos);
-        fos.close();
-        workbook.close();
-
-        System.out.println("sifre = " + sifre);
         extentTest.info("Change password alanındaki mevcut şifre, yeni şifre ve yeni şifrenin doğrulaması alanları dolduruldu");
 
         ReusableMethods.bekle(2);
