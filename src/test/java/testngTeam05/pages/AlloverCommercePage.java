@@ -320,8 +320,11 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@id='payment_method_cod']")
     public WebElement payAtTheDoorButton;
 
-    @FindBy(xpath = "'payment_method_bacs'")
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
     public WebElement eftButton;
+
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement orderSuccessMessage;//ürün satın alma işleminin başarılı oldugunun mesajı
 
 
 
