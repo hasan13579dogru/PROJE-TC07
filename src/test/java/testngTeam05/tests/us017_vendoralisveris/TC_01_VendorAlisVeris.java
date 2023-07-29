@@ -214,12 +214,8 @@ public class TC_01_VendorAlisVeris {
         //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
         alloverpage.myAccountOrders.click();
         //Browse products'a tikla
-       WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
-       wait.until(ExpectedConditions.elementToBeClickable(alloverpage.browseProductText)).click();
-
-
-
-
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(alloverpage.browseProductText)).click();
 
         //Urun ve urunleri sepete ekle
         List<WebElement> urunListesi = alloverpage.addToChart;
@@ -263,11 +259,7 @@ public class TC_01_VendorAlisVeris {
         ////Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli-----
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
-        String companyName = faker.company().name();
-
         String streetAddress = faker.address().streetAddress();
-        String cityName = faker.address().cityName();
-        String state = faker.address().state();
         String zipCode = faker.address().zipCode();
         String phoneNumber = faker.phoneNumber().cellPhone();
         String emailAddress = faker.internet().emailAddress();
