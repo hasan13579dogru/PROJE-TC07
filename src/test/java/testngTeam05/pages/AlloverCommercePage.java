@@ -607,6 +607,34 @@ public class AlloverCommercePage {
 
 
 
+//seda
+
+    @FindBy(xpath = "(//a[.='My Account'])[1]")
+    public WebElement MyAccountFooter; //  vendor ile griş yapıldıktan sonraki footerdaki my account
+    @FindBy(xpath = "//a[text()='Addresses']") //vendordassbort addres
+    public WebElement VendorAddress;
+    @FindBy(xpath = "(//a[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
+    public WebElement ShippingAdd; // vendor-adress-shipping-add
+    @FindBy(xpath = "(//input[@name='shipping_first_name'])[1]")
+    public WebElement ShippinFirstName; // vendor-adress-shipping-add-shippingFirstName
+    @FindBy(xpath = "//select[@id='shipping_country']")
+    public WebElement ShippinSelectCountry; // vendor-adress-shipping-add-country
+    @FindBy(xpath = "//input[@id='shipping_address_1']")
+    public WebElement ShippinStreet; // vendor-adress-shipping-add-street
+    ////button[@name='save_address']
+    @FindBy(xpath = "//button[@name='save_address']")
+    public WebElement ShippingSaveAdress; // vendor-adress-shipping-add-saveadress butonu
+
+    @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement ShippingSuccesText; // vendor-adress-shipping-add-saveSucces
+
+
+
+
+
+
+
+
 
 
 
