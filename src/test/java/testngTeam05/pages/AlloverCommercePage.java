@@ -367,11 +367,15 @@ public class AlloverCommercePage {
 
 
 
-
-
-
-
 //Salih
+
+
+
+
+
+
+
+
 
 
 
@@ -1045,6 +1049,7 @@ public class AlloverCommercePage {
 
 
 
+
     // yusuf
 
     @FindBy(xpath = "//*[text()='Sign In']")
@@ -1058,7 +1063,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//h2)[1]")
     public WebElement myAccountBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//h2)[1]")
-    public WebElement storeManagertBaslik; // Sayfa Başlığı
+    public WebElement storeManagerBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//h2)[2]")
     public WebElement addProductBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//*[text()='My Account'])[2]")
@@ -1069,7 +1074,6 @@ public class AlloverCommercePage {
     public WebElement product; //Store Manager sayfasındaki Product butoonu
     @FindBy(xpath = "(//*[@class='wcfm_sub_menu_items wcfm_sub_menu_items_product_manage moz_class'])[1]")
     public WebElement addNew; //Store Manager/Product/Add New
-
     //   Add Product sayfasındaki "Locate"ler
     @FindBy(id = "pro_title")
     public WebElement productTitle; // Ürün başlığı ekleme bölümü
@@ -1077,39 +1081,45 @@ public class AlloverCommercePage {
     public WebElement featureImage; // resim ekleme: sağ taraftaki büyük çerçeve
     @FindBy(xpath = "//*[@id='menu-item-browse']")
     public WebElement mediaLibrary;
-    @FindBy(xpath = "//*[@id='__attachments-view-54']/li[3]/div/div")
+    @FindBy(xpath = "//*[@class='thumbnail']")
     public WebElement mouseResmiFeature; // eklenen resim
     @FindBy(xpath = "//*[@id='__wp-uploader-id-0']/div[4]/div/div[2]/button")
     public WebElement selectFeature;
     @FindBy(css = "img[id=gallery_img_gimage_0_display]")
     public WebElement galeryImage; // resim ekleme: sağ taraftaki küçük çerçeve
-    @FindBy(xpath = "(//div[@class='thumbnail'])[8]")
+    @FindBy(xpath = "(//*[@id=\"__wp-uploader-id-3\"]/div[3]/div[2]/div/div[3]/ul/li)[1]")
     public WebElement mouseResmi; // eklenen resim
     @FindBy(xpath = "(//*[text()='Add to Gallery'])[3]")
     public WebElement addToGalery;
-    @FindBy(xpath = "//*[@id='product_cats_checklist']/li[1]/input")
+    @FindBy(xpath = "//input[@value='402']")
     public WebElement categoriesCheckbox; //  Add Product saffasındaki Categories
-
+    // Inventory Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[1]")
     public WebElement inventory;
     @FindBy(css = "[id=sku]")
     public WebElement sku;
     @FindBy(css = "[id=manage_stock]")
-    public WebElement manageStockChecboxk;
+    public WebElement manageStockChecbox;
     @FindBy(css = "[id=stock_qty]")
     public WebElement stockQty;
     @FindBy(css = "[id=sold_individually]")
-    public WebElement soldIndividuallyChecboxk;
-
+    public WebElement soldIndividuallyChecbox;
+    // Shipping Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[4]")
     public WebElement shipping;
     @FindBy(id = "weight")
     public WebElement weight;
+    @FindBy(css = "#length")
+    public WebElement length;
+    @FindBy(css = "#width")
+    public WebElement width;
+    @FindBy(css = "#height")
+    public WebElement height;
     @FindBy(id = "shipping_class")
     public WebElement shippingClass;
-    @FindBy(id = "_wcfmmp_processing_time")
+    @FindBy(css = "[id=_wcfmmp_processing_time]")
     public WebElement processingTime;
-
+    // Attributes Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[5]")
     public WebElement attributes;
     @FindBy(id = "attributes_is_active_1")
@@ -1118,47 +1128,30 @@ public class AlloverCommercePage {
     public WebElement colorSecim;
     @FindBy(id = "attributes_is_active_2")
     public WebElement sizeCheckBox;
-    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[3]")
+    @FindBy(xpath = "//*[@id=\"attributes\"]/div[3]/span[2]/span[1]/span/ul/li/input")
     public WebElement sizeSecim;
-
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[7]")
     public WebElement linked;
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[8]")
     public WebElement seo;
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[10]")
     public WebElement advenced;
-
     @FindBy(css = "[id=wcfm_products_simple_submit_button]")
     public WebElement submitButton; // Add Product sayfası en alttaki SUBMIT
     @FindBy(xpath = "(//img[@class='attachment-thumbnail size-thumbnail'])[1]")
     public WebElement productMouse;
-    @FindBy(xpath = "//*[text()='Team05']")
-    public WebElement productSku;
-    @FindBy(xpath = "//*[text()='Published']")
-    public WebElement productStockStatus;
-    @FindBy(xpath = "//*[text()=' (100)']")
-    public WebElement productManageStock;
-    @FindBy(css = "[value=View]")
-    public WebElement viewButton; // Add Product sayfası en alttaki VIEW
-    @FindBy(xpath = "(//*[@class='nav-link'])[2]")
-    public WebElement spesification; // VIEW tıkklanınca açılan sayfada eklenen ürünün altında
-    @FindBy(xpath = "(//tbody//tr//td)[1]")
-    public WebElement spesificationWeight;
-    @FindBy(xpath = "(//tbody//tr//td)[2]")
-    public WebElement spesificationDimensions;
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(css = "select[id=product_type] option:first-of-type")
+    public WebElement simpleProductDdm;
+    @FindBy(css = "#is_virtual")
+    public WebElement virtualCheckBox;
+    @FindBy(css = "#is_downloadable")
+    public WebElement downloadableCheckBox;
+    @FindBy(xpath = "//button[@id='__wp-uploader-id-1']")
+    public WebElement selectFilesButton;
+    @FindBy(id = "regular_price")
+    public WebElement prise;
+    @FindBy(id = "sale_price")
+    public WebElement salePrise;
 
 
 
@@ -1292,6 +1285,467 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//*[text()='Order details']")
     public WebElement orderDetails;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

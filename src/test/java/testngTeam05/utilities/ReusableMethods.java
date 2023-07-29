@@ -5,7 +5,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import testngTeam05.pages.AlloverCommercePage;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,8 +19,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class
-ReusableMethods {
+public class ReusableMethods {
+
+
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
@@ -195,4 +200,35 @@ ReusableMethods {
 
         return username.toString();
     }
+    public static void uploadFilePath(String filePath) {
+        try {
+            bekle(3);
+            StringSelection stringSelection = new StringSelection(filePath);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            bekle(3);
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void vendorSignIn(){
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        AlloverCommercePage alloverPage = new AlloverCommercePage();
+        alloverPage.signIn.click();
+        alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
+                ConfigReader.getProperty("alloverVendorSifre"));
+        alloverPage.signInButton.click();
+    }
+
 }

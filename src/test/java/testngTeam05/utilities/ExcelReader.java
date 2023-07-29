@@ -1,10 +1,11 @@
 package testngTeam05.utilities;
 
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ExcelReader {
@@ -21,11 +22,9 @@ public class ExcelReader {
             throw new RuntimeException(e);
         }
 
+
     }
-
-
-
-    //satır ve sutun sayılarını girdiğimizde, o hucredeki veriyi return eden method
+    //satır ve sutun syılarını girdiğimizde, o hucredeki veriyi return eden method
     public String getCellData(int satir,int sutun){
         Cell cell= sheet.getRow(satir).getCell(sutun);
         return cell.toString();
@@ -35,19 +34,4 @@ public class ExcelReader {
     public int rowCount(){
         return sheet.getLastRowNum();
     }
-
-
-    //Exceldeki satıra veri yazdıran method
-    public void writeCell(int satir,int sutun,String dosyaYolu,String value){
-
-        Cell cell = sheet.getRow(satir).createCell(sutun);
-        cell.setCellValue(value);
-        try (FileOutputStream fos = new FileOutputStream(dosyaYolu)) {
-            workbook.write(fos);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
 }
