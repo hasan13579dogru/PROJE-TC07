@@ -50,6 +50,7 @@ public class TC01_Search_AddToCartPaymentTest {
         //arama sonuçlarının geldiğini doğrula
 
         //İlk ürünü sepete ekle
+        ReusableMethods.webElementResmi(alloverCommercePage.ilkKulaklıkResmi);
         alloverCommercePage.ilkKulaklıkResmi.click();
         ReusableMethods.bekle(2);
 
@@ -63,6 +64,7 @@ public class TC01_Search_AddToCartPaymentTest {
         alloverCommercePage.viewCart.click();
         Assert.assertTrue(alloverCommercePage.sepettekiIlkUrun.isDisplayed());
         ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("SepetResmi");
 
         //ürün mıktarını artır
         alloverCommercePage.plusButton.click();
@@ -89,38 +91,44 @@ public class TC01_Search_AddToCartPaymentTest {
         String actualCheckoutTitle =Driver.getDriver().getTitle();
         String expectedCheckoutTitle = "Checkout - Allover Commerce";
         Assert.assertEquals(expectedCheckoutTitle,actualCheckoutTitle);
+        ReusableMethods.tumSayfaResmi("BillingDetailsGörünümü");
 
-        alloverCommercePage.billingFirstNamee.sendKeys("Nathan",Keys.TAB,"Clou");
-      ReusableMethods.ddmIndex(alloverCommercePage.billingCountryddm,5);
-      alloverCommercePage.billingAddress.sendKeys("Norway",Keys.TAB,
-              "Begie",Keys.TAB,
-              //city name
-              "Malatya",Keys.TAB,
-
-//  Enter your State / County
-              "doyran",Keys.TAB,
-//  Enter zip code
-              "87495",Keys.TAB,
-//  Enter phone number
-              "08888888888",Keys.TAB,
-//  Enter e-mail
-              Keys.TAB);
 
       //Payment seceneklerinin görünür oldugunu dogrula
         Assert.assertTrue(alloverCommercePage.paymentMethods.isDisplayed());
+        ReusableMethods.webElementResmi(alloverCommercePage.paymentMethods);
+        ReusableMethods.bekle(2);
 
-        //  Click on "Pay at the door" if it isn't sellected
-        Actions action = new Actions(Driver.getDriver());
-        action.click(alloverCommercePage.payAtTheDoorButton).perform();
+        ReusableMethods.scrollEnd();
+
+        //  Click on "Pay at the door"
+        ReusableMethods.click(alloverCommercePage.payAtTheDoorButton);
+
+
+        ReusableMethods.bekle(2);
+
+        //Pay at the door butonunun seçili olduğunu doğrula
         Assert.assertTrue(alloverCommercePage.payAtTheDoorButton.isSelected());
 
-//  Click on "Wire tranfer/EFT" if it is sellected
-        action.click(alloverCommercePage.eftButton).perform();
+    alloverCommercePage.eftButton.click();
+    ReusableMethods.bekle(2);
+
+
+
+
+        //Wire transfer EFT butonunun seçili olduğunu doğrula
         Assert.assertTrue(alloverCommercePage.eftButton.isSelected());
 
-//  Click on "Place order" button
-        alloverCommercePage.placeOrderButton.click();
-//  Verify the message of "thank you . Your order has been received
+
+        //  Click on "Place order" button
+        ReusableMethods.click(alloverCommercePage.placeOrderButton);
+
+        ReusableMethods.bekle(2);
+
+
+        //  Verify the message of "Thank you . Your order has been received"
+        Assert.assertTrue(alloverCommercePage.orderSuccessMessage.isDisplayed());
+        ReusableMethods.tumSayfaResmi("OdemeBasarılıMesajı");
 
 
 

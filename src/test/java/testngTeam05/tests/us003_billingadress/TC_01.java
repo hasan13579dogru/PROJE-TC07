@@ -69,9 +69,14 @@ public class TC_01 {
 
         //"Açılan my account sayfasında adress Menüsünün görünür oldugunu doğrular"
         ReusableMethods.bekle(3);
+
+
+
+
         //Assert.assertTrue(alloverPage.address.isDisplayed());
 
         //AlloverCommercePage.address.click();
+
 
 
 
