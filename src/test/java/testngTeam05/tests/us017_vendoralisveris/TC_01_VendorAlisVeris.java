@@ -1,9 +1,16 @@
 package testngTeam05.tests.us017_vendoralisveris;
 
+import com.github.javafaker.Country;
 import com.github.javafaker.Faker;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.checkerframework.checker.units.qual.A;
 import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,9 +18,16 @@ import org.testng.asserts.SoftAssert;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
+import testngTeam05.utilities.ExcelReader;
 import testngTeam05.utilities.ReusableMethods;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.openqa.selenium.By.tagName;
@@ -99,6 +113,13 @@ public class TC_01_VendorAlisVeris {
     }
 
     public void vendorOlarakKayitOl() {
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String zaman = time.format(dtf);
+
+
+
+
 
         alloverpage = new AlloverCommercePage();
         faker = new Faker();
@@ -139,6 +160,8 @@ public class TC_01_VendorAlisVeris {
 
     }
 
+
+
     @Test
     public void test02() {
         //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
@@ -149,6 +172,8 @@ public class TC_01_VendorAlisVeris {
         //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
         //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
         //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
+
+
         //Siteye git
         vendorOlarakKayitOl();
         //vendor olarak giris yapildi
@@ -169,18 +194,11 @@ public class TC_01_VendorAlisVeris {
         List<WebElement> urunListesi = alloverpage.addToChart;
 
         int i = 0;
-        while (i<urunListesi.size()) {
+        while (i < urunListesi.size()) {
             try {
                 ReusableMethods.click(urunListesi.get(i));
                 ReusableMethods.bekle(1);
-//                if (alloverpage.fiyatsizUrunAlert.isDisplayed()) {
-//                    ReusableMethods.bekle(1);
-//                    Driver.getDriver().navigate().back();
-//
-//                } else {
-//
-//                }
-            i++;
+                i++;
 
             } catch (NoSuchElementException | ElementClickInterceptedException e) {
                 i++;
@@ -197,33 +215,52 @@ public class TC_01_VendorAlisVeris {
         //Chekout butonuna tiklat.
         alloverpage.checkoutCart.click();
 
+
+
         //alınacak ürün ve ürünler görülebilmeli
         int urunSayisi = Integer.parseInt(alloverpage.sepetSayaci.getText());
         SoftAssert softAssert = new SoftAssert();
-        for (int j = 1; j < urunSayisi; j++) {
 
-           softAssert.assertTrue(alloverpage.sepeteEklenenUrunler.get(j).isDisplayed());
-            System.out.println(alloverpage.sepeteEklenenUrunler.get(j+1).getText());;
+
+
+        List<WebElement> sepeteEklenenUrunler = alloverpage.yourOrder;
+
+        for (WebElement each:sepeteEklenenUrunler) {
+            Assert.assertTrue(each.isDisplayed());
+            System.out.println(each.getText());
         }
-        
-        //Billing details
 
 
 
+        ////Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli-----
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String companyName = faker.company().name();
+
+        String streetAddress = faker.address().streetAddress();
+        String cityName = faker.address().cityName();
+        String state = faker.address().state();
+        String zipCode = faker.address().zipCode();
+        String phoneNumber = faker.phoneNumber().phoneNumber();
+        String emailAddress = faker.internet().emailAddress();
+
+        Select ddmCountry = new Select(alloverpage.countryDdm);
+
+        alloverpage.billingFirstName.sendKeys(firstName,Keys.TAB,lastName);
+        ddmCountry.selectByVisibleText("Turkey");
+        alloverpage.streetAdress.sendKeys(streetAddress);
 
 
 
+        Select ddmProvince = new Select(alloverpage.provinceDdm);
+        ddmProvince.selectByVisibleText("Ankara");
 
+        //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+        alloverpage.endPaymentMethods.isSelected();
+        Assert.assertTrue(alloverpage.endPaymentMethods.isSelected());
+        Assert.assertTrue(alloverpage.paymentAtDoor.isSelected());
 
-
-
-
-
-
-
-
-
-
+        alloverpage.placeOrderButton.click();
     }
 }
 

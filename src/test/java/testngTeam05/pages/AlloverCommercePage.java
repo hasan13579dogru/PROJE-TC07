@@ -1207,16 +1207,23 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[@class='cart-count'][1]")
     public WebElement sepetSayaci;//Sepetteki urun sayisi icin
 
-    @FindBy(xpath = "//*[@class='product-name']")
+    @FindBy(xpath = "//*[@class='cart-item-meta mini-item-meta']//a/span")
     public List<WebElement> sepeteEklenenUrunler;//Sepetteki urun listesi
 
+    @FindBy(xpath = "//tbody//tr//td[contains(@class,'product-name')]//span")
+    public List<WebElement> yourOrder;//Siparis gosterimi
 
+    @FindBy(xpath = "//*[@class=\"cart-item-meta mini-item-meta\"]//a//span")
+    public List<WebElement> shoppingCartUrunListesi;//Siparis gosterimi
 
+    @FindBy(xpath = "//select[1]")
+    public WebElement countryDdm;//Billing details countryDdm
 
+    @FindBy(xpath = "//select[@id='billing_state']")
+    public WebElement provinceDdm;//Billing details province
 
-
-
-
+    @FindBy(xpath = "//*[@id='billing_address_1']")
+    public WebElement streetAdress;//Billing details street adress
 
 
 
@@ -1295,7 +1302,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
 
-    @FindBy(id = "//input[@id='billing_first_name']")
+    @FindBy(xpath = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
 
 
