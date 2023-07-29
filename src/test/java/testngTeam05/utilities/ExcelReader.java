@@ -22,6 +22,9 @@ public class ExcelReader {
         }
 
     }
+
+
+
     //satır ve sutun sayılarını girdiğimizde, o hucredeki veriyi return eden method
     public String getCellData(int satir,int sutun){
         Cell cell= sheet.getRow(satir).getCell(sutun);
