@@ -1310,7 +1310,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[text()='Welcome to Allover Commerce!']")
     public WebElement welcomeToAlloverCommersYazisi;
 
-    @FindBy(xpath = "//*[@id='title']")
+    @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele'][1]")
     public WebElement codeAdd;
 
     @FindBy(xpath = "//*[@id='discount_type']")
@@ -1337,7 +1337,8 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[text()='Edit Coupon']")
     public WebElement editCoupon;
 
-
+    @FindBy(xpath = "//*[@id='description']")
+    public WebElement description;
 
 
 
