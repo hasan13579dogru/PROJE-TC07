@@ -1193,7 +1193,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
     public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
 
-    @FindBy(xpath = "//*[text()='Not right now']")
+    @FindBy(xpath = "//div//p[3]//a[2]")
     public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
@@ -1265,35 +1265,56 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[text()='Order details']")
     public WebElement orderDetails;
 
+    @FindBy(xpath = "//*[text()='Billing First name']")
+    public WebElement billingFirstNameOrder;
 
+    @FindBy(xpath = "//*[text()='Billing Last name']")
+    public WebElement billingLastName;
 
+    @FindBy(xpath = "//*[text()='Billing Street address']")
+    public WebElement billingStreetAdress;
 
+    @FindBy(xpath = "//*[text()='Billing ZIP Code']")
+    public WebElement billingZipCode;
 
+    @FindBy(xpath = "//*[text()='Billing Phone']")
+    public WebElement billingPhone;
+//////////////////////////////////US2//////////////////////////
+    @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
+    public WebElement coupons;
 
+    @FindBy(xpath = "//*[@class='wcfm_sub_menu_items wcfm_sub_menu_items_coupon_manage moz_class']")
+    public WebElement couponsAddNew;
 
+    @FindBy(xpath = "//*[text()='Welcome to Allover Commerce!']")
+    public WebElement welcomeToAlloverCommersYazisi;
 
+    @FindBy(xpath = "//*[@id='title']")
+    public WebElement codeAdd;
 
+    @FindBy(xpath = "//*[@id='discount_type']")
+    public List<WebElement> discountType;
 
+    @FindBy(xpath = "//select[1]")
+    public WebElement ddmDiscountType;
 
+    @FindBy(xpath = "//*[@id='coupon_amount']")
+    public WebElement couponAmonut;
 
+    @FindBy(xpath = "//*[@class='ui-datepicker-next ui-corner-all']")
+    public WebElement nextMonth;
 
+    @FindBy(xpath = "//*[@id='free_shipping']")
+    public WebElement freeShipping;
 
+    @FindBy(xpath = "//*[@id='show_on_store']")
+    public WebElement showOnStore;
 
+    @FindBy(xpath = "//*[@id='wcfm_coupon_manager_submit_button']")
+    public WebElement addButtonSubmit;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[text()='Edit Coupon']")
+    public WebElement editCoupon;
 
 
 

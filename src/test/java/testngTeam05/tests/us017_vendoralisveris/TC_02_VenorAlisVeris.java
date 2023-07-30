@@ -3,11 +3,9 @@ package testngTeam05.tests.us017_vendoralisveris;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
@@ -22,8 +20,7 @@ import java.util.List;
 import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
-
-public class TC_01_VendorAlisVeris {
+public class TC_02_VenorAlisVeris {
     //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
     //Ürün ve ürünler seçilip sepete eklenebilmeli
     //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
@@ -36,10 +33,8 @@ public class TC_01_VendorAlisVeris {
     AlloverCommercePage alloverpage;
     Faker faker;
     ExcelReader excelReader;
-
-
     @Test
-    public void test01() {
+    public void test02() {
         //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
         //Ürün ve ürünler seçilip sepete eklenebilmeli--
         //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli--
@@ -51,12 +46,11 @@ public class TC_01_VendorAlisVeris {
 
 
         //Siteye git
-        vendorOlarakKayitOl();
+       vendorOlarakKayitOl();
 
-        //vendor olarak giris yapildigi goruldu
-        Assert.assertTrue(alloverpage.WelcometoAlloverCommerce.isDisplayed());
+        //vendor olarak giris yapildi
+
         alloverpage.WelcometoAlloverCommerce.click();
-
         //Sayfa altindaki My Account'a tiklat
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.bekle(2);
@@ -64,7 +58,6 @@ public class TC_01_VendorAlisVeris {
         ReusableMethods.bekle(2);
         ReusableMethods.click(alloverpage.myAccountOrders2);
         ReusableMethods.bekle(2);
-
 
         alloverpage.myAccountOrders.click();
         //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
@@ -98,12 +91,7 @@ public class TC_01_VendorAlisVeris {
         //Chekout butonuna tiklat.
         alloverpage.checkoutCart.click();
 
-
         //alınacak ürün ve ürünler görülebilmeli
-        int urunSayisi = Integer.parseInt(alloverpage.sepetSayaci.getText());
-        SoftAssert softAssert = new SoftAssert();
-
-
         List<WebElement> sepeteEklenenUrunler = alloverpage.yourOrder;
 
         for (WebElement each : sepeteEklenenUrunler) {
@@ -111,51 +99,19 @@ public class TC_01_VendorAlisVeris {
             System.out.println(each.getText());
         }
 
+        //Fatura ayrintilarinda zorunlu gelen alanlari bos birak
+        //Siparis butonuna tiklat
+        ReusableMethods.click(alloverpage.placeOrderButton);
+        Assert.assertTrue(alloverpage.billingZipCode.isDisplayed());
+        Assert.assertTrue(alloverpage.billingLastName.isDisplayed());
+        Assert.assertTrue(alloverpage.billingStreetAdress.isDisplayed());
+        Assert.assertTrue(alloverpage.billingFirstName.isDisplayed());
+        Assert.assertTrue(alloverpage.billingFirstNameOrder.isDisplayed());
+        Assert.assertTrue(alloverpage.billingPhone.isDisplayed());
+        //Alisverisin tamamlanamadigi goruldu
 
-        ////Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli-----
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String streetAddress = faker.address().streetAddress();
-        String zipCode = faker.address().zipCode();
-        String phoneNumber = faker.phoneNumber().cellPhone();
-        String emailAddress = faker.internet().emailAddress();
-
-        Select ddmCountry = new Select(alloverpage.countryDdm);
-
-        alloverpage.billingFirstName.sendKeys(firstName, Keys.TAB, lastName);
-        ddmCountry.selectByVisibleText("Turkey");
-        alloverpage.streetAdress.sendKeys(streetAddress);
-        alloverpage.postCode.sendKeys(zipCode);
-        alloverpage.townCity.sendKeys("Ankara");
-        alloverpage.phone.sendKeys(phoneNumber);
-        Select ddmProvince = new Select(alloverpage.provinceDdm);
-        ddmProvince.selectByVisibleText("Ankara");
-
-
-        alloverpage.endPaymentMethods.isSelected();
-        //Wire transfer/EFT secildigi dogrulandi
-        Assert.assertTrue(alloverpage.endPaymentMethods.isSelected());
-        ReusableMethods.scroll(alloverpage.paymentAtDoor);
-        ReusableMethods.bekle(3);
-        //Pay at the door seçenekleri seçildigi dogrulandi
-        alloverpage.paymentAtDoor.click();
-        Assert.assertTrue(alloverpage.paymentAtDoor.isSelected());
-
-        alloverpage.placeOrderButton.click();
-        ReusableMethods.bekle(20);
-        //Alisverisin tamamlandigi goruldu
-
-        Assert.assertTrue(alloverpage.orderVerification.isDisplayed());
-
-        ////My Account -Orders yapılan alışverişin ayrıntıların goruldugu dogrulandi.
-        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
-        ReusableMethods.bekle(2);
-        ReusableMethods.click(alloverpage.myAccountOrders2);
-        alloverpage.myAccountOrders.click();
-        alloverpage.viewMyAccount.click();
-
-        Assert.assertTrue(alloverpage.orderDetails.isDisplayed());
     }
+
     public void vendorOlarakKayitOl() {
 
         LocalDateTime time = LocalDateTime.now();
@@ -279,6 +235,4 @@ public class TC_01_VendorAlisVeris {
         return sifre;
     }
 }
-
-
 
