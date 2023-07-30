@@ -16,6 +16,7 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExcelReader;
 import testngTeam05.utilities.ReusableMethods;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -43,7 +44,7 @@ public class TC_01_VendorCoupons {
 
 
     @Test
-    public void test01() {
+    public void test01() throws IOException {
         //Vendor olarak siteye kayit ol
 
         vendorOlarakKayitOl();
@@ -102,7 +103,7 @@ public class TC_01_VendorCoupons {
     }
 
 
-    public void vendorOlarakKayitOl() {
+    public void vendorOlarakKayitOl() throws IOException {
 
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -154,7 +155,7 @@ public class TC_01_VendorCoupons {
 
     }
 
-    public String getEmailAdress() {
+    public String getEmailAdress() throws IOException {
 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);//yeni sekmede aciyorum
         Driver.getDriver().get("https://www.fakemail.net/");
@@ -168,7 +169,7 @@ public class TC_01_VendorCoupons {
         return fakeEmailAdress;
     }
 
-    public String getVerificationCode() {
+    public String getVerificationCode() throws IOException {
         ReusableMethods.switchToWindow(1);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         By xpath = xpath("//*[contains(text(), '[Allover Commerce]')]");
@@ -192,7 +193,7 @@ public class TC_01_VendorCoupons {
     }
 
 
-    public String sifreOlustur() {
+    public String sifreOlustur() throws IOException {
         String sifre = "";
         boolean flag = true;
         while (flag) {

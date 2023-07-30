@@ -12,6 +12,7 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExcelReader;
 import testngTeam05.utilities.ReusableMethods;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,7 +35,7 @@ public class TC_02_VenorAlisVeris {
     Faker faker;
     ExcelReader excelReader;
     @Test
-    public void test02() {
+    public void test02() throws IOException {
         //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
         //Ürün ve ürünler seçilip sepete eklenebilmeli--
         //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli--
@@ -112,7 +113,7 @@ public class TC_02_VenorAlisVeris {
 
     }
 
-    public void vendorOlarakKayitOl() {
+    public void vendorOlarakKayitOl() throws IOException {
 
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -164,7 +165,7 @@ public class TC_02_VenorAlisVeris {
 
     }
 
-    public String getEmailAdress() {
+    public String getEmailAdress() throws IOException {
 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);//yeni sekmede aciyorum
         Driver.getDriver().get("https://www.fakemail.net/");
@@ -178,7 +179,7 @@ public class TC_02_VenorAlisVeris {
         return fakeEmailAdress;
     }
 
-    public String getVerificationCode() {
+    public String getVerificationCode() throws IOException {
         ReusableMethods.switchToWindow(1);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         By xpath = xpath("//*[contains(text(), '[Allover Commerce]')]");
@@ -202,7 +203,7 @@ public class TC_02_VenorAlisVeris {
     }
 
 
-    public String sifreOlustur() {
+    public String sifreOlustur() throws IOException {
         String sifre = "";
         boolean flag = true;
         while (flag) {
