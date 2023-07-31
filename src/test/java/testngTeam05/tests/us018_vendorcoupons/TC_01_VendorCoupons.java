@@ -1,8 +1,10 @@
 package testngTeam05.tests.us018_vendorcoupons;
 
 import com.github.javafaker.Faker;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,10 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
-import testngTeam05.utilities.ConfigReader;
-import testngTeam05.utilities.Driver;
-import testngTeam05.utilities.ExcelReader;
-import testngTeam05.utilities.ReusableMethods;
+import testngTeam05.utilities.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -26,7 +25,7 @@ import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
 
-public class TC_01_VendorCoupons {
+public class TC_01_VendorCoupons extends ExtentReport {
     //Vendor olarak Coupons oluşturabilmeliyim (My Account - Coupons - Add New)
     //Code yazabilmeliyim
     //Description yazılabilmeli
@@ -39,24 +38,26 @@ public class TC_01_VendorCoupons {
     AlloverCommercePage alloverpage;
     Faker faker;
     ExcelReader excelReader;
-    public  WebDriver driver;
-    Actions actions;
+    public WebDriver driver;
 
 
     @Test
     public void test01() throws IOException {
         //Vendor olarak siteye kayit ol
-
+        extentTest = extentReports.createTest("Extent Report", "TC_01_VendorCoupons");
         vendorOlarakKayitOl();
 
         //Acilan sayfadaki "not right now butonuna tiklat"
         alloverpage.WelcometoAlloverCommerce.click();
+        extentTest.info("Acilan sayfadaki \"not right now butonuna tiklatildi");
+
         ReusableMethods.scroll(alloverpage.coupons);
         ReusableMethods.bekle(2);
         //Sol Menudeki Coupons yazisinin uzerinde fareyi beklet, cikan add butonuna tiklat.
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(alloverpage.coupons).perform();
         actions.moveToElement(alloverpage.couponsAddNew).click().perform();
+        extentTest.info("Sol Menudeki Coupons yazisinin uzerinde fareyi beklet, cikan add butonuna tiklatildi");
 
         //Code yazabilmeliyim
         String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
@@ -65,27 +66,42 @@ public class TC_01_VendorCoupons {
         String lorem = faker.lorem().toString();
         excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
         excelReader.writeCell(1, 5, dosyaYolu, kuponNo);
-        //Description yaz
-        alloverpage.codeAdd.sendKeys(kuponNo,Keys.TAB,lorem,Keys.TAB);
+
+
+
+        alloverpage.codeAdd.sendKeys(kuponNo, Keys.TAB, lorem, Keys.TAB);
+        ReusableMethods.bekle(5);
+
+        extentTest.pass("Code yazilabildigi dogrulandi");
+
+        //code yazildigi dogrulandi
+        Assert.assertTrue(alloverpage.codeAdd.isDisplayed());
+        extentTest.pass("code yazildigi dogrulandi");
+
+        //Description yazildigi dogrulandi
+        Assert.assertEquals(lorem, alloverpage.description.getAttribute("value"));
+        extentTest.pass("Description yazildigi dogrulandi");
+
         //Discount Type; Percentage discount veya Fixed Product secildigi dogrulandi
-        Select select =new Select(alloverpage.ddmDiscountType);
-        Assert.assertEquals(select.getFirstSelectedOption().getText(),"Percentage discount");
+        Select select = new Select(alloverpage.ddmDiscountType);
+        Assert.assertEquals(select.getFirstSelectedOption().getText(), "Percentage discount");
 
         select.selectByVisibleText("Fixed Product Discount");
-        Assert.assertEquals(select.getFirstSelectedOption().getText(),"Fixed Product Discount");
+        Assert.assertEquals(select.getFirstSelectedOption().getText(), "Fixed Product Discount");
+        extentTest.pass("Discount Type; Percentage discount veya Fixed Product secildigi dogrulandi");
 
         //Coupon Amount gir
-        alloverpage.couponAmonut.sendKeys("20",Keys.TAB);
-
+        alloverpage.couponAmonut.sendKeys("20", Keys.TAB);
+        extentTest.info("Coupon Amount girildi");
         //Coupon expiry date gir
         LocalDate today = LocalDate.now();
         LocalDate fiveDaysLater = today.plusDays(5);
         int dayOfMonth = fiveDaysLater.getDayOfMonth();
-
+        extentTest.info("Coupon expiry date girildi");
         WebElement eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
 
 
-        if (fiveDaysLater.getDayOfMonth()!=today.getDayOfMonth()){
+        if (fiveDaysLater.getDayOfMonth() != today.getDayOfMonth()) {
             alloverpage.nextMonth.click();
             eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
             eklenenGun.click();
@@ -94,12 +110,13 @@ public class TC_01_VendorCoupons {
         //Allow free shipping, Show on store secildi
         alloverpage.freeShipping.click();
         alloverpage.showOnStore.click();
-
+        extentTest.info("Allow free shipping, Show on store secildi");
         //Sag alt kosedeki submut butonuna tikla
         ReusableMethods.click(alloverpage.addButtonSubmit);
+        extentTest.info("Sag alt kosedeki submut butonuna tiklatildi");
         //Kupon olustudugu dogrulandi
         Assert.assertTrue(alloverpage.editCoupon.isDisplayed());
-
+        extentTest.pass("cupon olustudugu dogrulandi");
     }
 
 
@@ -117,22 +134,23 @@ public class TC_01_VendorCoupons {
         alloverpage = new AlloverCommercePage();
         faker = new Faker();
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
-
+        extentTest.info("Siteye gidildi");
 
         //Register butonuna tikla
         alloverpage.register.click();
-
+        extentTest.info("Register butonuna tiklandi");
         //"Signup as a vendor?" yazisina tiklat.
+        extentTest.info("signup as a vendor? yazisina tiklandi");
         alloverpage.register_as_vendor.click();
         //"Vendor Registration" yazisinin gorundugunu dogrula
         String vendorRegistration = "Vendor Registration";
         String vendorRegistrationText = alloverpage.vendorRegistration.getText();
         Assert.assertTrue(vendorRegistration.equals(vendorRegistrationText));
-
+        extentTest.pass("Vendor Registration\" yazisinin gorundugunu dogrulandi");
 
         //Vendor sayfasindaki e-mail'e e-mail gir
         String fakeEmail = getEmailAdress();
-
+        extentTest.info("Vendor sayfasindaki e-mail'e e-mail girildi");
         excelReader.writeCell(1, 3, dosyaYolu, fakeEmail);
 
         alloverpage.vendorRegistrationEmail.sendKeys(fakeEmail, Keys.TAB);
@@ -140,18 +158,18 @@ public class TC_01_VendorCoupons {
 
         //Send code butonuna tiklat
         alloverpage.verificationEmailButton.click();
-
+        extentTest.info("Send code butonuna tiklatildi");
 
 //        alloverpage.verificationCode.sendKeys(getVerificationCode(), Keys.TAB, Keys.TAB, password,
 //                Keys.TAB, password, Keys.TAB, Keys.ENTER);
 
         alloverpage.verificationCode.sendKeys(getVerificationCode(), Keys.TAB, Keys.TAB);
-
+        extentTest.info("Dogrulama kodu girildi");
         //Vendor sayfasindaki sifreyi gir
         String sifre = sifreOlustur();
         excelReader.writeCell(1, 6, dosyaYolu, sifre);
         alloverpage.vendorPassword.sendKeys(sifre, Keys.TAB, sifre, Keys.TAB, Keys.ENTER);
-
+        extentTest.info("sifre bolumune sifre girildi");
 
     }
 
@@ -178,8 +196,8 @@ public class TC_01_VendorCoupons {
         WebElement iframe = Driver.getDriver().findElement(xpath("//iframe[@id='iframeMail']"));
         Driver.getDriver().switchTo().frame(iframe);
 
-        String code = Driver.getDriver().findElement(tagName("b")).getText();
-        System.out.println(code);
+        String dogrulamaKodu = Driver.getDriver().findElement(tagName("b")).getText();
+        System.out.println(dogrulamaKodu);
         Driver.getDriver().switchTo().defaultContent();
 
         ReusableMethods.switchToWindow(0);
@@ -188,8 +206,8 @@ public class TC_01_VendorCoupons {
         String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
         String sayfaIsmi = "Sayfa1";
         excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
-        excelReader.writeCell(1, 3, dosyaYolu, code);
-        return code;
+        excelReader.writeCell(1, 3, dosyaYolu, dogrulamaKodu);
+        return dogrulamaKodu;
     }
 
 
@@ -224,5 +242,33 @@ public class TC_01_VendorCoupons {
         excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
         excelReader.writeCell(1, 1, dosyaYolu, sifre);
         return sifre;
+    }
+
+    public   static void login(String username,String password) {
+        WebDriverManager.chromedriver().setup();//chrome driverı projeye yükledik
+        WebDriver driver = new ChromeDriver();//obje oluşturduk
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        // Web sitesini açın
+        driver.get("https://allovercommerce.com/");
+        //signin butonuna tıkla
+        driver.findElement(By.xpath("//*[text()='Sign In']")).click();
+        ReusableMethods.bekle(2);
+        // Kullanıcı adı ve şifre alanlarını bulun
+        WebElement usernameField = driver.findElement(By.xpath("//*[@id='username']"));
+        WebElement passwordField = driver.findElement(By.xpath("//*[@id='password']"));
+        // Kullanıcı adı ve şifre alanlarına bilgileri girin
+        usernameField.sendKeys(username);
+        ReusableMethods.bekle(2);
+        passwordField.sendKeys(password);
+        ReusableMethods.bekle(2);
+        // Login butonunu bulun ve tıklayın
+        driver.findElement(By.xpath("//*[@name='login']")).click();
+        ReusableMethods.bekle(2);
+    }
+
+    @Test
+    public void test05() {
+        login("denemetest", "deneme123456");
     }
 }

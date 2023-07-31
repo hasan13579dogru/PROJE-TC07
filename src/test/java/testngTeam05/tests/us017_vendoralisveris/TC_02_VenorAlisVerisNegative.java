@@ -21,7 +21,7 @@ import java.util.List;
 import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
-public class TC_02_VenorAlisVeris {
+public class TC_02_VenorAlisVerisNegative {
     //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
     //Ürün ve ürünler seçilip sepete eklenebilmeli
     //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
@@ -201,7 +201,6 @@ public class TC_02_VenorAlisVeris {
         excelReader.writeCell(1, 3, dosyaYolu, code);
         return code;
     }
-
 
     public String sifreOlustur() throws IOException {
         String sifre = "";
