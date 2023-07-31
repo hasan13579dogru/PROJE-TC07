@@ -463,6 +463,27 @@ public class AlloverCommercePage {
 
 
 //enes
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads\"]")
+    public WebElement Downloads;//My account page
+    @FindBy(xpath = "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
+    public WebElement Addresses;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account\"]")
+    public WebElement Accountdetails;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist\"]")
+    public WebElement Wishlist;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--support-tickets\"]")
+    public WebElement SupportTickets;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--followings\"]")
+    public WebElement Followings;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout\"]")
+    public WebElement Logout;//My account page
+    @FindBy(xpath = "//*[@class=\"icon-box-icon text-grey mr-2\"]")
+    public WebElement ikonAddresses;
+    @FindBy(xpath = "(//*[@class=\"edit btn btn-link btn-primary btn-underline mb-4\"])[1]")
+    public WebElement billingAddressAltindakiAdd;
+    @FindBy(xpath = "//*[text()='Billing address']")
+    public WebElement BillingaddressYazisi;
+
 
 
 
