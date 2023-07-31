@@ -53,8 +53,12 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
+<<<<<<< HEAD
+    //wish list  //div[@class="yith-wcwl-add-button"] 
+=======
     @FindBy(xpath = "//a[@class='showlogin']")
     public WebElement pleaseLoginYazisi;
+>>>>>>> master
 
 
 
@@ -2209,8 +2213,8 @@ public class AlloverCommercePage {
 
 
     //murat
-//    @FindBy(xpath = "//input[@type='text']")
-//    public  WebElement userName;
+    @FindBy(xpath = "//input[@type='text']")
+    public  WebElement username;
 
     @FindBy(xpath = "//*[@type='search']")
     public  WebElement search;
@@ -2288,10 +2292,10 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[4]")
     public WebElement subtotalPricePayBill;//indirimsiz fiyat
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/\"]")
-    public WebElement myAccountmurat ;
+    public WebElement myAccountm ;
 
-    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
-    public WebElement storeManagermurat ;
+  //  @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
+   // public WebElement storeManager ;
     @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
     public WebElement orderInMyaccount  ;//myaccount taki order butonu
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")
