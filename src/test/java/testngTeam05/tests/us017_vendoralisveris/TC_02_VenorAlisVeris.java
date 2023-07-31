@@ -1,12 +1,8 @@
-package testngTeam05.tests.us018_vendorcoupons;
+package testngTeam05.tests.us017_vendoralisveris;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,90 +14,104 @@ import testngTeam05.utilities.ReusableMethods;
 
 import java.io.IOException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
-
-public class TC_01_VendorCoupons {
-    //Vendor olarak Coupons oluşturabilmeliyim (My Account - Coupons - Add New)
-    //Code yazabilmeliyim
-    //Description yazılabilmeli
-    //Discount Type; Percentage discount veya Fixed Product Discount olarak seçilebilmeli
-    //Coupon Amount yazılabilmeli
-    //Coupon expiry date girilebilmeli
-    //Allow free shipping, Show on store seçilebilmeli
-    //Coupons oluşturulduğu görülmeli
+public class TC_02_VenorAlisVeris {
+    //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)
+    //Ürün ve ürünler seçilip sepete eklenebilmeli
+    //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli
+    //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
+    //Toplam ödenecek rakam görüntülebilmeli
+    //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+    //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
+    //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
 
     AlloverCommercePage alloverpage;
     Faker faker;
     ExcelReader excelReader;
-    public  WebDriver driver;
-    Actions actions;
-
-
     @Test
-    public void test01() throws IOException {
-        //Vendor olarak siteye kayit ol
+    public void test02() throws IOException {
+        //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
+        //Ürün ve ürünler seçilip sepete eklenebilmeli--
+        //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli--
+        //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
+        //Toplam ödenecek rakam görüntülebilmeli
+        //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+        //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
+        //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
 
-        vendorOlarakKayitOl();
 
-        //Acilan sayfadaki "not right now butonuna tiklat"
+        //Siteye git
+       vendorOlarakKayitOl();
+
+        //vendor olarak giris yapildi
+
         alloverpage.WelcometoAlloverCommerce.click();
-        ReusableMethods.scroll(alloverpage.coupons);
+        //Sayfa altindaki My Account'a tiklat
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.bekle(2);
-        //Sol Menudeki Coupons yazisinin uzerinde fareyi beklet, cikan add butonuna tiklat.
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(alloverpage.coupons).perform();
-        actions.moveToElement(alloverpage.couponsAddNew).click().perform();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverpage.myAccountOrders2);
+        ReusableMethods.bekle(2);
 
-        //Code yazabilmeliyim
-        String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
-        String sayfaIsmi = "Sayfa1";
-        String kuponNo = faker.code().ean13();
-        String lorem = faker.lorem().toString();
-        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
-        excelReader.writeCell(1, 5, dosyaYolu, kuponNo);
-        //Description yaz
-        alloverpage.codeAdd.sendKeys(kuponNo,Keys.TAB,lorem,Keys.TAB);
-        //Discount Type; Percentage discount veya Fixed Product secildigi dogrulandi
-        Select select =new Select(alloverpage.ddmDiscountType);
-        Assert.assertEquals(select.getFirstSelectedOption().getText(),"Percentage discount");
+        alloverpage.myAccountOrders.click();
+        //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
+        alloverpage.myAccountOrders.click();
+        //Browse products'a tikla
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(alloverpage.browseProductText)).click();
 
-        select.selectByVisibleText("Fixed Product Discount");
-        Assert.assertEquals(select.getFirstSelectedOption().getText(),"Fixed Product Discount");
+        //Urun ve urunleri sepete ekle
+        List<WebElement> urunListesi = alloverpage.addToChart;
 
-        //Coupon Amount gir
-        alloverpage.couponAmonut.sendKeys("20",Keys.TAB);
+        int i = 0;
+        while (i < urunListesi.size()) {
+            try {
+                ReusableMethods.click(urunListesi.get(i));
+                ReusableMethods.bekle(1);
+                i++;
 
-        //Coupon expiry date gir
-        LocalDate today = LocalDate.now();
-        LocalDate fiveDaysLater = today.plusDays(5);
-        int dayOfMonth = fiveDaysLater.getDayOfMonth();
-
-        WebElement eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
-
-
-        if (fiveDaysLater.getDayOfMonth()!=today.getDayOfMonth()){
-            alloverpage.nextMonth.click();
-            eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
-            eklenenGun.click();
+            } catch (NoSuchElementException | ElementClickInterceptedException e) {
+                i++;
+            } catch (IndexOutOfBoundsException e) {
+                break;
+            }
         }
 
-        //Allow free shipping, Show on store secildi
-        alloverpage.freeShipping.click();
-        alloverpage.showOnStore.click();
+        ReusableMethods.click(alloverpage.cartIcon);
+        ReusableMethods.bekle(1);
+        //Urunlerin sepete eklendigini dogrula
+        Assert.assertTrue(alloverpage.viewCart.isDisplayed());
 
-        //Sag alt kosedeki submut butonuna tikla
-        ReusableMethods.click(alloverpage.addButtonSubmit);
-        //Kupon olustudugu dogrulandi
-        Assert.assertTrue(alloverpage.editCoupon.isDisplayed());
+        //Chekout butonuna tiklat.
+        alloverpage.checkoutCart.click();
+
+        //alınacak ürün ve ürünler görülebilmeli
+        List<WebElement> sepeteEklenenUrunler = alloverpage.yourOrder;
+
+        for (WebElement each : sepeteEklenenUrunler) {
+            Assert.assertTrue(each.isDisplayed());
+            System.out.println(each.getText());
+        }
+
+        //Fatura ayrintilarinda zorunlu gelen alanlari bos birak
+        //Siparis butonuna tiklat
+        ReusableMethods.click(alloverpage.placeOrderButton);
+        Assert.assertTrue(alloverpage.billingZipCode.isDisplayed());
+        Assert.assertTrue(alloverpage.billingLastName.isDisplayed());
+        Assert.assertTrue(alloverpage.billingStreetAdress.isDisplayed());
+        Assert.assertTrue(alloverpage.billingFirstName.isDisplayed());
+        Assert.assertTrue(alloverpage.billingFirstNameOrder.isDisplayed());
+        Assert.assertTrue(alloverpage.billingPhone.isDisplayed());
+        //Alisverisin tamamlanamadigi goruldu
 
     }
-
 
     public void vendorOlarakKayitOl() throws IOException {
 
@@ -226,3 +236,4 @@ public class TC_01_VendorCoupons {
         return sifre;
     }
 }
+

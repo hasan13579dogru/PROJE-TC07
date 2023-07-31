@@ -1,3 +1,4 @@
+
 package testngTeam05.pages;
 
 import org.openqa.selenium.WebElement;
@@ -5,10 +6,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import testngTeam05.utilities.Driver;
 
+import java.util.List;
+
 public class AlloverCommercePage {
     public AlloverCommercePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+
+
+
+
+
+
 
 
 
@@ -31,16 +41,24 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@id='register-policy']")
     public WebElement iAgreeClick; //register islemindeki I agree to the privacy policy kutusu
 
+
     @FindBy(xpath = "//button[@name='register']")
     public WebElement registerSignUp; //register islemindeki signup button
 
+
     @FindBy(xpath = "//div[@id='customer_login']")
-    public WebElement ilerlemekIcinTikla;
+    public WebElement ilerlemekIcinTiklaYazisi;
+
 
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
+<<<<<<< HEAD
     //wish list  //div[@class="yith-wcwl-add-button"] 
+=======
+    @FindBy(xpath = "//a[@class='showlogin']")
+    public WebElement pleaseLoginYazisi;
+>>>>>>> master
 
 
 
@@ -117,6 +135,8 @@ public class AlloverCommercePage {
 
 
 
+
+
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement MyAccountmd;
 
@@ -131,7 +151,7 @@ public class AlloverCommercePage {
 
 
 
-    //*[text()='Addresses']
+
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
     public static WebElement adress;
@@ -233,10 +253,8 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@title='Minus']")
     public WebElement minusButton;
 
-    @FindBy(xpath = "//*[@class='wc-proceed-to-checkout']")
+    @FindBy(xpath = "//a[@class='checkout-button button alt wc-forward']")
     public WebElement proceedToCheckoutButton;
-
-
 
 
 
@@ -255,12 +273,12 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='password']")
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
+
     @FindBy(xpath = "//span[.='Sign Out']")
     public static WebElement signOut;
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public static WebElement myAccount;
-
 
 
 
@@ -293,12 +311,25 @@ public class AlloverCommercePage {
     public WebElement accountDetailsSayfaYazısı;
 
 
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement billingFirstNamee;
 
+    @FindBy(xpath = "//select[@name='billing_country']")
+    public WebElement billingCountryddm;
+    @FindBy(xpath = "//input[@name='billing_address_1']")
+    public WebElement billingAddress;
 
+    @FindBy(xpath = "(//h4)[2]")
+    public WebElement paymentMethods;
 
+    @FindBy(xpath = "//input[@id='payment_method_cod']")
+    public WebElement payAtTheDoorButton;
 
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement eftButton;
 
-
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement orderSuccessMessage;//ürün satın alma işleminin başarılı oldugunun mesajı
 
 
 
@@ -439,7 +470,11 @@ public class AlloverCommercePage {
 
 
 
+
+
+
 //enes
+
 
 
 
@@ -580,8 +615,26 @@ public class AlloverCommercePage {
 
 
 
+//seda
 
+    @FindBy(xpath = "(//a[.='My Account'])[1]")
+    public WebElement MyAccountFooter; //  vendor ile griş yapıldıktan sonraki footerdaki my account
+    @FindBy(xpath = "//a[text()='Addresses']") //vendordassbort addres
+    public WebElement VendorAddress;
+    @FindBy(xpath = "(//a[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
+    public WebElement ShippingAdd; // vendor-adress-shipping-add
+    @FindBy(xpath = "(//input[@name='shipping_first_name'])[1]")
+    public WebElement ShippinFirstName; // vendor-adress-shipping-add-shippingFirstName
+    @FindBy(xpath = "//select[@id='shipping_country']")
+    public WebElement ShippinSelectCountry; // vendor-adress-shipping-add-country
+    @FindBy(xpath = "//input[@id='shipping_address_1']")
+    public WebElement ShippinStreet; // vendor-adress-shipping-add-street
+    ////button[@name='save_address']
+    @FindBy(xpath = "//button[@name='save_address']")
+    public WebElement ShippingSaveAdress; // vendor-adress-shipping-add-saveadress butonu
 
+    @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement ShippingSuccesText; // vendor-adress-shipping-add-saveSucces
 
 
 
@@ -679,7 +732,6 @@ public class AlloverCommercePage {
 
 
 
-//livdemirci
 
 
 
@@ -688,7 +740,19 @@ public class AlloverCommercePage {
 
 
 
-//Salih
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -888,6 +952,7 @@ public class AlloverCommercePage {
 
 
 //seda
+
 
 
 
@@ -990,6 +1055,7 @@ public class AlloverCommercePage {
 
 
     // yusuf
+
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement signIn;   // Anasayfa Sign In /
     @FindBy(css = "[id=username]")
@@ -1001,7 +1067,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//h2)[1]")
     public WebElement myAccountBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//h2)[1]")
-    public WebElement storeManagertBaslik; // Sayfa Başlığı
+    public WebElement storeManagerBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//h2)[2]")
     public WebElement addProductBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//*[text()='My Account'])[2]")
@@ -1012,7 +1078,6 @@ public class AlloverCommercePage {
     public WebElement product; //Store Manager sayfasındaki Product butoonu
     @FindBy(xpath = "(//*[@class='wcfm_sub_menu_items wcfm_sub_menu_items_product_manage moz_class'])[1]")
     public WebElement addNew; //Store Manager/Product/Add New
-
     //   Add Product sayfasındaki "Locate"ler
     @FindBy(id = "pro_title")
     public WebElement productTitle; // Ürün başlığı ekleme bölümü
@@ -1020,39 +1085,45 @@ public class AlloverCommercePage {
     public WebElement featureImage; // resim ekleme: sağ taraftaki büyük çerçeve
     @FindBy(xpath = "//*[@id='menu-item-browse']")
     public WebElement mediaLibrary;
-    @FindBy(xpath = "//*[@id='__attachments-view-54']/li[3]/div/div")
+    @FindBy(xpath = "//*[@class='thumbnail']")
     public WebElement mouseResmiFeature; // eklenen resim
     @FindBy(xpath = "//*[@id='__wp-uploader-id-0']/div[4]/div/div[2]/button")
     public WebElement selectFeature;
     @FindBy(css = "img[id=gallery_img_gimage_0_display]")
     public WebElement galeryImage; // resim ekleme: sağ taraftaki küçük çerçeve
-    @FindBy(xpath = "(//div[@class='thumbnail'])[8]")
+    @FindBy(xpath = "(//*[@id=\"__wp-uploader-id-3\"]/div[3]/div[2]/div/div[3]/ul/li)[1]")
     public WebElement mouseResmi; // eklenen resim
     @FindBy(xpath = "(//*[text()='Add to Gallery'])[3]")
     public WebElement addToGalery;
-    @FindBy(xpath = "//*[@id='product_cats_checklist']/li[1]/input")
+    @FindBy(xpath = "//input[@value='402']")
     public WebElement categoriesCheckbox; //  Add Product saffasındaki Categories
-
+    // Inventory Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[1]")
     public WebElement inventory;
     @FindBy(css = "[id=sku]")
     public WebElement sku;
     @FindBy(css = "[id=manage_stock]")
-    public WebElement manageStockChecboxk;
+    public WebElement manageStockChecbox;
     @FindBy(css = "[id=stock_qty]")
     public WebElement stockQty;
     @FindBy(css = "[id=sold_individually]")
-    public WebElement soldIndividuallyChecboxk;
-
+    public WebElement soldIndividuallyChecbox;
+    // Shipping Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[4]")
     public WebElement shipping;
     @FindBy(id = "weight")
     public WebElement weight;
+    @FindBy(css = "#length")
+    public WebElement length;
+    @FindBy(css = "#width")
+    public WebElement width;
+    @FindBy(css = "#height")
+    public WebElement height;
     @FindBy(id = "shipping_class")
     public WebElement shippingClass;
-    @FindBy(id = "_wcfmmp_processing_time")
+    @FindBy(css = "[id=_wcfmmp_processing_time]")
     public WebElement processingTime;
-
+    // Attributes Menüsü "Locate"ler
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[5]")
     public WebElement attributes;
     @FindBy(id = "attributes_is_active_1")
@@ -1061,47 +1132,30 @@ public class AlloverCommercePage {
     public WebElement colorSecim;
     @FindBy(id = "attributes_is_active_2")
     public WebElement sizeCheckBox;
-    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[3]")
+    @FindBy(xpath = "//*[@id=\"attributes\"]/div[3]/span[2]/span[1]/span/ul/li/input")
     public WebElement sizeSecim;
-
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[7]")
     public WebElement linked;
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[8]")
     public WebElement seo;
     @FindBy(xpath = "(//*[@class='page_collapsible_content_holder'])[10]")
     public WebElement advenced;
-
     @FindBy(css = "[id=wcfm_products_simple_submit_button]")
     public WebElement submitButton; // Add Product sayfası en alttaki SUBMIT
     @FindBy(xpath = "(//img[@class='attachment-thumbnail size-thumbnail'])[1]")
     public WebElement productMouse;
-    @FindBy(xpath = "//*[text()='Team05']")
-    public WebElement productSku;
-    @FindBy(xpath = "//*[text()='Published']")
-    public WebElement productStockStatus;
-    @FindBy(xpath = "//*[text()=' (100)']")
-    public WebElement productManageStock;
-    @FindBy(css = "[value=View]")
-    public WebElement viewButton; // Add Product sayfası en alttaki VIEW
-    @FindBy(xpath = "(//*[@class='nav-link'])[2]")
-    public WebElement spesification; // VIEW tıkklanınca açılan sayfada eklenen ürünün altında
-    @FindBy(xpath = "(//tbody//tr//td)[1]")
-    public WebElement spesificationWeight;
-    @FindBy(xpath = "(//tbody//tr//td)[2]")
-    public WebElement spesificationDimensions;
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(css = "select[id=product_type] option:first-of-type")
+    public WebElement simpleProductDdm;
+    @FindBy(css = "#is_virtual")
+    public WebElement virtualCheckBox;
+    @FindBy(css = "#is_downloadable")
+    public WebElement downloadableCheckBox;
+    @FindBy(xpath = "//button[@id='__wp-uploader-id-1']")
+    public WebElement selectFilesButton;
+    @FindBy(id = "regular_price")
+    public WebElement prise;
+    @FindBy(id = "sale_price")
+    public WebElement salePrise;
 
 
 
@@ -1164,11 +1218,510 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
     public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
 
-    @FindBy(xpath = "//*[text()='Not right now']")
+    @FindBy(xpath = "//div//p[3]//a[2]")
     public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public WebElement storeManagerMyAccount;//vendor'un store manager sayfasindaki myaccount
+
+    @FindBy(xpath = "//*[@id='main']//div//ul//li[3]")
+    public WebElement myAccountOrders;//Myaccount sayfasindaki orders linki
+
+    @FindBy(xpath = "//*[@class=\"button product_type_simple add_to_cart_button ajax_add_to_cart\"]")
+    public List<WebElement> addToChart;//Urunler sayfasindaki addToChart linki
+
+    @FindBy(xpath = "//*[@class='woocommerce-Button button btn btn-link btn-underline btn-icon-right']")
+    public WebElement browseProduct;//Urunler sayfasindaki addToChart linki
+
+    @FindBy(xpath = "//*[@id=\"password_strength\" and contains(@class, 'good')]")
+    public WebElement passwordStrengthGood;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
+
+    @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele '][1]")
+    public WebElement vendorPassword;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
+
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement fiyatsizUrunAlert;//Satin alinamayan urun alert'i
+
+    @FindBy(xpath = "//*[@class='cart-toggle']")
+    public WebElement cartIcon;//Sepetteki urunler
+
+    @FindBy(xpath = "//span[@class='cart-count'][1]")
+    public WebElement sepetSayaci;//Sepetteki urun sayisi icin
+
+    @FindBy(xpath = "//*[@class='cart-item-meta mini-item-meta']//a/span")
+    public List<WebElement> sepeteEklenenUrunler;//Sepetteki urun listesi
+
+    @FindBy(xpath = "//tbody//tr//td[contains(@class,'product-name')]//span")
+    public List<WebElement> yourOrder;//Siparis gosterimi
+
+    @FindBy(xpath = "//*[@class=\"cart-item-meta mini-item-meta\"]//a//span")
+    public List<WebElement> shoppingCartUrunListesi;//Siparis gosterimi
+
+    @FindBy(xpath = "//select[1]")
+    public WebElement countryDdm;//Billing details countryDdm
+
+    @FindBy(xpath = "//select[@id='billing_state']")
+    public WebElement provinceDdm;//Billing details province
+
+    @FindBy(xpath = "//*[@id='billing_address_1']")
+    public WebElement streetAdress;//Billing details street adress
+
+    @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/'][1]")
+    public WebElement myAccountOrders2;//myaccount
+
+    @FindBy(xpath = "//*[@id='main']//div[3]//a")
+    public WebElement browseProductText;
+
+    @FindBy(xpath = "//*[@id='billing_postcode']")
+    public WebElement postCode;
+
+    @FindBy(xpath = "//*[@id='billing_city']")
+    public WebElement townCity;
+
+    @FindBy(xpath = "//*[@id='billing_phone']")
+    public WebElement phone;
+
+    @FindBy(xpath = "//*[@class='fas fa-check']")
+    public WebElement orderVerification;
+
+    @FindBy(xpath = "//*[text()='View']")
+    public WebElement viewMyAccount;
+
+    @FindBy(xpath = "//*[text()='Order details']")
+    public WebElement orderDetails;
+
+    @FindBy(xpath = "//*[text()='Billing First name']")
+    public WebElement billingFirstNameOrder;
+
+    @FindBy(xpath = "//*[text()='Billing Last name']")
+    public WebElement billingLastName;
+
+    @FindBy(xpath = "//*[text()='Billing Street address']")
+    public WebElement billingStreetAdress;
+
+    @FindBy(xpath = "//*[text()='Billing ZIP Code']")
+    public WebElement billingZipCode;
+
+    @FindBy(xpath = "//*[text()='Billing Phone']")
+    public WebElement billingPhone;
+//////////////////////////////////US2//////////////////////////
+    @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
+    public WebElement coupons;
+
+    @FindBy(xpath = "//*[@class='wcfm_sub_menu_items wcfm_sub_menu_items_coupon_manage moz_class']")
+    public WebElement couponsAddNew;
+
+    @FindBy(xpath = "//*[text()='Welcome to Allover Commerce!']")
+    public WebElement welcomeToAlloverCommersYazisi;
+
+    @FindBy(xpath = "//*[@id='title']")
+    public WebElement codeAdd;
+
+    @FindBy(xpath = "//*[@id='discount_type']")
+    public List<WebElement> discountType;
+
+    @FindBy(xpath = "//select[1]")
+    public WebElement ddmDiscountType;
+
+    @FindBy(xpath = "//*[@id='coupon_amount']")
+    public WebElement couponAmonut;
+
+    @FindBy(xpath = "//*[@class='ui-datepicker-next ui-corner-all']")
+    public WebElement nextMonth;
+
+    @FindBy(xpath = "//*[@id='free_shipping']")
+    public WebElement freeShipping;
+
+    @FindBy(xpath = "//*[@id='show_on_store']")
+    public WebElement showOnStore;
+
+    @FindBy(xpath = "//*[@id='wcfm_coupon_manager_submit_button']")
+    public WebElement addButtonSubmit;
+
+    @FindBy(xpath = "//*[text()='Edit Coupon']")
+    public WebElement editCoupon;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1281,7 +1834,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
 
-    @FindBy(id = "//input[@id='billing_first_name']")
+    @FindBy(xpath = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
 
 
@@ -1303,6 +1856,61 @@ public class AlloverCommercePage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//murat
+    
 
 
 
@@ -1703,6 +2311,7 @@ public class AlloverCommercePage {
 
 
 }
+
 
 
 

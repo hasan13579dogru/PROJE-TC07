@@ -11,6 +11,7 @@ import testngTeam05.utilities.ReusableMethods;
 public class TC03_CouponUse {
     @Test
     public void test03() {
+        ReusableMethods.
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2- Click to "sign in"
