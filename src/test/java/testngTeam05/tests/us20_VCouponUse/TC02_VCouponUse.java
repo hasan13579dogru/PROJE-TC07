@@ -37,12 +37,7 @@ public class TC02_VCouponUse {
 
         //     7-Enter VALİD coupon number  to "Enter coupon code here…"area. Click to Apply coupon.
 //        Verify "Coupon code applied successfully." text is vissible
-        alloversPage.enterTCouponBillAdress.click();
-        ReusableMethods.bekle(2);
-        alloversPage.enterCouponBoxBillAdress.sendKeys(ConfigReader.getProperty("validCouponNumber"));
-        ReusableMethods.bekle(2);
-        alloversPage.applyCouponBillAdress.click();
-        System.out.println(alloversPage.coupounAlertBillAdress.getText());
+        ReusableMethods.kuponGirisiodemeSayfasi("validCouponNumber");
         Assert.assertEquals(alloversPage.coupounAlertBillAdress.getText(), "Coupon code applied successfully.");
         ReusableMethods.bekle(2);
 //       8-reEnter VALİD coupon number  to "Enter coupon code here…"area.
@@ -50,24 +45,14 @@ public class TC02_VCouponUse {
         ReusableMethods.bekle(2);
         Driver.getDriver().navigate().refresh();
         ReusableMethods.bekle(2);
-        alloversPage.enterTCouponBillAdress.click();
-        alloversPage.enterCouponBoxBillAdress.sendKeys(ConfigReader.getProperty("validCouponNumber"));
-        alloversPage.applyCouponBillAdress.click();
-        ReusableMethods.bekle(2);
-        System.out.println(alloversPage.couponAlert.getText());
+        ReusableMethods.kuponGirisiodemeSayfasi("validCouponNumber");
         Assert.assertEquals(alloversPage.couponAlert.getText(), "Coupon code already applied!");
+        ReusableMethods.tumSayfaResmi("Vendor reEntered VALİD coupon number");
         //    9-Click to cart ,click to clear product,and close
 
-        ReusableMethods.click(alloversPage.cart);
-        ReusableMethods.bekle(2);
-        ReusableMethods.click(alloversPage.cartInClearProduct);
-        ReusableMethods.bekle(2);
-        alloversPage.close.click();
-
+        ReusableMethods.clearCard();
         //     10-logout from account
-        ReusableMethods.click(alloversPage.signOut);
-        ReusableMethods.visibleWait(alloversPage.logout, 5);
-        alloversPage.logout.click();
+        ReusableMethods.logout();
         Driver.closeDriver();
 
     }

@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import testngTeam05.pages.AlloverCommercePage;
 
 import java.io.File;
 import java.io.IOException;
@@ -106,7 +107,7 @@ ReusableMethods {
     public static String tumSayfaResmi(String name) {
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-        String dosyaYolu = System.getProperty("user.dir") + "/target/Screenshots/" + name + tarih + ".png";
+        String dosyaYolu = "TestOutput/PageScreenshots/" + name + tarih + ".png";
         try {
             FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
         } catch (IOException e) {
@@ -195,4 +196,49 @@ ReusableMethods {
 
         return username.toString();
     }
+    //logout method
+    public static void logout() {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        ReusableMethods.click(alloversPage.signOut);
+        ReusableMethods.visibleWait(alloversPage.logout, 5);
+        alloversPage.logout.click();
+}
+    //Kupon girisi sepet sayfası
+
+    public static void kuponGirisiSepetSayfasi(String kuponanahtari) {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+
+
+        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty(kuponanahtari));
+        ReusableMethods.scroll(alloversPage.applyCoupon);
+        ReusableMethods.bekle(2);
+        alloversPage.applyCoupon.click();
+        ReusableMethods.bekle(3);
+        System.out.println(alloversPage.couponAlert.getText());
+    }
+
+
+
+    //clear to cart method
+    public static void clearCard() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.click(alloversPage.cart);
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloversPage.cartInClearProduct);
+        ReusableMethods.bekle(2);
+        alloversPage.close.click();
+    }
+    //Kupon girisi odeme sayfası
+    public static void kuponGirisiodemeSayfasi(String kuponanahtari) {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        alloversPage.enterTCouponBillAdress.click();
+        alloversPage.enterCouponBoxBillAdress.sendKeys(ConfigReader.getProperty(kuponanahtari));
+        alloversPage.applyCouponBillAdress.click();
+        ReusableMethods.bekle(2);
+        System.out.println(alloversPage.couponAlert.getText());
+    }
+
+
 }

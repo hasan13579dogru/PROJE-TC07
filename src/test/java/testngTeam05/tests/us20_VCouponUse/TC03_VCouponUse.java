@@ -7,6 +7,7 @@ import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ReusableMethods;
+
 public class TC03_VCouponUse {
 
     @Test
@@ -22,7 +23,7 @@ public class TC03_VCouponUse {
 
         alloversPage.username.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
         ReusableMethods.bekle(3);
-   //4 - Write "earphone" to searchBox click to enter
+        //4 - Write "earphone" to searchBox click to enter
         alloversPage.search.sendKeys("earphone");
         ReusableMethods.visibleWait(alloversPage.search, 5);
         alloversPage.search.sendKeys(Keys.ENTER);
@@ -39,15 +40,11 @@ public class TC03_VCouponUse {
 
         //     7-Enter VALİD coupon number  to "Enter coupon code here…"area. Click to Apply coupon.
 //        Verify "Coupon code applied successfully." text is vissible
-        alloversPage.enterTCouponBillAdress.click();
-        ReusableMethods.bekle(2);
-        alloversPage.enterCouponBoxBillAdress.sendKeys(ConfigReader.getProperty("validCouponNumber"));
-        ReusableMethods.bekle(2);
-        alloversPage.applyCouponBillAdress.click();
-        System.out.println(alloversPage.coupounAlertBillAdress.getText());
+        ReusableMethods.kuponGirisiodemeSayfasi("validCouponNumber");
 
         Assert.assertEquals(alloversPage.coupounAlertBillAdress.getText(), "Coupon code applied successfully.");
         ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Vendor Entered VALİD coupon number");
 
 
 //        8-Verify subtotal price is biger than total price that, the coupon is used
@@ -94,16 +91,17 @@ public class TC03_VCouponUse {
         Assert.assertTrue(alloversPage.orderHasBeenReceived.isDisplayed());
 //      14-Go to myaccount
         ReusableMethods.scrollEnd();
-        ReusableMethods.click(alloversPage.myAccountmurat);
+        ReusableMethods.click(alloversPage.myAccountm);
 //       15-Verify account id vendor
-        Assert.assertTrue(alloversPage.myAccountmurat.isEnabled());
+        Assert.assertTrue(alloversPage.storeManager.isEnabled());
+        ReusableMethods.tumSayfaResmi("Vendor MyAccount page");
 //      16-click to order Verify product add the order
         alloversPage.orderInMyaccount.click();
 //      17-Verify product is vissible in order ,close the window
         Assert.assertTrue(alloversPage.orderinFirstidNo.isDisplayed());
+        ReusableMethods.tumSayfaResmi(" Vendor's shopping is vissible in order");
 
         Driver.closeDriver();
-
 
     }
 }

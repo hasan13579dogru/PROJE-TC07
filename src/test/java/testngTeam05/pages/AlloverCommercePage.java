@@ -40,6 +40,8 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
+    //wish list  //div[@class="yith-wcwl-add-button"] 
+
 
 
 
@@ -1682,10 +1684,10 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[4]")
     public WebElement subtotalPricePayBill;//indirimsiz fiyat
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/\"]")
-    public WebElement myAccountmurat ;
+    public WebElement myAccountm ;
 
-    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
-    public WebElement storeManagermurat ;
+  //  @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
+   // public WebElement storeManager ;
     @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
     public WebElement orderInMyaccount  ;//myaccount taki order butonu
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")

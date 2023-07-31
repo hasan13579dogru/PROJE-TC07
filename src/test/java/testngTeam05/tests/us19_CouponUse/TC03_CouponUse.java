@@ -40,10 +40,7 @@ public class TC03_CouponUse {
 
 
 //       7-Enter "VALİD coupon number"  to "Enter coupon code here…"area. Click to "Apply coupon"
-        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty("validCouponNumber"));
-        ReusableMethods.bekle(2);
-        ReusableMethods.scroll(alloversPage.applyCoupon);
-        ReusableMethods.click(alloversPage.applyCoupon);
+        ReusableMethods.kuponGirisiSepetSayfasi("validCouponNumber");
         ReusableMethods.bekle(3);
 
 //      8-Verify subtotal price is biger than total price that, the coupon is used
