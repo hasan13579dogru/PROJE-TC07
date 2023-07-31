@@ -16,13 +16,12 @@ public class TC_01_kayitliLogin {
     "An account is already registered with your email address." uyarı metni ve "Please log in." görülmeli
 
      */
+    AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
     @Test
     public void test01() {
-        AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
-
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
-
+        Assert.assertTrue(alloverCommercePage.anasayfaTitle.isDisplayed());
 
         alloverCommercePage.registerButton.click();
 
@@ -34,6 +33,7 @@ public class TC_01_kayitliLogin {
 
         alloverCommercePage.registerPassword.sendKeys(ConfigReader.getProperty("registerPassword"));
         ReusableMethods.bekle(2);
+
         alloverCommercePage.registerSignUp.click();
         Assert.assertTrue(alloverCommercePage.ilerlemekIcinTiklaYazisi.isDisplayed());
 

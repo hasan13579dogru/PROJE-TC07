@@ -45,6 +45,9 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//a[@class='showlogin']")
     public WebElement pleaseLoginYazisi;
 
+    @FindBy(xpath = "(//p[@class='elementor-heading-title elementor-size-default'])[1]")
+    public WebElement anasayfaTitle;
+
 
 
 
@@ -143,7 +146,7 @@ public class AlloverCommercePage {
     //*[text()='Addresses']
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
-    public static WebElement adress;
+    public static WebElement address;
 
 
 
