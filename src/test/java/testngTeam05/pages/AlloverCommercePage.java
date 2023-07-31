@@ -53,12 +53,15 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
-<<<<<<< HEAD
+
     //wish list  //div[@class="yith-wcwl-add-button"] 
-=======
+
     @FindBy(xpath = "//a[@class='showlogin']")
     public WebElement pleaseLoginYazisi;
->>>>>>> master
+
+
+    @FindBy(xpath = "(//p[@class='elementor-heading-title elementor-size-default'])[1]")
+    public WebElement anasayfaTitle;
 
 
 
@@ -154,7 +157,7 @@ public class AlloverCommercePage {
 
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
-    public static WebElement adress;
+    public static WebElement address;
 
 
 
