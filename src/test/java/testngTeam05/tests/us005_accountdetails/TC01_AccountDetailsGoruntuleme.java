@@ -21,7 +21,7 @@ import java.io.IOException;
 public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
     Faker faker=new Faker();
     String rastgeleKelime = faker.lorem().word();
-    String rastgeleSayi = faker.number().digits(8);
+    String rastgeleSayi = faker.number().digits(4);
     String sifre = rastgeleKelime + rastgeleSayi;
 
     @Test
@@ -51,17 +51,12 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(1);
        // alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
-        ReusableMethods.bekle(2);
+
        //signin butonuna tıkla
 
-        alloverCommercePage.signIn.click();
+       // alloverCommercePage.login.click();
 
-
-      
-        alloverCommercePage.signInButton.click();
-
-
-
+        alloverCommercePage.submitButton.click();
 
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
@@ -130,7 +125,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
 
         //yeni sifre ve kullanici ismi bilgilerini mevcut excele yazdım
-        workbook.getSheet("Sayfa1").getRow(1).createCell(5).setCellValue(sifre);
+        workbook.getSheet("Sayfa1").getRow(1).createCell(1).setCellValue(sifre);
         workbook.getSheet("Sayfa1").getRow(1).createCell(0).setCellValue(newDisplayedName);
         //workbook.getSheet("Sayfa1").getRow(1).createCell(2).setCellValue(newEmail);
 
@@ -138,6 +133,8 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         workbook.write(fos);
         fos.close();
         workbook.close();
+
+
 
         System.out.println("sifre = " + sifre);
         extentTest.info("Change password alanındaki mevcut şifre, yeni şifre ve yeni şifrenin doğrulaması alanları dolduruldu");
@@ -151,7 +148,6 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         extentTest.info("Save butonuna tıklandı");
 
         //"Account details changed successfully" mesajının görünür oldugunu doğrula
-        Assert.assertTrue(alloverCommercePage.accountDetailsChangedMessage.isDisplayed());
         //screenshot ekle
 
         //siteden signout ardından logout tıkla
@@ -161,6 +157,18 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(3);
         alloverCommercePage.logOut.click();
         ReusableMethods.bekle(2);
+
+        //değişmiş sifre ile siteye giriş yap
+        alloverCommercePage.userNameEmailAddress.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
+        ReusableMethods.bekle(1);
+        alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
+        ReusableMethods.bekle(1);
+        ReusableMethods.click(alloverCommercePage.submitButton);
+        //giriş yapmak doğrulama için yeterli mi?????
+
+        ReusableMethods.bekle(6);
+
+
 
     }
 

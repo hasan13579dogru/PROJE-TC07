@@ -11,6 +11,7 @@ import testngTeam05.utilities.ReusableMethods;
 public class TC03_CouponUse {
     @Test
     public void test03() {
+       // ReusableMethods.
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2- Click to "sign in"
@@ -19,7 +20,7 @@ public class TC03_CouponUse {
 
 
 //        3-Enter a valid username and valid password to be user
-        alloversPage.userName.sendKeys(ConfigReader.getProperty("userName"), Keys.TAB, ConfigReader.getProperty("passwordAllo"), Keys.ENTER);
+        alloversPage.username.sendKeys(ConfigReader.getProperty("userName"), Keys.TAB, ConfigReader.getProperty("passwordAllo"), Keys.ENTER);
         ReusableMethods.bekle(3);
 
 //        4-Write "earphone" to searchBox click to enter
@@ -40,10 +41,7 @@ public class TC03_CouponUse {
 
 
 //       7-Enter "VALİD coupon number"  to "Enter coupon code here…"area. Click to "Apply coupon"
-        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty("validCouponNumber"));
-        ReusableMethods.bekle(2);
-        ReusableMethods.scroll(alloversPage.applyCoupon);
-        ReusableMethods.click(alloversPage.applyCoupon);
+        ReusableMethods.kuponGirisiSepetSayfasi("validCouponNumber");
         ReusableMethods.bekle(3);
 
 //      8-Verify subtotal price is biger than total price that, the coupon is used
