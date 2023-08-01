@@ -53,12 +53,12 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
-<<<<<<< HEAD
+
     //wish list  //div[@class="yith-wcwl-add-button"] 
-=======
+
     @FindBy(xpath = "//a[@class='showlogin']")
     public WebElement pleaseLoginYazisi;
->>>>>>> master
+
 
 
 
@@ -2298,8 +2298,10 @@ public class AlloverCommercePage {
    // public WebElement storeManager ;
     @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
     public WebElement orderInMyaccount  ;//myaccount taki order butonu
-    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")
+    @FindBy(xpath = "(//*[@data-title=\"Order\"])[1]")
     public WebElement orderinFirstidNo  ;//myaccount taki order daki ilk urun id
+    @FindBy(xpath = "//*[text()='[Remove]']")
+    public WebElement removedPrice  ;//indirilen fiyat
 
 
 
