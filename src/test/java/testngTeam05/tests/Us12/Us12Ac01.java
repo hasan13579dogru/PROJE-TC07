@@ -1,7 +1,6 @@
-package testngTeam05.tests.us12_vendorBillingAddress;
+package testngTeam05.tests.Us12;
 
 import org.openqa.selenium.Keys;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import testngTeam05.pages.AlloverCommercePage;
@@ -10,12 +9,13 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
-public class Ac01_firstname_Lastname_Email_areOutomatic extends ExtentReport {
-    SoftAssert softAssert = new SoftAssert();
-
+public class Us12Ac01 extends ExtentReport {
+    @Test
     public void test01(){
-        extentTest = extentReports.createTest("Extent Report","Test Raporu");
         AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
+        extentTest = extentReports.createTest("Extent Report","Test Raporu");
+        SoftAssert softAssert = new SoftAssert();
+
 
         //Vendor https://allovercommerce.com/ adresine gider
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
@@ -25,7 +25,6 @@ public class Ac01_firstname_Lastname_Email_areOutomatic extends ExtentReport {
         alloverCommercePage.anasayfaSigninButon.click();
         ReusableMethods.bekle(1);
         extentTest.info("Anasayfadaki signin butonuna tıklandı");
-
         //Kayitli kullanici adi ve sifresine girer ve sign in e click yapar
         alloverCommercePage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmailEn"),
                 Keys.TAB, ConfigReader.getProperty("alloverVendorPasswordEn"));
@@ -50,11 +49,15 @@ public class Ac01_firstname_Lastname_Email_areOutomatic extends ExtentReport {
         softAssert.assertTrue(alloverCommercePage.BillingaddressYazisi.isDisplayed());
         extentTest.info("Billing Address altindaki 'add' button a tiklandir");
 
+        //Firstname otomatik girili mi kontrol edilir
+        softAssert.assertTrue(alloverCommercePage.firstNameBillingAddress.getText().isEmpty());
+        //Lastname otomatik girili mi kontrol edilir
+        softAssert.assertTrue(alloverCommercePage.lastNameBillingAddress.getText().isEmpty());
+        //email otomatik girili mi kontrol edilir
+        softAssert.assertTrue(alloverCommercePage.emailBillingAddress.getText().isEmpty());
+        extentTest.info("Firstname ve lastname textboxlar otomatik gelmedi, email otomatik girili");
 
+        softAssert.assertAll();
 
-
-
-
-
-    }
+         }
 }

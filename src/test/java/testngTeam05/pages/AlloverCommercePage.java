@@ -483,6 +483,24 @@ public class AlloverCommercePage {
     public WebElement billingAddressAltindakiAdd;
     @FindBy(xpath = "//*[text()='Billing address']")
     public WebElement BillingaddressYazisi;
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement firstNameBillingAddress;
+    @FindBy(xpath = "//input[@id='billing_last_name']")
+    public WebElement lastNameBillingAddress;
+    @FindBy(xpath = "//input[@id='billing_email']")
+    public WebElement emailBillingAddress;
+    @FindBy(xpath = "//*[@id=\"billing_address_1\"]")
+    public WebElement streetAddressBillingAddress;
+    @FindBy(xpath = "//*[@id=\"billing_city\"]")
+    public WebElement townCityBillingAddress;
+   @FindBy(xpath = "//*[@id=\"billing_postcode\"]")
+   public WebElement postCodeZipBilling;
+   @FindBy(xpath = "//*[@id=\"billing_phone\"]")
+   public WebElement phoneBilling;
+
+
+
+
 
 
 

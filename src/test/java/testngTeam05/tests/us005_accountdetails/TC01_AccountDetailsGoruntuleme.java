@@ -164,5 +164,4 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(2);
 
     }
-
 }
