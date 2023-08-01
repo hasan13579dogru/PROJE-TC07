@@ -462,6 +462,27 @@ public class AlloverCommercePage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //enes
     @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads\"]")
     public WebElement Downloads;//My account page
