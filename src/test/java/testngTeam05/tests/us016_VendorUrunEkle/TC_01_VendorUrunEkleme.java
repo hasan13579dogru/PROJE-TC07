@@ -12,7 +12,7 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
-public class TC_01 extends ExtentReport {
+public class TC_01_VendorUrunEkleme  extends ExtentReport {
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Select select;
@@ -21,7 +21,7 @@ public class TC_01 extends ExtentReport {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
-        //Vendor https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
+        //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
         ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
@@ -92,10 +92,10 @@ public class TC_01 extends ExtentReport {
         Assert.assertEquals(alloverPage.productTitle.getAttribute("value"),"mouse");
         extentTest.info("Product Title alanına ürün başlığı yazıldı ve yazılabildiği doğrulandı");
 
-        //Category Bölümünden eklediğin ürünün ait oldugu kategoriyi seç ve seçildiğini doğrula
+        //Category Bölümünden ürünün ait oldugu kategoriyi seç ve seçildiğini doğrula
         ReusableMethods.click(alloverPage.categoriesCheckbox);
         Assert.assertTrue(alloverPage.categoriesCheckbox.isSelected());
-        extentTest.info("Kategori seçildi");
+        extentTest.info("Kategori seçildi ve seçildiğini doğrulandı");
 
         //Sag tarafta yer alan feature image bölümünden ürünün resmini ekle
         alloverPage.featureImage.click();
@@ -129,6 +129,7 @@ public class TC_01 extends ExtentReport {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("Eklenen Ürün");
+        extentTest.info("Sayfa resmi alındı");
     }
 
 }

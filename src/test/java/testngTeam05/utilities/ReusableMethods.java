@@ -200,6 +200,7 @@ public class ReusableMethods {
 
         return username.toString();
     }
+    //Resim yüklemek için Robot methodu
     public static void uploadFilePath(String filePath) {
         try {
             bekle(3);
@@ -222,6 +223,7 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
+    // Vendor olarak Sign In yapma methodu
     public static void vendorSignIn(){
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         AlloverCommercePage alloverPage = new AlloverCommercePage();
