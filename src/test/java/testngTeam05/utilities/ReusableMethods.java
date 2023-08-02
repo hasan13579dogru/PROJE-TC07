@@ -37,8 +37,8 @@ ReusableMethods {
     }
 
     //Alert getText()
-    public static void alertText() {
-        Driver.getDriver().switchTo().alert().getText();
+    public static String alertText() {
+        return Driver.getDriver().switchTo().alert().getText();
     }
 
     //Alert promptBox
@@ -194,5 +194,11 @@ ReusableMethods {
         }
 
         return username.toString();
+
     }
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
 }
