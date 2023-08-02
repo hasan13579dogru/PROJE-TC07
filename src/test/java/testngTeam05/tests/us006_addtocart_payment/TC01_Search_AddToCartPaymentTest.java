@@ -18,14 +18,14 @@ public class TC01_Search_AddToCartPaymentTest {
     @Test
     public void test01() throws IOException {
 
-
+        AlloverCommercePage alloverCommercePage= new AlloverCommercePage();
 
         //Kullanıcı https://allovercommerce.com sitesine gider
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
 
 
         //signin butonuna tıklar
-        AlloverCommercePage alloverCommercePage= new AlloverCommercePage();
+
         alloverCommercePage.anasayfaSigninButon.click();
         ReusableMethods.bekle(1);
 
@@ -36,34 +36,43 @@ public class TC01_Search_AddToCartPaymentTest {
         alloverCommercePage.ilkSayfapassword.sendKeys(ConfigReader.getProperty("mehtapPassword"));
         ReusableMethods.bekle(2);
 
-        //signin butonuna tıkla
+        //signin butonuna tıklar
         alloverCommercePage.signInButton.click();
         ReusableMethods.bekle(2);
 
         //sayfaya girdiğini doğrula
         Assert.assertTrue(alloverCommercePage.signOut.isDisplayed());
+        ReusableMethods.bekle(3);
+        ReusableMethods.webElementResmi(alloverCommercePage.welcomeToAlloverCommerceYazısı);
 
-        //arama kutusunda "kulaklık" arat
-        alloverCommercePage.searchButton.sendKeys("kulaklık",Keys.ENTER);
-        ReusableMethods.visibleWait(alloverCommercePage.ilkKulaklıkResmi,15);
-
+        //arama kutusunda "bag" arat
+        alloverCommercePage.searchButton.sendKeys("bag",Keys.ENTER);
+        ReusableMethods.bekle(2);
         //arama sonuçlarının geldiğini doğrula
+        ReusableMethods.visibleWait(alloverCommercePage.sortBy,15);
+        ReusableMethods.tumSayfaResmi("AramaSonucları");
 
-        //İlk ürünü sepete ekle
-        ReusableMethods.webElementResmi(alloverCommercePage.ilkKulaklıkResmi);
-        alloverCommercePage.ilkKulaklıkResmi.click();
+
+
+
+        //7. Ikınci ürünü sepete ekle
+
+        ReusableMethods.click(alloverCommercePage.ikinciUrun);
+        ReusableMethods.bekle(2);
+       // ReusableMethods.webElementResmi(alloverCommercePage.ikinciUrun);
+
         ReusableMethods.bekle(2);
 
-        alloverCommercePage.addToCart.click();
+        ReusableMethods.click(alloverCommercePage.sepeteEkle);
         ReusableMethods.bekle(2);
 
         //ürünün sepete eklendiğini doğrula(önce cart icon a tıkla-->view cart tıkla
-        alloverCommercePage.CART.click();
+        ReusableMethods.click(alloverCommercePage.CART);//sayfanın sağ üstündeki sepet ikonu
         ReusableMethods.bekle(2);
 
         alloverCommercePage.viewCart.click();
+        ReusableMethods.visibleWait(alloverCommercePage.sepettekiIlkUrun,15);
         Assert.assertTrue(alloverCommercePage.sepettekiIlkUrun.isDisplayed());
-        ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("SepetResmi");
 
         //ürün mıktarını artır
@@ -71,33 +80,41 @@ public class TC01_Search_AddToCartPaymentTest {
         ReusableMethods.bekle(2);
         ReusableMethods.click(alloverCommercePage.updateCart);
         Assert.assertTrue(alloverCommercePage.cartUpdateMessage.isDisplayed());
-        ReusableMethods.bekle(2);
+        ReusableMethods.visibleWait(alloverCommercePage.sepettekiIlkUrun,15);
+        ReusableMethods.tumSayfaResmi("SepettekiArtanUrun");
+        ReusableMethods.bekle(3);
 
 
         //ürün miktarını azalt
         alloverCommercePage.minusButton.click();
         alloverCommercePage.updateCart.click();
         Assert.assertTrue(alloverCommercePage.cartUpdateMessage.isDisplayed());
-        ReusableMethods.bekle(2);
+
+        ReusableMethods.bekle(5);
+        ReusableMethods.tumSayfaResmi("SepettekiAzalanUrun");
 
         //proceed to checkout yap ve odeme kısmına geç
-        ReusableMethods.click(alloverCommercePage.proceedToCheckoutButton);//SIKINTI
+        ReusableMethods.click(alloverCommercePage.proceedToCheckoutButton);
 
 
 
         ReusableMethods.bekle(3);
 
-        //Billing Details sayfasının açıldığını doğrula
+        //Billing Details sayfasının açıldığını baslık ile doğrula
         String actualCheckoutTitle =Driver.getDriver().getTitle();
         String expectedCheckoutTitle = "Checkout - Allover Commerce";
         Assert.assertEquals(expectedCheckoutTitle,actualCheckoutTitle);
+        Actions action= new Actions(Driver.getDriver());
+        action.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("BillingDetailsGörünümü");
 
 
       //Payment seceneklerinin görünür oldugunu dogrula
         Assert.assertTrue(alloverCommercePage.paymentMethods.isDisplayed());
-        ReusableMethods.webElementResmi(alloverCommercePage.paymentMethods);
-        ReusableMethods.bekle(2);
+        ReusableMethods.visibleWait(alloverCommercePage.paymentMethods,15);
+
+        ReusableMethods.tumSayfaResmi("PaymentMethods");
 
         ReusableMethods.scrollEnd();
 
@@ -109,9 +126,9 @@ public class TC01_Search_AddToCartPaymentTest {
 
         //Pay at the door butonunun seçili olduğunu doğrula
         Assert.assertTrue(alloverCommercePage.payAtTheDoorButton.isSelected());
-
-    alloverCommercePage.eftButton.click();
-    ReusableMethods.bekle(2);
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverCommercePage.eftButton);
+        ReusableMethods.bekle(2);
 
 
 
@@ -121,14 +138,19 @@ public class TC01_Search_AddToCartPaymentTest {
 
 
         //  Click on "Place order" button
+        ReusableMethods.scroll(alloverCommercePage.placeOrderButton);
         ReusableMethods.click(alloverCommercePage.placeOrderButton);
 
-        ReusableMethods.bekle(2);
+        ReusableMethods.bekle(4);
 
 
         //  Verify the message of "Thank you . Your order has been received"
+
         Assert.assertTrue(alloverCommercePage.orderSuccessMessage.isDisplayed());
-        ReusableMethods.tumSayfaResmi("OdemeBasarılıMesajı");
+        ReusableMethods.visibleWait(alloverCommercePage.orderSuccessMessage,20);
+        ReusableMethods.bekle(4);
+        ReusableMethods.tumSayfaResmi("OrderMesajı");
+        ReusableMethods.bekle(2);
 
 
 

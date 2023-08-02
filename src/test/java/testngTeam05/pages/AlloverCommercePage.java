@@ -271,7 +271,7 @@ public class AlloverCommercePage {
 
 
     @FindBy(xpath = "//span[.='Sign Out']")
-    public static WebElement signOut;
+    public static WebElement signOut;//Siteye girdiğimizde signin signout oluyor
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public static WebElement myAccount;
@@ -304,7 +304,7 @@ public class AlloverCommercePage {
     public WebElement saveChangesButton;
 
     @FindBy(xpath = "(//h4)[2]")
-    public WebElement accountDetailsSayfaYazısı;
+    public WebElement accountDetailsSayfaYazısı;//Account Details Sayfası başlığı
 
 
     @FindBy(xpath = "//input[@id='billing_first_name']")
@@ -315,7 +315,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='billing_address_1']")
     public WebElement billingAddress;
 
-    @FindBy(xpath = "(//h4)[2]")
+    @FindBy(xpath = "//h4[text()='Payment Methods']")
     public WebElement paymentMethods;
 
     @FindBy(xpath = "//input[@id='payment_method_cod']")
@@ -327,11 +327,20 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@id='payment_method_bacs']")
     public WebElement orderSuccessMessage;//ürün satın alma işleminin başarılı oldugunun mesajı
 
+    @FindBy(xpath = "//p[text()='WELCOME TO ALLOVER COMMERCE...']")
+    public WebElement welcomeToAlloverCommerceYazısı;//Sayfaya girdiğimizi doğrulamak için Siteye hoş geldiniz yazısı
+   //arama sonuçlarının sonuncusu
 
 
+    @FindBy(xpath="(//*[@class='product-wrap'])[2]")
+    public WebElement ikinciUrun;
+
+    @FindBy(xpath="(//select)[1]")
+    public WebElement sortBy;
 
 
-
+    @FindBy(xpath="//button[@name='add-to-cart']")
+    public WebElement sepeteEkle;
 
 
 
@@ -1303,8 +1312,8 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
     public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
 
-    @FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
-    public WebElement addToCart;//urunun sag tarafındaki addtocartbutton
+    @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
+    public WebElement addToCart;//urunun altında yer alan add to chart
 
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
