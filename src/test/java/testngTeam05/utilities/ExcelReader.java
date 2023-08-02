@@ -6,6 +6,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ExcelReader {
@@ -14,7 +16,7 @@ public class ExcelReader {
     public ExcelReader(String dosyaYolu, String sayfaIsmi)  {//constructor
 
         try {
-           FileInputStream fis = new FileInputStream(dosyaYolu);
+            FileInputStream fis = new FileInputStream(dosyaYolu);
             workbook= WorkbookFactory.create(fis);
             sheet=workbook.getSheet(sayfaIsmi);
 
@@ -34,4 +36,20 @@ public class ExcelReader {
     public int rowCount(){
         return sheet.getLastRowNum();
     }
+    //Excel'e yazi yazma methodu silmeyin arkadaslar
+    public void writeCell(int satir,int sutun,String dosyaYolu, String value){
+        Cell cell = sheet.getRow(satir).createCell(sutun);
+        cell.setCellValue(value);
+
+        try {
+            FileOutputStream fos = new FileOutputStream(dosyaYolu);
+            workbook.write(fos);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Dosya bulunamadı: " + dosyaYolu, e);
+        } catch (IOException e) {
+            throw new RuntimeException("Dosyaya yazarken bir hata oluştu.", e);
+        }
+    }
+
 }
