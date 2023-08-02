@@ -132,9 +132,141 @@ public class AlloverCommercePage {
 
     //mustafa dalkılıç
 
-    //*[@id='username']
-    @FindBy(xpath = "//*[@id='username']")
-    public WebElement usernamemd;
+
+
+    @FindBy(xpath = "//span[text()='Sign In']")
+    public WebElement signin;
+
+    @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
+    public static WebElement adress;
+
+    @FindBy(xpath = "(//*[@class='edit btn btn-link btn-primary btn-underline mb-4'])[1]")
+
+    public static WebElement addBilling;
+
+
+    @FindBy(xpath = "//*[@id='billing_first_name']")
+    public WebElement firstName;
+
+
+    @FindBy(css = "#billing_last_name")
+    public WebElement lastName;
+
+    @FindBy(xpath = "//*[@id='billing_city']")
+    public WebElement townCityMd;
+
+    @FindBy(xpath="(//span[@class='select2-selection__arrow'])[1]")
+    public WebElement countryRegion;
+
+    @FindBy(css=".select2-search__field")
+    public WebElement inputCountry;
+
+    @FindBy(css="#billing_company")
+    public WebElement companyName;
+
+    @FindBy(css="#billing_address_1")
+    public WebElement streetAdressMd;
+
+    @FindBy(css="#billing_address_2")
+    public WebElement apartmentAdress;
+
+    @FindBy(xpath="//button[.='Save address']")
+    public WebElement submitBtn;
+
+    @FindBy(css="#billing_phone")
+    public WebElement phoneMd;
+
+    @FindBy(css="#billing_postcode")
+    public WebElement zipCode;
+
+    @FindBy(css="#billing_citye")
+    public WebElement city;
+
+    @FindBy(xpath="(//span[@class='select2-selection__arrow'])[2]")
+    public WebElement province;
+
+    @FindBy(css=".select2-search__field")
+    public WebElement provinceInput;
+
+    @FindBy(css = ".woocommerce-notices-wrapper")
+    public WebElement verifyMassage;
+
+    @FindBy(xpath = "(//*[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
+    public WebElement addShipping;
+
+    @FindBy(css = "#shipping_first_name")
+    public WebElement firstNameShipping;
+
+    @FindBy(css = "#shipping_last_name")
+    public WebElement lastNameShipping;
+
+    @FindBy(css = "#shipping_company")
+    public WebElement companyNameShipping;
+
+    @FindBy(xpath = "(//*[@class='select2-selection__arrow'])[1]")
+    public WebElement countryShipping;
+
+    @FindBy(css = ".select2-search__field")
+    public WebElement inputCountryShipping;
+
+    @FindBy(xpath = "//*[@id='shipping_address_1']")
+    public WebElement streetAddressShipping;
+
+    @FindBy(xpath = "//*[@id='shipping_address_2']")
+    public WebElement streetAddressShippingOptional;
+
+    @FindBy(xpath = "//*[@id='shipping_postcode']")
+    public WebElement postZıpCodeShipping;
+
+    @FindBy(xpath = "//*[@id='shipping_city']")
+    public WebElement townCityShipping;
+
+    @FindBy(xpath = "(//*[@class='select2-selection__arrow'])[2]")
+    public WebElement provinceShipping;
+
+    @FindBy(xpath = "//*[@class='select2-search__field']")
+    public WebElement inputProvinceShipping;
+
+    @FindBy(xpath = "//*[@class='btn btn-dark btn-rounded btn-sm']")
+    public WebElement submitButtonShipping;
+
+    @FindBy(css = "[name=login]")
+    public WebElement signButton;
+
+    @FindBy(css = "[id=username]")
+    public WebElement signInUserNameEmail;
+
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signouut;
+
+    @FindBy(xpath = "//*[@id='menu-item-1079']")
+    public static WebElement myAccountt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -167,6 +299,7 @@ public class AlloverCommercePage {
 
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
     public static WebElement address;
+
 
 
 
@@ -286,16 +419,26 @@ public class AlloverCommercePage {
     public WebElement ilkSayfapassword; //--> ilk sayfadaki şifre alanı
 
 
+
+
+
+
     @FindBy(xpath = "//span[.='Sign Out']")
     public static WebElement signOut;//Siteye girdiğimizde signin signout oluyor
+
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public static WebElement myAccount;
 
 
-
     @FindBy(xpath = "//a[.='Log out']")//-->signout tıkladığımızda sayfada gelen log out yazısı
     public WebElement logOut;
+
+
+
+
+
+
 
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[4]")
     public WebElement accountDetailsMenu;

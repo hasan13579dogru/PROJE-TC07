@@ -44,8 +44,8 @@ public class ReusableMethods {
     }
 
     //Alert getText()
-    public static void alertText() {
-        Driver.getDriver().switchTo().alert().getText();
+    public static String alertText() {
+        return Driver.getDriver().switchTo().alert().getText();
     }
 
     //Alert promptBox
@@ -203,7 +203,15 @@ public class ReusableMethods {
         }
 
         return username.toString();
+
     }
+<<<<<<< HEAD
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+=======
 
     //Resim yüklemek için Robot methodu
     public static void uploadFilePath(String filePath) {
@@ -322,5 +330,6 @@ public class ReusableMethods {
     }
 
 
+>>>>>>> master
 }
 
