@@ -72,10 +72,14 @@ public class TC_01 {
 
         //"Açılan my account sayfasında adress Menüsünün görünür oldugunu doğrular"
         ReusableMethods.bekle(3);
-        Assert.assertTrue(alloverPage.adress.isDisplayed());
+        Assert.assertTrue(alloverPage.address.isDisplayed());
+
 
        // Click on “Addresses" button
         AlloverCommercePage.adress.click();
+
+        AlloverCommercePage.address.click();
+
 
         //Click on “ADD” button below “Billing Address"
 
@@ -98,8 +102,8 @@ public class TC_01 {
         alloverPage.inputCountry.sendKeys(ConfigReader.getProperty("CountryRegion"),Keys.ENTER);
 
         //Enter the "Street Adress" field
-        alloverPage.streetAdress.clear();
-        alloverPage.streetAdress.sendKeys(ConfigReader.getProperty("StreetAddress"));
+        alloverPage.streetAdressMd.clear();
+        alloverPage.streetAdressMd.sendKeys(ConfigReader.getProperty("StreetAddress"));
 
         //Enter the "Apertment Adress" field
         alloverPage.apartmentAdress.clear();
@@ -113,8 +117,8 @@ public class TC_01 {
         alloverPage.zipCode.sendKeys(ConfigReader.getProperty("ZIPCode"));
 
         //Enter the "towncity" field
-        alloverPage.townCity.clear();
-        alloverPage.townCity.sendKeys(ConfigReader.getProperty("TownCity"));
+        alloverPage.townCityMd.clear();
+        alloverPage.townCityMd.sendKeys(ConfigReader.getProperty("TownCity"));
 
         ReusableMethods.scrollEnd();
         ReusableMethods.bekle(5);
@@ -123,8 +127,8 @@ public class TC_01 {
         //  Select Province
         alloverPage.province.click();
         alloverPage.provinceInput.sendKeys(ConfigReader.getProperty("Province"),Keys.ENTER);
-        alloverPage.phone.clear();
-        alloverPage.phone.sendKeys(ConfigReader.getProperty("Phone"));
+        alloverPage.phoneMd.clear();
+        alloverPage.phoneMd.sendKeys(ConfigReader.getProperty("Phone"));
 
         //Select submitButton
         ReusableMethods.clickWithJS(alloverPage.submitBtn);
