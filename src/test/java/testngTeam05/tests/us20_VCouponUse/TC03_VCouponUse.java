@@ -93,7 +93,7 @@ public class TC03_VCouponUse {
 //      14-Go to myaccount
         ReusableMethods.scrollEnd();
         ReusableMethods.click(alloversPage.myAccountm);
-//       15-Verify account id vendor
+//       15-Verify account  vendor is vissible
         Assert.assertTrue(alloversPage.storeManager.isEnabled());
         ReusableMethods.tumSayfaResmi("Vendor MyAccount page");
 //      16-click to order Verify product add the order
