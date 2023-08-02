@@ -29,6 +29,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         extentTest=extentReports.createTest("Extent Report","Test Raporu");
 
+
         //Kullanıcı https://allovercommerce.com sitesine gider
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         extentTest.info("allovercommerce sitesine gidildi");
@@ -171,5 +172,4 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
 
     }
-
 }

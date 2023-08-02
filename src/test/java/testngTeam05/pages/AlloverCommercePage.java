@@ -53,8 +53,15 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement registersignOut;
 
+
+    //wish list  //div[@class="yith-wcwl-add-button"] 
+
     @FindBy(xpath = "//a[@class='showlogin']")
     public WebElement pleaseLoginYazisi;
+
+
+    @FindBy(xpath = "(//p[@class='elementor-heading-title elementor-size-default'])[1]")
+    public WebElement anasayfaTitle;
 
 
 
@@ -132,7 +139,6 @@ public class AlloverCommercePage {
 
 
 
-
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement MyAccountmd;
 
@@ -149,8 +155,18 @@ public class AlloverCommercePage {
 
 
 
+
+
+
+
+
+
+
+
+
+
     @FindBy(xpath= "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
-    public static WebElement adress;
+    public static WebElement address;
 
 
 
@@ -271,7 +287,7 @@ public class AlloverCommercePage {
 
 
     @FindBy(xpath = "//span[.='Sign Out']")
-    public static WebElement signOut;
+    public static WebElement signOut;//Siteye girdiğimizde signin signout oluyor
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
     public static WebElement myAccount;
@@ -304,7 +320,7 @@ public class AlloverCommercePage {
     public WebElement saveChangesButton;
 
     @FindBy(xpath = "(//h4)[2]")
-    public WebElement accountDetailsSayfaYazısı;
+    public WebElement accountDetailsSayfaYazısı;//Account Details Sayfası başlığı
 
 
     @FindBy(xpath = "//input[@id='billing_first_name']")
@@ -315,7 +331,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@name='billing_address_1']")
     public WebElement billingAddress;
 
-    @FindBy(xpath = "(//h4)[2]")
+    @FindBy(xpath = "//h4[text()='Payment Methods']")
     public WebElement paymentMethods;
 
     @FindBy(xpath = "//input[@id='payment_method_cod']")
@@ -327,11 +343,20 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//input[@id='payment_method_bacs']")
     public WebElement orderSuccessMessage;//ürün satın alma işleminin başarılı oldugunun mesajı
 
+    @FindBy(xpath = "//p[text()='WELCOME TO ALLOVER COMMERCE...']")
+    public WebElement welcomeToAlloverCommerceYazısı;//Sayfaya girdiğimizi doğrulamak için Siteye hoş geldiniz yazısı
+   //arama sonuçlarının sonuncusu
 
 
+    @FindBy(xpath="(//*[@class='product-wrap'])[2]")
+    public WebElement ikinciUrun;
+
+    @FindBy(xpath="(//select)[1]")
+    public WebElement sortBy;
 
 
-
+    @FindBy(xpath="//button[@name='add-to-cart']")
+    public WebElement sepeteEkle;
 
 
 
@@ -368,6 +393,45 @@ public class AlloverCommercePage {
 
 
 //Salih
+@FindBy(xpath = "(//*[.='Become a Vendor'])[2]")
+public WebElement becomeAVendor;
+@FindBy(xpath = "//*[@class='color cetc']")
+public WebElement copyFakeMailSG; //fake mail sitesindeki maili kopyalar
+@FindBy(xpath = "//*[@id='user_email']")
+public WebElement userNameEmailAddressSG;
+@FindBy(xpath = "(//*[@type='text'])[2]")
+public WebElement verificationCodeSG;
+@FindBy(xpath = "//*[@class='wcfm-message email_verification_message wcfm-success']")
+public WebElement verificationYazisi;
+@FindBy(xpath = "(//h2)[1]")
+public WebElement vendorYazisiBosTiklama;
+@FindBy(xpath = "(//*[@class='from'])[1]")
+public WebElement fMailPasswordButton;
+@FindBy(tagName = "b")//fakemail sitesinden verifaction şifresini alma
+public WebElement fmailVerifacitionAlma;
+@FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
+public WebElement vendorverificationCodeSG; //vendor sayfasindaki verification code'un girilecegi
+@FindBy(id = "passoword")
+public WebElement vendorPasswordSG; //vendor sayfasindaki password
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAlloverCommerceSG; //sayfaya başarılı giriş yazısı
+    @FindBy(xpath = "//*[@class='wcfm-message wcfm-error']")
+    public WebElement alreaddyExistYazisiSG;
+    @FindBy(xpath = "//*[@title='Edit this email address']")
+    public WebElement fmailEditButton;
+    @FindBy(xpath = "//*[@name='emailInput']")
+    public WebElement fmailEditButtonAlan;
+    @FindBy(xpath = "//*[@title='Confirm']")
+    public WebElement fmailconfirmButton;
+    @FindBy(id = "password_strength")
+    public WebElement tooShort;
+
+
+
+
+
+
+
 
 
 
@@ -470,6 +534,45 @@ public class AlloverCommercePage {
 
 
 //enes
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads\"]")
+    public WebElement Downloads;//My account page
+    @FindBy(xpath = "//*[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address']")
+    public WebElement Addresses;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account\"]")
+    public WebElement Accountdetails;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist\"]")
+    public WebElement Wishlist;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--support-tickets\"]")
+    public WebElement SupportTickets;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--followings\"]")
+    public WebElement Followings;//My account page
+    @FindBy(xpath = "//*[@class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout\"]")
+    public WebElement Logout;//My account page
+    @FindBy(xpath = "//*[@class=\"icon-box-icon text-grey mr-2\"]")
+    public WebElement ikonAddresses;
+    @FindBy(xpath = "(//*[@class=\"edit btn btn-link btn-primary btn-underline mb-4\"])[1]")
+    public WebElement billingAddressAltindakiAdd;
+    @FindBy(xpath = "//*[text()='Billing address']")
+    public WebElement BillingaddressYazisi;
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement firstNameBillingAddress;
+    @FindBy(xpath = "//input[@id='billing_last_name']")
+    public WebElement lastNameBillingAddress;
+    @FindBy(xpath = "//input[@id='billing_email']")
+    public WebElement emailBillingAddress;
+    @FindBy(xpath = "//*[@id=\"billing_address_1\"]")
+    public WebElement streetAddressBillingAddress;
+    @FindBy(xpath = "//*[@id=\"billing_city\"]")
+    public WebElement townCityBillingAddress;
+   @FindBy(xpath = "//*[@id=\"billing_postcode\"]")
+   public WebElement postCodeZipBilling;
+   @FindBy(xpath = "//*[@id=\"billing_phone\"]")
+   public WebElement phoneBilling;
+
+
+
+
+
 
 
 
@@ -631,8 +734,6 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
     public WebElement ShippingSuccesText; // vendor-adress-shipping-add-saveSucces
-
-
 
 
 
@@ -1214,7 +1315,7 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
     public WebElement verificationCode;//vendor sayfasindaki verification code'un girilecegi
 
-    @FindBy(xpath = "//*[text()='Not right now']")
+    @FindBy(xpath = "//div//p[3]//a[2]")
     public WebElement WelcometoAlloverCommerce;//vendor olarak kayit olduktan sonraki "not now butonu secmek icin"
 
     @FindBy(xpath = "//*[@id='menu-item-1079']")
@@ -1286,35 +1387,59 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[text()='Order details']")
     public WebElement orderDetails;
 
+    @FindBy(xpath = "//*[text()='Billing First name']")
+    public WebElement billingFirstNameOrder;
 
+    @FindBy(xpath = "//*[text()='Billing Last name']")
+    public WebElement billingLastName;
 
+    @FindBy(xpath = "//*[text()='Billing Street address']")
+    public WebElement billingStreetAdress;
 
+    @FindBy(xpath = "//*[text()='Billing ZIP Code']")
+    public WebElement billingZipCode;
 
+    @FindBy(xpath = "//*[text()='Billing Phone']")
+    public WebElement billingPhone;
+//////////////////////////////////US2//////////////////////////
+    @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
+    public WebElement coupons;
 
+    @FindBy(xpath = "//*[@class='wcfm_sub_menu_items wcfm_sub_menu_items_coupon_manage moz_class']")
+    public WebElement couponsAddNew;
 
+    @FindBy(xpath = "//*[text()='Welcome to Allover Commerce!']")
+    public WebElement welcomeToAlloverCommersYazisi;
 
+    @FindBy(xpath = "//*[@class='wcfm-text wcfm_ele'][1]")
+    public WebElement codeAdd;
 
+    @FindBy(xpath = "//*[@id='discount_type']")
+    public List<WebElement> discountType;
 
+    @FindBy(xpath = "//select[1]")
+    public WebElement ddmDiscountType;
 
+    @FindBy(xpath = "//*[@id='coupon_amount']")
+    public WebElement couponAmonut;
 
+    @FindBy(xpath = "//*[@class='ui-datepicker-next ui-corner-all']")
+    public WebElement nextMonth;
 
+    @FindBy(xpath = "//*[@id='free_shipping']")
+    public WebElement freeShipping;
 
+    @FindBy(xpath = "//*[@id='show_on_store']")
+    public WebElement showOnStore;
 
+    @FindBy(xpath = "//*[@id='wcfm_coupon_manager_submit_button']")
+    public WebElement addButtonSubmit;
 
+    @FindBy(xpath = "//*[text()='Edit Coupon']")
+    public WebElement editCoupon;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@id='description']")
+    public WebElement description;
 
 
 
@@ -1803,14 +1928,99 @@ public class AlloverCommercePage {
     @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
     public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
 
-    @FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
-    public WebElement addToCart;//urunun sag tarafındaki addtocartbutton
+    @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
+    public WebElement addToCart;//urunun altında yer alan add to chart
 
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
 
     @FindBy(xpath = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2188,8 +2398,8 @@ public class AlloverCommercePage {
 
 
     //murat
-//    @FindBy(xpath = "//input[@type='text']")
-//    public  WebElement userName;
+    @FindBy(xpath = "//input[@type='text']")
+    public  WebElement username;
 
     @FindBy(xpath = "//*[@type='search']")
     public  WebElement search;
@@ -2267,10 +2477,10 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//*[@class='woocommerce-Price-amount amount'])[4]")
     public WebElement subtotalPricePayBill;//indirimsiz fiyat
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/\"]")
-    public WebElement myAccountmurat ;
+    public WebElement myAccountm ;
 
-    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
-    public WebElement storeManagermurat ;
+  //  @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/store-manager/\"]")
+   // public WebElement storeManager ;
     @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
     public WebElement orderInMyaccount  ;//myaccount taki order butonu
     @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")
