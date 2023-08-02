@@ -20,18 +20,18 @@ public class TC_01_registerLogin {
     "I agree to the privacy policy" tıklanmadan kayıt olunmamalı
     SIGN UP butonu tıklanabilir olmalı (Username, Email address ve Password girilmeden SIGN UP tıklandığında kayıt işlemi gerçekleşmemeli)
      */
+
+    AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
+    Random random = new Random();
     @Test
     public void test01() {
 
-        AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
-
-
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         String mainPageHandle = Driver.getDriver().getWindowHandle();
+        Assert.assertTrue(alloverCommercePage.anasayfaTitle.isDisplayed());
 
         alloverCommercePage.registerButton.click();
 
-        Random random = new Random();
         int rndm = random.nextInt();
 
         alloverCommercePage.userName.sendKeys("Umran." + rndm);

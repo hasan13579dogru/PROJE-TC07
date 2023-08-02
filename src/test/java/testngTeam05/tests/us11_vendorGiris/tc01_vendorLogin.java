@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
@@ -14,6 +15,7 @@ import testngTeam05.utilities.ReusableMethods;
 
 public class tc01_vendorLogin extends ExtentReport {
     Actions actions = new Actions(Driver.getDriver());
+    SoftAssert softAssert = new SoftAssert();
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
 
@@ -35,8 +37,8 @@ public class tc01_vendorLogin extends ExtentReport {
     alloverCommercePage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmailEn"),
             Keys.TAB, ConfigReader.getProperty("alloverVendorPasswordEn"));
     alloverCommercePage.signInButton.click();
+    softAssert.assertTrue(alloverCommercePage.signOut.isDisplayed());
     extentTest.info("Vendor kayitli olan username ve pw yi girdi ve sing in click yapildi");
-    Assert.assertTrue(alloverCommercePage.signOut.isDisplayed());
 
 
     //My account a tiklar
@@ -49,24 +51,69 @@ public class tc01_vendorLogin extends ExtentReport {
 
     //Dashboard altindaki sekmelerin gorunurlugunu test et
     js.executeScript("window.scrollTo(0,400)");
+    softAssert.assertTrue(alloverCommercePage.storeManager.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.myAccountOrders.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Downloads.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Addresses.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Accountdetails.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Wishlist.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.SupportTickets.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Followings.isDisplayed());
+    softAssert.assertTrue(alloverCommercePage.Logout.isDisplayed());
+    extentTest.info("Dashboard altinda yer alan buttonlarin gorunurlugu test edildi");
+
+    //Dashboard altindaki menulere girilebilmeli
+  alloverCommercePage.storeManager.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.myAccountOrders.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Downloads.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Addresses.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Accountdetails.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Wishlist.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.SupportTickets.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Followings.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  alloverCommercePage.Logout.click();
+  System.out.println(Driver.getDriver().getTitle());
+  ReusableMethods.bekle(2);
+  Driver.getDriver().navigate().back();
+
+  extentTest.info("My Account'da Dashboard altindaki tum sayfalar acildi");
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+softAssert.assertAll();
 
 }
 }

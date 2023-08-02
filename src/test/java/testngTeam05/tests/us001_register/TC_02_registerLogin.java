@@ -12,18 +12,25 @@ import testngTeam05.utilities.ReusableMethods;
 import java.util.Random;
 
 public class TC_02_registerLogin {
+    /*
+   Username girilmeli (Küçük harf, büyük harf, rakam ve özel karakter içerebilmeli)
+   e-mail adresi girilmeli (abc@abc.com formatında e mail adresi olmalı)
+   Password girilebilmelidir. (Parola en az 12 karakter uzunluğunda olmalıdır. Daha güçlü hale getirmek için büyük ve küçük harfler, sayılar ve ! " ? $ % ^ & kullanılmalıdır. )
+   "I agree to the privacy policy" tıklanmadan kayıt olunmamalı
+   SIGN UP butonu tıklanabilir olmalı (Username, Email address ve Password girilmeden SIGN UP tıklandığında kayıt işlemi gerçekleşmemeli)
+    */
+    AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
+    Random random = new Random();
     @Test
     public void test02() {
-
-        AlloverCommercePage alloverCommercePage = new AlloverCommercePage();
 
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         String mainPageHandle = Driver.getDriver().getWindowHandle();
+        Assert.assertTrue(alloverCommercePage.anasayfaTitle.isDisplayed());
 
         alloverCommercePage.registerButton.click();
 
-        Random random = new Random();
         int rndm = random.nextInt();
 
         alloverCommercePage.userName.sendKeys("Umran." + rndm);

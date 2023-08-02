@@ -2,6 +2,7 @@ package testngTeam05.utilities;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -38,7 +39,7 @@ public abstract class ExtentReport {
         } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
             extentTest.skip("Test Case is skipped: " + result.getName());
         }
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
     @AfterTest(alwaysRun = true)
