@@ -19,10 +19,10 @@ public class deneme extends ExtentReport {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     AlloverCommercePage alloverPage;
     Select select;
-    @BeforeMethod
+    @BeforeClass
     public void before() {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
-        AlloverCommercePage alloverPage = new AlloverCommercePage();
+        alloverPage = new AlloverCommercePage();
 
         //Vendor https://allovercommerce.com/ adresine git
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
@@ -31,7 +31,7 @@ public class deneme extends ExtentReport {
         // sign in butonuna tıklayarak kayıtlı Vendor email adresi ve şifresiyle giriş yap
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
-                ConfigReader.getProperty("alloverVendorSifre"));
+                                                  ConfigReader.getProperty("alloverVendorSifre"));
         alloverPage.signInButton.click();
         ReusableMethods.bekle(5);
         extentTest.info("kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
@@ -108,7 +108,6 @@ public class deneme extends ExtentReport {
         extentTest.info("Inventory butonuna tıklandı");
 
         //SKU değerini gir girildi ve doğrulandı
-
         alloverPage.sku.sendKeys("Team05");
         System.out.println("alloverPage.sku.getAttribute(\"value\") = " + alloverPage.sku.getAttribute("value"));
         Assert.assertEquals(alloverPage.sku.getAttribute("value"),"Team05");
@@ -131,7 +130,7 @@ public class deneme extends ExtentReport {
         extentTest.info("Sold individually checkbox'a tıklandı ve doğrulandı");
     }
 
-    @Test(priority = 1)
+    @Test(dependsOnMethods = "testCase02" ,priority = 1)
     public void testCase03() {
 
         //Sayfanın altında yer alan Shipping butonuna tıkla
@@ -167,7 +166,7 @@ public class deneme extends ExtentReport {
         extentTest.info("Processing Time Ddm'den süre seçildi ve doğrulandı");
     }
 
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "testCase03" ,priority = 2)
     public void testCase04() {
         //Sayfanın altında yer alan "Attributes" butonuna tıkla
         ReusableMethods.click(alloverPage.attributes);

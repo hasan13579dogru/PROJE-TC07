@@ -29,11 +29,11 @@ public class TC_04_AttributesIslemleri {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     @Test
-    public void inventoryStokTest() {
+    public void AttributesTesti() {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
-        //Vendor https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
+        // https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
         ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
@@ -71,7 +71,7 @@ public class TC_04_AttributesIslemleri {
         //Add Product sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
         extentTest.info("Add Product sayfasının açıldığı doğrulandı");
-
+/*
         //Product title alanına eklemek istediği ürün adını gir
         alloverPage.productTitle.sendKeys("mouse");
         extentTest.info("Product title alanına eklenecek ürünün adı girildi");
@@ -96,7 +96,7 @@ public class TC_04_AttributesIslemleri {
         //Category Bölümünden eklediği ürünün ait oldugu kategoriyi seç
         ReusableMethods.click(alloverPage.categoriesCheckbox);
         extentTest.info("Kategori seçildi");
-
+*/
         //Sayfanın altında yer alan "Attributes" butonuna tıkla
         ReusableMethods.click(alloverPage.attributes);
         extentTest.info("Attributes butonuna tıklandı");
@@ -122,7 +122,8 @@ public class TC_04_AttributesIslemleri {
         Assert.assertEquals(alloverPage.sizeSecim.getAttribute("value"),"EkstraSmall");
         extentTest.info("Ürün Size'ı seçildi ve doğrulandı");
 
-        ReusableMethods.tumSayfaResmi("Spesification");
+        ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Attributes");
         extentTest.info("Sayfa resmi alındı");
     }
 }

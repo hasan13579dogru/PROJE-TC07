@@ -205,6 +205,29 @@ public class ReusableMethods {
         return username.toString();
     }
 
+    //Resim yüklemek için Robot methodu
+    public static void uploadFilePath(String filePath) {
+        try {
+            bekle(3);
+            StringSelection stringSelection = new StringSelection(filePath);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            bekle(3);
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+
+
 
 
 
@@ -237,6 +260,7 @@ public class ReusableMethods {
             } catch (AWTException e) {
                 throw new RuntimeException(e);
             }
+
         }
         public static void vendorSignIn () {
             Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
@@ -276,6 +300,16 @@ public class ReusableMethods {
         alloversPage.close.click();
     }
 
+    // Vendor olarak Sign In yapma methodu
+    public static void vendorSignIn(){
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        AlloverCommercePage alloverPage = new AlloverCommercePage();
+        alloverPage.signIn.click();
+        alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
+                ConfigReader.getProperty("alloverVendorSifre"));
+        alloverPage.signInButton.click();
+
+
     //Kupon girisi odeme sayfası
     public static void kuponGirisiodemeSayfasi(String kuponanahtari) {
         AlloverCommercePage alloversPage = new AlloverCommercePage();
@@ -284,6 +318,7 @@ public class ReusableMethods {
         alloversPage.applyCouponBillAdress.click();
         ReusableMethods.bekle(2);
         System.out.println(alloversPage.couponAlert.getText());
+
     }
 
 
