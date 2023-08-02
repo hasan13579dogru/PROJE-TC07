@@ -139,9 +139,18 @@ public class AlloverCommercePage {
 
 
 
-
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement MyAccountmd;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -384,13 +393,38 @@ public class AlloverCommercePage {
 
 
 //Salih
-
-
-
-
-
-
-
+@FindBy(xpath = "(//*[.='Become a Vendor'])[2]")
+public WebElement becomeAVendor;
+@FindBy(xpath = "//*[@class='color cetc']")
+public WebElement copyFakeMailSG; //fake mail sitesindeki maili kopyalar
+@FindBy(xpath = "//*[@id='user_email']")
+public WebElement userNameEmailAddressSG;
+@FindBy(xpath = "(//*[@type='text'])[2]")
+public WebElement verificationCodeSG;
+@FindBy(xpath = "//*[@class='wcfm-message email_verification_message wcfm-success']")
+public WebElement verificationYazisi;
+@FindBy(xpath = "(//h2)[1]")
+public WebElement vendorYazisiBosTiklama;
+@FindBy(xpath = "(//*[@class='from'])[1]")
+public WebElement fMailPasswordButton;
+@FindBy(tagName = "b")//fakemail sitesinden verifaction şifresini alma
+public WebElement fmailVerifacitionAlma;
+@FindBy(xpath = "//*[@name='wcfm_email_verified_input']")
+public WebElement vendorverificationCodeSG; //vendor sayfasindaki verification code'un girilecegi
+@FindBy(id = "passoword")
+public WebElement vendorPasswordSG; //vendor sayfasindaki password
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAlloverCommerceSG; //sayfaya başarılı giriş yazısı
+    @FindBy(xpath = "//*[@class='wcfm-message wcfm-error']")
+    public WebElement alreaddyExistYazisiSG;
+    @FindBy(xpath = "//*[@title='Edit this email address']")
+    public WebElement fmailEditButton;
+    @FindBy(xpath = "//*[@name='emailInput']")
+    public WebElement fmailEditButtonAlan;
+    @FindBy(xpath = "//*[@title='Confirm']")
+    public WebElement fmailconfirmButton;
+    @FindBy(id = "password_strength")
+    public WebElement tooShort;
 
 
 
@@ -700,8 +734,6 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
     public WebElement ShippingSuccesText; // vendor-adress-shipping-add-saveSucces
-
-
 
 
 
@@ -1875,6 +1907,8 @@ public class AlloverCommercePage {
 
 
 
+
+
     //hasan
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
     public WebElement searchButton;//ana sayfanın en ustundeki
@@ -1902,6 +1936,91 @@ public class AlloverCommercePage {
 
     @FindBy(xpath = "//input[@id='billing_first_name']")
     public WebElement billingFirstName;//BİLLİNG DETAİLS altındaki name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
