@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="C:/Users/LENOVO/IdeaProjects/testNGProjectTeam05/src/test/java/testngTeam05/tests/us005_accountdetails">
+      <packages>
+          <package name="testngTeam05.tests.us005_accountdetails"></package>
+          <package name="testngTeam05.tests.us006_addtocart_payment"></package>
+      </packages>
+    </test>
+</suite>

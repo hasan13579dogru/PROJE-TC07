@@ -1,7 +1,7 @@
-package testngTeam05.tests.us015_VendorUrunDetay;
+package testngTeam05.tests.us016_VendorUrunEkle;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -11,25 +11,17 @@ import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
-
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
-
-public class TC_03_ShippingIslemleri extends ExtentReport {
+public class TC_01_VendorUrunEkleme extends ExtentReport{
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Select select;
-
     @Test
-    public void shippingTesti() {
+    public void test01() {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        //  ReusableMethods.vendorSignIn();
+        // ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
@@ -51,7 +43,7 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         extentTest.info("Store manager'a tıklandı");
 
         //Store Manager sayfasının açıldığını doğrula
-        Assert.assertTrue(alloverPage.storeManagerBaslik.isDisplayed());
+        Assert.assertTrue(alloverPage.storeManager.isDisplayed());
         extentTest.info("Store Manager sayfasının açıldığı doğrulandı");
 
         //Product butonunun görünür olduğunu doğrula
@@ -66,10 +58,43 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         //Add Product sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
         extentTest.info("Add Product sayfasının açıldığı doğrulandı");
-/*
-        //Product title alanına eklemek istediği ürün adını gir
+
+        //Simple Product'ın default olarak geldiğini doğrula
+        alloverPage.simpleProductDdm.getText();
+        Assert.assertEquals(alloverPage.simpleProductDdm.getText(),"Simple Product");
+        extentTest.info("Simple Product'ın default olarak geldiği doğrulandı");
+
+        //Vitrual kutucuğunun seçilebilir olduğunu doğrula
+        ReusableMethods.click(alloverPage.virtualCheckBox);
+        Assert.assertTrue(alloverPage.virtualCheckBox.isSelected());
+        alloverPage.virtualCheckBox.click();
+        extentTest.info("Vitrual kutucuğunun seçilebilir olduğu doğrulandı");
+
+        //Downloadable kutucuğunun seçilebilir olduğunu doğrula
+        ReusableMethods.click(alloverPage.downloadableCheckBox);
+        Assert.assertTrue(alloverPage.downloadableCheckBox.isSelected());
+        alloverPage.downloadableCheckBox.click();
+        extentTest.info("Downloadable kutucuğunun seçilebilir olduğu doğrulandı");
+
+        //Price alanına bir değer yaz ve yazılabildiğini doğrula
+        alloverPage.prise.sendKeys("50");
+        Assert.assertEquals(alloverPage.prise.getAttribute("value"),"50");
+        extentTest.info("Price alanına bir değer yazıldı ve yazılabildiğini doğrulandı");
+
+        //Sale Price alanına bir değer yaz ve yazılabildiğini doğrula
+        alloverPage.salePrise.sendKeys("60");
+        Assert.assertEquals(alloverPage.salePrise.getAttribute("value"),"60");
+        extentTest.info("Sale Price alanına bir değer yazıldı ve yazılabildiğini doğrulandı");
+
+        //Product Title alanına ürün başlığını yaz ve yazılabildiğini doğrula
         alloverPage.productTitle.sendKeys("mouse");
-        extentTest.info("Product title alanına eklenecek ürünün adı girildi");
+        Assert.assertEquals(alloverPage.productTitle.getAttribute("value"),"mouse");
+        extentTest.info("Product Title alanına ürün başlığı yazıldı ve yazılabildiği doğrulandı");
+
+        //Category Bölümünden ürünün ait oldugu kategoriyi seç ve seçildiğini doğrula
+        ReusableMethods.click(alloverPage.categoriesCheckbox);
+        Assert.assertTrue(alloverPage.categoriesCheckbox.isSelected());
+        extentTest.info("Kategori seçildi ve seçildiğini doğrulandı");
 
         //Sag tarafta yer alan feature image bölümünden ürünün resmini ekle
         alloverPage.featureImage.click();
@@ -80,7 +105,7 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         //select'e tıkla
         alloverPage.selectFeature.click();
         ReusableMethods.bekle(3);
-        extentTest.info("feature image bölümünden ürünün resmieklendi");
+        extentTest.info("feature image bölümünden ürünün resmi eklendi");
 
         //Sag tarafta yer alan galeri image bölümünden ürünün resmini ekle
         ReusableMethods.click(alloverPage.galeryImage);
@@ -88,41 +113,21 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         alloverPage.addToGalery.click();
         extentTest.info("galeri image bölümünden ürünün resmini eklendi");
 
-        //Category Bölümünden eklediği ürünün ait oldugu kategoriyi seç
-        ReusableMethods.click(alloverPage.categoriesCheckbox);
-        extentTest.info("Kategori seçildi");
-*/
-        //Sayfanın altında yer alan Shipping butonuna tıkla
-        ReusableMethods.click(alloverPage.shipping);
-        extentTest.info("Shipping butonuna tıklandı");
+        //"SUBMIT" butonuna tıkla
+        ReusableMethods.click(alloverPage.submitButton);
+        extentTest.info("SUBMIT butonuna tıklandı");
 
-        //Weight bölümüne ürün ağırlığını gir ve girildiğini doğrula
-        alloverPage.weight.sendKeys("0.200");
-        Assert.assertEquals(alloverPage.weight.getAttribute("value"),"0.200");
+        // Products butonuna tıkla
+        js.executeScript("arguments[0].click();", alloverPage.product);
+        ReusableMethods.click(alloverPage.product);
+        extentTest.info("Products butonuna tıklandı");
 
-        //Dimensions bölümünde length,width ve height değerlerini gir ve girildiğini doğrula
-        alloverPage.length.sendKeys("15");
-        Assert.assertEquals(alloverPage.length.getAttribute("value"),"15");
-        alloverPage.width.sendKeys("10");
-        Assert.assertEquals(alloverPage.width.getAttribute("value"),"10");
-        alloverPage.height.sendKeys("10");
-        Assert.assertEquals(alloverPage.height.getAttribute("value"),"10");
-        extentTest.info("Ürün ağırlık ve boyut bilgileri girildi ve doğrulandı");
-
-        //"Shipping Class" Ddm'den "No shipping class" seç ve seçildiğini doğrula
-        select=new Select(alloverPage.shippingClass);
-        ReusableMethods.ddmIndex(alloverPage.shippingClass,0);
-        Assert.assertEquals(alloverPage.shippingClass.getText(),"No shipping class");
-        extentTest.info("Shipping Class Ddm'den No shipping class seçildi ve doğrulandı");
-
-        //"Processing Time" Ddm'den süre seç ve seçildiğini doğrula
-        select = new Select(alloverPage.processingTime);
-        select.selectByIndex(4);
-        Assert.assertEquals(select.getFirstSelectedOption().getText(),"3-5 business days");
-        extentTest.info("Processing Time Ddm'den süre seçildi ve doğrulandı");
-
+        //Ürünün eklendiğini product kısmından doğrula
+        ReusableMethods.click(alloverPage.product);
+        Assert.assertTrue(alloverPage.productMouse.isDisplayed());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.bekle(2);
-        ReusableMethods.tumSayfaResmi("Shipping");
+        ReusableMethods.tumSayfaResmi("Eklenen Ürün");
         extentTest.info("Sayfa resmi alındı");
     }
 }

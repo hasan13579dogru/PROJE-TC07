@@ -19,6 +19,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
+    //Yeni sifre olusturmak icin -->Faker classtan sifre olusturdugumda karakter sayısı ve buyuk kucuk harf
+    //sartlarını sağlamadığı ıcın bu sekilde bir yontem kullandım.
     Faker faker=new Faker();
     String rastgeleKelime = faker.lorem().word();
     String rastgeleSayi = faker.number().digits(4);
@@ -29,9 +31,11 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         extentTest=extentReports.createTest("Extent Report","Test Raporu");
 
+
         //Kullanıcı https://allovercommerce.com sitesine gider
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         extentTest.info("allovercommerce sitesine gidildi");
+
 
         //signin butonuna tıklar
         AlloverCommercePage alloverCommercePage= new AlloverCommercePage();
@@ -42,7 +46,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //dataları excel tablosundan alacağız
         String dosyaYolu ="src/test/java/testngTeam05/musteriBilgileri.xlsx";
-     FileInputStream fis = new FileInputStream(dosyaYolu);
+        FileInputStream fis = new FileInputStream(dosyaYolu);
         Workbook workbook = WorkbookFactory.create(fis);
 
 
@@ -53,12 +57,17 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         extentTest.info("Kullanıcı adı ve şifre alanlarına kayıtlı username ve password girildi");
 
        //signin butonuna tıkla
-        alloverCommercePage.submitButton.click();
+
+        alloverCommercePage.signInButton.click();
+
+
+
         extentTest.info("Sayfaya giriş için signin e tıklandı");
         ReusableMethods.bekle(2);
 
         //sayfaya girdiğini doğrula
         Assert.assertTrue(alloverCommercePage.signOut.isDisplayed());
+        ReusableMethods.webElementResmi(alloverCommercePage.welcomeToAlloverCommerceYazısı);
         extentTest.pass("Sayfaya giriş yapıldığı doğrulandı");
 
         //My Account sayfasına git ve gittiğini doğrula(Signout tıkladığımızda my account sayfası geliyor)
@@ -75,14 +84,16 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         String actualTitle=Driver.getDriver().getTitle().toString();
         System.out.println(actualTitle);
        Assert.assertEquals(actualTitle,expectedTitle);
+        ReusableMethods.webElementResmi(alloverCommercePage.welcomeToAlloverCommerceYazısı);
        extentTest.pass("My Account sayfasının açıldığı doğrulandı");
 
        //Account details menüsüne tıkla
-        ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
+            ReusableMethods.click(alloverCommercePage.accountDetailsMenu);
         extentTest.info("Account details'e tıklandı");
 
         //Account details görünür oldugunu doğrula
         Assert.assertTrue(alloverCommercePage.accountDetailsSayfaYazısı.isDisplayed());
+        ReusableMethods.tumSayfaResmi("AccountDetailsGorunurlugu");
         extentTest.pass("Account details'in görünür oldugu doğrulandı");
 
         //action class ile sayfayı az aşağı indirip take screenshot al!!!!!!!!!!1
@@ -91,6 +102,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(2);
 
         //name,lastname,email,displayedname alanlarındaki bilgileri yeni bilgiler ile değiştir
+        //Bilgiler fakerClass ile girildi
         faker=new Faker();
         String newName=faker.name().firstName();
         System.out.println("newName = " + newName);
@@ -99,11 +111,13 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         String newDisplayedName= faker.name().username();
         System.out.println("newDisplayedName = " + newDisplayedName);
 
+        //Veri girilecek alanlar önce silindi sonra veri gönderildi
         alloverCommercePage.accountFirstName.clear();
         alloverCommercePage.accountLastName.clear();
         //email alanını değiştirmedim aynısını yazdırdım!!!!!!!!!!!!!!!!!
         alloverCommercePage.accountFirstName.sendKeys(newName,Keys.TAB,newLastName,
                 Keys.TAB,newDisplayedName,Keys.TAB,workbook.getSheet("Sayfa1").getRow(1).getCell(2).toString());
+        ReusableMethods.tumSayfaResmi("KullaniciBilgileri");
         extentTest.info("firstname,lastname,displayedname,email alanlarına değiştirilmek istenilen bilgiler girildi");
 
         //Biography alanına text gir(iframe içinde oldugu için geçiş yapmak gerekiyor
@@ -145,7 +159,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //"Account details changed successfully" mesajının görünür oldugunu doğrula
         //screenshot ekle
-
+/*
         //siteden signout ardından logout tıkla
         ReusableMethods.scrollHome();
         ReusableMethods.click(alloverCommercePage.signOut);
@@ -160,12 +174,11 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         ReusableMethods.bekle(1);
         ReusableMethods.click(alloverCommercePage.submitButton);
-        //giriş yapmak doğrulama için yeterli mi?????
+
 
         ReusableMethods.bekle(6);
 
-
+*/
 
     }
-
 }
