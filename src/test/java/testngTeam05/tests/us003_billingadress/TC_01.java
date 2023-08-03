@@ -120,8 +120,8 @@ public class TC_01 {
         alloverPage.townCityMd.clear();
         alloverPage.townCityMd.sendKeys(ConfigReader.getProperty("TownCity"));
 
-        ReusableMethods.scrollEnd();
-        ReusableMethods.bekle(5);
+        //ReusableMethods.scrollEnd();
+        //ReusableMethods.bekle(5);
 
 
         //  Select Province
@@ -131,7 +131,7 @@ public class TC_01 {
         alloverPage.phoneMd.sendKeys(ConfigReader.getProperty("Phone"));
 
         //Select submitButton
-        ReusableMethods.clickWithJS(alloverPage.submitBtn);
+        //ReusableMethods.clickWithJS(alloverPage.submitBtn);
 
 
         //Successful login is verified

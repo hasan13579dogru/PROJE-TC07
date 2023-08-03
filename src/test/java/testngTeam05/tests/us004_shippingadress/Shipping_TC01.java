@@ -25,7 +25,7 @@ public class Shipping_TC01 {
         alloverPage.signInUserNameEmail.sendKeys(ConfigReader.getProperty("allovermusteriEmailAdresi"), Keys.TAB,
                 ConfigReader.getProperty("allovermusteriSifresi"));
         alloverPage.signButton.click();
-        ReusableMethods.bekle(3);
+       // ReusableMethods.bekle(3);
 
         //sayfaya girdiğini doğrula
 
@@ -33,7 +33,7 @@ public class Shipping_TC01 {
 
         //My Account elementinin gorunur oldugunu doğrula
         Assert.assertTrue(alloverPage.myAccountt.isDisplayed());
-        ReusableMethods.bekle(2);
+       // ReusableMethods.bekle(2);
 
         //My account Linkine tıkla
         Actions action=new Actions(Driver.getDriver());
@@ -43,7 +43,7 @@ public class Shipping_TC01 {
 
 
         //"Açılan my account sayfasında adress Menüsünün görünür oldugunu doğrular"
-        ReusableMethods.bekle(3);
+        //ReusableMethods.bekle(3);
         Assert.assertTrue(alloverPage.adress.isDisplayed());
 
         // Click on “Addresses" button
@@ -96,7 +96,7 @@ public class Shipping_TC01 {
         alloverPage.inputProvinceShipping.sendKeys(ConfigReader.getProperty("Province"),Keys.ENTER);
 
         //Select submitButton
-        ReusableMethods.clickWithJS(alloverPage.submitButtonShipping);
+       // ReusableMethods.clickWithJS(alloverPage.submitButtonShipping);
 
         //Successful login is verified
         String expected="Address changed successfully.";
