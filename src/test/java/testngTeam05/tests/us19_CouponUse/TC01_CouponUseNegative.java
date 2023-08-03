@@ -12,10 +12,9 @@ import testngTeam05.utilities.ReusableMethods;
 
 public class TC01_CouponUseNegative extends ExtentReport{
 
-    @Test
-    public void test01() {
-    extentTest = extentReports.createTest("Extent Report", "Test Raporu");
 
+<<<<<<< HEAD
+=======
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         extentTest.info("allovercommerce sitesine gidildi");
@@ -68,7 +67,7 @@ public class TC01_CouponUseNegative extends ExtentReport{
 //       9-Enter "NOT USEFULL  for this shoping" coupon number  to "Enter coupon code here…"area.
 //       Click to Apply coupon. Verify "The minimum spend for this coupon is $5,000.00." text is vissible
         ReusableMethods.kuponGirisiSepetSayfasi("notUsefullCouponNumber");
-        Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is $5,000.00.");
+        Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is "+ConfigReader.getProperty("mincouponuse"));
         ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("user Enter NOT USEFULL  for this shoping coupon");
         extentTest.pass("sartları uygun olmayan  kupon kodu girildi ,uyarı dogrulandi");
@@ -84,4 +83,5 @@ public class TC01_CouponUseNegative extends ExtentReport{
 
 
     }
+>>>>>>> master
 }
