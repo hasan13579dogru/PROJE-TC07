@@ -3,6 +3,7 @@ package testngTeam05.tests.us008;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.Zip;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -24,7 +25,7 @@ public class TC01_wishList {
     //Pull down the page
     //Hover over Automatic crusher and click on wishlist button
     //Click wishlist
-    // Click on "Quick View" buttons one by one
+    // Click on "Quick View" buttons one by one And add to cart
     // go homePage
     //  Click wishlist(on the right side of the page)
     //Click checkout button
@@ -35,6 +36,9 @@ public class TC01_wishList {
 
     private WebDriver driver;
     Actions actions = new Actions(Driver.getDriver());
+//DropDown VisibleText
+
+        Select select ;
 
     @Test
     public void test01() {
@@ -60,61 +64,157 @@ public class TC01_wishList {
         ReusableMethods.bekle(2);
 
         //Pull down the page
-        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        //actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        //ReusableMethods.bekle(2);
+
+        //aramabutonuna automatic crusher,chess,Electric Rice Cooker,Electric Frying pan yazdır ve wishlist butonuna bas
+        alloverPage.searchButton.sendKeys("Automatic crusher",Keys.ENTER);
+        //ReusableMethods.bekle(2);
+        alloverPage.AutomaticcrusherWishbtn.click();
         ReusableMethods.bekle(2);
 
-    /*  //Hover over Automatic crusher and click on wishlist button
-        List<WebElement> productWishList=alloverPage.productWishList();
-        actions.moveToElement(alloverPage.automaticCrusher).perform();
-        alloverPage.wishListButton.click();
-        actions.moveToElement(alloverPage.chessButton).perform();
-        alloverPage.wishListButton.click();
-        actions.moveToElement(alloverPage.electricFryingPan).perform();
-        alloverPage.wishListButton.click();
+         alloverPage.searchButton.sendKeys("Electric Rice Cooker",Keys.ENTER);
+        alloverPage.electricRiceCookerwishbtn.click();
         ReusableMethods.bekle(2);
-        actions.moveToElement(alloverPage.electricRiceCooker).perform();
-        alloverPage.wishListButton.click();
+
+        /*alloverPage.searchButton.sendKeys("chess",Keys.ENTER);
+        alloverPage.chessWishButton.click();
         ReusableMethods.bekle(2);*/
 
-        List<WebElement> wishListElements = Collections.singletonList(driver.findElement(By.id("(//button[@class='btn btn-quickview" + " btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[1]")));
-        int i;
-        for (i = 0; i < wishListElements.size(); i++)
-            wishListElements = (List<WebElement>) driver.findElement(By.id("(//button[@class='btn btn-quickview +  btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[1]"));
-        wishListElements.get(i).click();
-        System.out.println(driver.getTitle());
-        driver.navigate().back();
 
+
+//verify the visibility of added items
+//Assert.assertTrue(alloverPage.addedItems.isDisplayed());
+
+   //Click "Quick View" and close
+
+        //actions.moveToElement(alloverPage.quickViewButton).click();
+        //ReusableMethods.bekle(2);
+       //alloverPage.electricRiceCookerButton.click();
+
+        //
+        alloverPage.wishListButton.click();
+        ReusableMethods.bekle(2);
+
+        //actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.click(alloverPage.quickViewButton1);
+        ReusableMethods.bekle(2);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        //alloverPage.quickViewKapatma.click();
+       ReusableMethods.bekle(2);
+
+       //
+       //alloverPage.wishListButton.click();
+        //ReusableMethods.bekle(2);
+       // actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+        ReusableMethods.click(alloverPage.quickViewButton2);
+        ReusableMethods.bekle(2);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        ReusableMethods.bekle(2);
+
+
+       //alloverPage.quickViewKapatma.click();
+
+
+       //Add the items to Cart(Electric Rice Cooker,Atomatic Crusher,Chess)
+       alloverPage.addToCartButton1.click();
+       ReusableMethods.bekle(2);
+
+        //alloverPage.addToCartButton2.click();
+        //ReusableMethods.bekle(2);
 
         //Click wishlist
-        alloverPage.wishListButton.click();
-        // Click on "Quick View" buttons one by one
-
 
         // go homePage
-        actions.sendKeys(Keys.HOME).perform();
+        //actions.sendKeys(Keys.HOME).perform();
         //  Click wishlist(on the right side of the page)
-        alloverPage.wishListButton.click();//anasayfa en ust
+        //alloverPage.wishListButton.click();//anasayfa en ust
+        //ReusableMethods.bekle(2);
 
         //Click the Cart button(on the right side of the page)
         alloverPage.cartButton.click();
+        ReusableMethods.bekle(2);
 
         //Click checkout button
         alloverPage.checkoutCart.click();//kasaya gitme
-        ReusableMethods.bekle(2);
+        ReusableMethods.bekle(3);
 
         //Verify that Billing Details is visible
         Assert.assertTrue(alloverPage.billingDetailsYazisi.isDisplayed());
 
+         ReusableMethods.bekle(2);
+        //Fill in the Billing Details Radio Buton
 
-        //Fill in the Billing Details
-        alloverPage.billingFirstName.sendKeys("firstName", Keys.ARROW_RIGHT, "lastName", Keys.TAB, "company",
-                Keys.TAB, "country", Keys.TAB, "House number and street name", Keys.TAB, "Town", Keys.ARROW_RIGHT, "state"
-                , Keys.TAB, "Zip Code", Keys.ARROW_RIGHT, Keys.TAB, "Email Address", Keys.ENTER);
+        alloverPage.billingFirstName.sendKeys(Keys.CONTROL + "a", Keys.CLEAR, Keys.CONTROL,
+                ConfigReader.getProperty("userUserName"),
+                Keys.TAB, ConfigReader.getProperty("userUserlastName"),
+                Keys.TAB,
+                Keys.TAB, ConfigReader.getProperty("userCountry"),
+                Keys.TAB, ConfigReader.getProperty("userStreetAdress"),
+                Keys.TAB, Keys.TAB, ConfigReader.getProperty("userZipCode"),
+                Keys.TAB, ConfigReader.getProperty("userCity"),
+                Keys.TAB, ConfigReader.getProperty("userProvince"),
+                Keys.TAB, ConfigReader.getProperty("userPhone"));
+        ReusableMethods.bekle(3);
 
-// Click( wire tranfer )button
+      /* alloverPage.billingFirstName.sendKeys("firstName",
+           Keys.TAB,"last name",
+        Keys.TAB,"company");
+       ReusableMethods.bekle(2);
+       actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+
+
+
+      alloverPage.houseNumberAndStreetName.click();
+
+
+       alloverPage.houseNumberAndStreetName.sendKeys("house number");
+       alloverPage.town.click();
+    alloverPage.town.sendKeys("Costa");
+
+        alloverPage.stateNameFlores.click();
+       /* Keys.TAB, "Zip Code",
+                Keys.TAB,"Phone",
+       Keys.TAB,"Email address",Keys.ENTER);*/
+
+       ReusableMethods.bekle(2);
+
+
+
+
+        /*  public static void alertprompt(String text) {
+            Driver.getDriver().switchTo().alert().sendKeys(text);
+        }
+
+        //DropDown VisibleText
+    /*
+        Select select2 = new Select(gun);
+        select2.selectByVisibleText("7")*/
+
+       // Click( wire tranfer )button
         alloverPage.wireTransferButton.click();
-//Click PLACE ORDER button
+       //Click PLACE ORDER button
         alloverPage.placeOrderButton.click();
+        //Assert.assertTrue(alloverPage.placeOrderButton.isDisplayed());
+
+
+        /*
+        DROPBOX VERI GIRIS
+        WebElement dropDownElement=driver.findElement(By.id("dropdown"));
+        Select selectObj= new Select(dropDownElement);
+
+        // select 3rd item at index 2,
+        selectObj.selectByIndex(2);
+
+        //select item with value attribute 1
+        selectObj.selectByValue("1");
+
+        //select by visible text
+        selectObj.selectByVisibleText("Option 2");*/
 
 
 
@@ -122,36 +222,47 @@ public class TC01_wishList {
 
 
 
-        /*  //Click on the search button
-        AlloverCommercePage alloverCommercePage=new AlloverCommercePage();
-        alloverCommercePage.searchButton.click();
-        ReusableMethods.bekle(2);
-        //type(print)  latest chair and chess on the search button
 
-        alloverCommercePage.productWishList.sendKeys("latest chair");
-
-
-        //Click on the entry button
-        alloverCommercePage.searchButton.click();
-        //Click on the wishlist button to select the items
-        alloverCommercePage.wishListButton.click();
-        //Verify that items are visible
-        Assert.assertTrue(alloverCommercePage.wishList.isDisplayed());
-        //CLİCK on the items pictures
-
-        //Click on the selected items to view the attributes of the items
-        alloverCommercePage.selectFeature.click();
-        //verify that the characteristics of the items appear
-      // Assert.assertTrue(alloverCommercePage.);
-        //Add the items to cart
-        alloverCommercePage.addToCart.click();
-        //Click on the checkout button
-       alloverCommercePage.checkoutCart.click();
-
-*/
 
     }
 
 
     }
 
+ /*  AYHAN
+        WebElement titleRadiButton= driver.findElement(By.xpath("//div[@id='uniform-id_gender1']"));
+        actions.click(titleRadiButton)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("12345")
+                .sendKeys(Keys.TAB)
+                .sendKeys("3")
+                .sendKeys(Keys.TAB)
+                .sendKeys("March")
+                .sendKeys(Keys.TAB)
+                .sendKeys("1990     ")
+                .sendKeys(Keys.TAB)
+                .click()
+                .sendKeys(Keys.TAB)
+                .click()
+                .sendKeys(Keys.TAB)
+                .sendKeys("Ahmet")
+                .sendKeys(Keys.TAB)
+                .sendKeys("bulut")
+                .sendKeys(Keys.TAB)
+                .sendKeys("kendim")
+                .sendKeys(Keys.TAB)
+                .sendKeys("ulu cadde no 95")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("United States")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Teksas")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Dallas")
+                .sendKeys(Keys.TAB)
+                .sendKeys("05100")
+                .sendKeys(Keys.TAB)
+                .sendKeys("5551254568")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.ENTER).perform();*/

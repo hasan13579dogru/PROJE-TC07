@@ -200,8 +200,15 @@ public class AlloverCommercePage {
     public WebElement signIN;
     @FindBy(xpath = "(//*[text()='Quick View'])[1]")
     public WebElement quickView;
+
+    //SEPETE EKLEME
+    @FindBy(xpath = "//*[@id=\"yith-wcwl-row-13229\"]/td[5]/div/a")
+    public WebElement addToCartButton2;
+
+    ////urun cartbtn
     @FindBy(xpath = "(//a[text()='Add to cart'])[1]")
-    public WebElement getAddToCart;
+    public WebElement addToCartButton1;
+
     @FindBy(xpath = "//button[@class='mfp-close']")
     public WebElement automaticCrusher;//kıyma makinesi resmini kapat
     @FindBy(xpath = "//button[@class='mfp-close']")
@@ -210,19 +217,9 @@ public class AlloverCommercePage {
     public WebElement WishList;//satranc
     @FindBy(xpath = "(//*[@class='add_to_wishlist single_add_to_wishlist'])[1]")
     public WebElement kıymaMakinesi;
-    @FindBy(xpath = "(//div[@class='yith-wcwl-wishlistaddedbrowse'])[1]")
-    public WebElement pan;//tava
 
-
-
-    @FindBy(xpath = "//*[@class='home page-template-default page page-id-2 wp-custom-logo " +
-            "wp-embed-responsive theme-wolmart woocommerce-js translatepress-en_US " +
-            "wolmart-single-page-layout wolmart-disable-mobile-animation wolmart-rounded-skin " +
-            "wolmart-use-vendor-plugin wcfm-theme-wolmart elementor-default elementor-kit-12" +
-            " elementor-page elementor-page-2 e--ua-blink e--ua-chrome e--ua-webkit loaded']")
-    public WebElement getElectricFryingPan;
-
-
+@FindBy(xpath = "(//img[@class='attachment-woocommerce_thumbnail size-woocommerce_thumbnail'])[15]")
+public WebElement electricFryingPan;
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signIn3;//3. signin buttonu
 
@@ -243,61 +240,139 @@ public class AlloverCommercePage {
     @FindBy(xpath = "(//button[text()='Quick View'])[1]")
     public WebElement quickViewButton1;
 
+    @FindBy(xpath = "//*[@id=\"yith-wcwl-row-13229\"]/td[5]/div/button")
+    public WebElement quickViewButton2;
+
+
     @FindBy(xpath = "//button[@class='mfp-close']")
-    public WebElement resimCloseButton1;
+    public WebElement getElectricRiceCookerButton;
     @FindBy(xpath = "(//a[@class='btn btn-dark btn-rounded btn-sm add_to_cart alt'])[1]")
     public WebElement addToCart1;//electric rice cooker
     @FindBy(xpath = "(//a[@class='btn btn-dark btn-rounded btn-sm add_to_cart alt'])[1]")
     public WebElement automaticCrusherAddToCart;//addtocart kıyma makinesi
 
-    @FindBy(xpath = "(//a[text()='Add to cart'])[1]")
-    public WebElement addToCartButton;//chess
+
     @FindBy(xpath = "(//a[@class='btn btn-dark btn-rounded btn-sm add_to_cart alt'])[1]")
     public WebElement elctricFryingPanButton;//tava
 
     @FindBy(xpath = "//*[@class='single_add_to_cart_button button alt']")
     public WebElement addToCart2;//urunun sag tarafındaki addtocartbutton
 
+    //CHECKOUT BUTONU(ADD TO CART)
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
 
 
 
-    @FindBy(xpath = "(//a[@class='compare btn-product-icon'])[4]")
-    public WebElement pencil2;
-    @FindBy(xpath = "(//a[@class='compare btn-product-icon'])[3]")
-    public WebElement pencil3;
 
-    @FindBy(xpath = "(//a[@class='compare btn-product-icon'])[2]")
-    public WebElement pencil4;
-    @FindBy(xpath = "(//a[@class='compare btn-product-icon'])[5]")
-    public WebElement pencil;
-@FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[1]")
-public WebElement electricFryingPan;//tava
+
+
+@FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[4]")
+public WebElement electricFryingPanButton;//tava
+    @FindBy(xpath = "//*[@id=\"yith-wcwl-row-13229\"]/td[5]/div/button")
+    public WebElement electricRiceCookerButton;
+
+    //@FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[3]")
+    //public WebElement chessButton;//
     @FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[2]")
-    public WebElement electricRiceCooker;//
-
-  //  @FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[3]")
-   // public WebElement chess;//tava
-    @FindBy(xpath = "(//button[@class='btn btn-quickview btn-outline btn-default btn-rounded btn-sm mr-lg-2'])[4]")
-    public WebElement automaticCusher;//
+    public WebElement automaticCusherButton;//
 
 
+
+
+
+    // wish btn ana sayfa en ust
 @FindBy(xpath = "//i[@class='w-icon-heart']")
-public WebElement wishListButton;// ana sayfa en ust
-@FindBy(xpath = "(//i[@class='w-icon-cart'])[2]")
+public WebElement wishListButton;
+
+//Automatic crusher wish btn
+    @FindBy (xpath = "//*[@id=\"product-13229\"]/div[2]/div/div[4]/div[2]/div/a")
+    public WebElement AutomaticcrusherWishbtn;
+
+    //chess wish btn
+    @FindBy(xpath = "//*[@id=\"product-19895\"]/div[2]/div/div[4]/div[2]/div/a")
+    public WebElement chessWishButton;
+    //*[@id="product-19895"]/div[2]/div/div[4]/div[2]/div/a
+
+    //Electric Rice Cooker wish btn
+    @FindBy (xpath = "//*[@id=\"product-13226\"]/div[2]/div/div[4]/div[2]/div/a")
+    public WebElement electricRiceCookerwishbtn;
+
+
+@FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[6]/div/div/a/i")
 public  WebElement cartButton;
 @FindBy(xpath = "//h3[text()='Billing details']")
 public WebElement billingDetailsYazisi;
-@FindBy(id= "//input[@id='billing_first_name']")
+
+//billing details locate******************
+
+@FindBy(xpath = "//span[text()='Uruguay']")
+public WebElement countryNameUruguay;
+@FindBy(xpath = "//input[@id='billing_address_1']")
+public WebElement houseNumberAndStreetName;
+@FindBy(xpath = "//*[@id='select2-billing_state-container']")
+public WebElement stateNameFlores;
+@FindBy(xpath = "//*[@id='billing_city']")
+public WebElement town;
+
+
+@FindBy(xpath = "//input[@id='billing_first_name']")
 public  WebElement billingFirstName;
-@FindBy(id = "//input[@id='payment_method_bacs']")
+@FindBy(xpath= "//input[@id='payment_method_bacs']")
 public WebElement wireTransferButton;
-@FindBy(id = "//button[@id='place_order']")
+@FindBy(xpath = "//button[@id='place_order']")
 public  WebElement placeOrderButton;
+//quick view kapatma
+@FindBy(xpath = "//button[@class='mfp-close']")
+public  WebElement quickViewKapatma;
+
+   //kalem karsılastırma butonu VE SİLME locate***************
+
+    @FindBy (xpath = "//*[@id=\"main\"]/div/div/div/div[4]/ul/li[5]/div/figure/a/img[2]")
+    public WebElement pencil2img;
+   @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div[4]/ul/li[5]/div/figure/div[2]/a[2]")
+   public WebElement pencil2CompBtn;
 
 
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div[4]/ul/li[4]/div/figure/a/img[2]")
+    public WebElement pencil3img;
 
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div[4]/ul/li[4]/div/figure/div/a[2]")
+    public WebElement pencil3CompButton;
+
+// start compare buton***************************
+    @FindBy(xpath = "//a[@class='btn btn-dark btn-rounded']")
+
+    public WebElement startCompare;
+
+
+    //wishlist ekleme locate önce resim sonra wishlist buttonu
+    @FindBy(xpath ="//*[@id=\"main\"]/div/div/div/div/div/div[1]/div[2]/div/figure/a/img")
+   public WebElement wishListimgPencil2;
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div[1]/div[3]/div/figure/a/img")
+    public WebElement wishListimgPencil3;
+
+
+   // @FindBy(xpath = "(//a[@class='add_to_wishlist single_add_to_wishlist'])[1]")
+   @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div[1]/div[2]/div/figure/div/div/div/a")
+   public WebElement wishListButtonPencil2;
+
+
+  // @FindBy(xpath = "(//a[@class='add_to_wishlist single_add_to_wishlist'])[2]")
+ @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div[1]/div[2]/div/figure/div/div/div/a")
+ public WebElement wishListButtonPencil3;
+
+
+ //Yeni bir urun secildi ve resim locate alındı
+ @FindBy(xpath = "(//img[@class='attachment-woocommerce_thumbnail size-woocommerce_thumbnail'])[3]")
+ public WebElement ballimg;
+@FindBy(xpath = "(//img[@class='attachment-woocommerce_thumbnail size-woocommerce_thumbnail'])[5]")
+public WebElement basketballimg;
+
+@FindBy(xpath = "(//a[@class='compare btn-product-icon'])[2]")
+public WebElement basketballCompButton;
+    @FindBy(xpath = "(//a[@class='compare btn-product-icon'])[1]")
+    public WebElement ballCompButton;
 
     public static List<WebElement> productWishList() {
 
