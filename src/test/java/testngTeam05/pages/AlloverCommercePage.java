@@ -2074,8 +2074,8 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
     public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
 
-    @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
-    public WebElement addToCart;//urunun altında yer alan add to chart
+   /* @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
+    public WebElement addToCart;//urunun altında yer alan add to chart aynisi ayni adla asagıda var suan bu locate almadı*/
 
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
@@ -2553,8 +2553,8 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     @FindBy(xpath = "(//h3)[2]")
     public  WebElement searchedFirstItem;
 
-//    @FindBy(xpath = "//*[@name='add-to-cart']")
-//    public  WebElement addToCart;
+    @FindBy(xpath = "//*[@name='add-to-cart']")
+   public  WebElement addToCart;
 
     @FindBy(xpath = "//*[@class='w-icon-cart']")
     public  WebElement cart;

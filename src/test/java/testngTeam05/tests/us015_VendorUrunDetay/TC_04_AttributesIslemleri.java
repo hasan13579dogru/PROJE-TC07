@@ -13,17 +13,17 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
-<<<<<<< HEAD
+
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
 public class TC_04_AttributesIslemleri extends ExtentReport {
-=======
 
 
-public class TC_04_AttributesIslemleri {
->>>>>>> enes
+
+/*public class TC_04_AttributesIslemleri {*/
+
 
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
