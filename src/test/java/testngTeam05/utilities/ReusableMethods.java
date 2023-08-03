@@ -225,6 +225,9 @@ public class ReusableMethods {
         }
     }
 
+ 
+
+
     //logout method
     public static void logout() {
         AlloverCommercePage alloversPage = new AlloverCommercePage();
@@ -234,18 +237,7 @@ public class ReusableMethods {
     }
 
 
-    //Kupon girisi sepet sayfası
 
-    public static void kuponGirisiSepetSayfasi(String kuponanahtari) {
-        AlloverCommercePage alloversPage = new AlloverCommercePage();
-
-        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty(kuponanahtari));
-        ReusableMethods.scroll(alloversPage.applyCoupon);
-        ReusableMethods.bekle(2);
-        alloversPage.applyCoupon.click();
-        ReusableMethods.bekle(3);
-        System.out.println(alloversPage.couponAlert.getText());
-    }
 
     //clear to cart method
     public static void clearCard() {
@@ -262,7 +254,8 @@ public class ReusableMethods {
     // Vendor olarak Sign In yapma methodu
     public static void vendorSignIn() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
-        AlloverCommercePage alloverPage = new AlloverCommercePage();
+      
+              AlloverCommercePage alloverPage = new AlloverCommercePage();
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
                 ConfigReader.getProperty("alloverVendorSifre"));
@@ -278,6 +271,18 @@ public class ReusableMethods {
         ReusableMethods.bekle(2);
         System.out.println(alloversPage.couponAlert.getText());
 
+    }
+      //Kupon girisi sepet sayfası
+
+    public static void kuponGirisiSepetSayfasi(String kuponanahtari) {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+
+        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty(kuponanahtari));
+        ReusableMethods.scroll(alloversPage.applyCoupon);
+        ReusableMethods.bekle(2);
+        alloversPage.applyCoupon.click();
+        ReusableMethods.bekle(3);
+        System.out.println(alloversPage.couponAlert.getText());
     }
 
 
