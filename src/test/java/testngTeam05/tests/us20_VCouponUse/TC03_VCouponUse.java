@@ -10,14 +10,9 @@ import testngTeam05.utilities.ReusableMethods;
 
 public class TC03_VCouponUse {
 
-    @Test
-    public void test03() {
-//       1- Go to mainpage url
-        Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-//        2- Click to "sign in"
-        AlloverCommercePage alloversPage = new AlloverCommercePage();
-        alloversPage.signIn.click();
 
+<<<<<<< HEAD
+=======
 
 //        3-Login with valid username and valid password to be vendor
 
@@ -105,4 +100,5 @@ public class TC03_VCouponUse {
         Driver.closeDriver();
 
     }
+>>>>>>> master
 }

@@ -9,6 +9,8 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ReusableMethods;
 
 public class TC03_CouponUse {
+<<<<<<< HEAD
+=======
     @Test
     public void test03() {
 
@@ -87,6 +89,7 @@ public class TC03_CouponUse {
 
 
 }
+>>>>>>> master
 
 
 

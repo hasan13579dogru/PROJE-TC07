@@ -12,10 +12,9 @@ import testngTeam05.utilities.ReusableMethods;
 
 public class TC01_CouponUseNegative extends ExtentReport{
 
-    @Test
-    public void test01() {
-    extentTest = extentReports.createTest("Extent Report", "Test Raporu");
 
+<<<<<<< HEAD
+=======
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         extentTest.info("allovercommerce sitesine gidildi");
@@ -84,4 +83,5 @@ public class TC01_CouponUseNegative extends ExtentReport{
 
 
     }
+>>>>>>> master
 }
