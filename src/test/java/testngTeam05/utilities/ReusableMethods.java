@@ -238,7 +238,6 @@ public class ReusableMethods {
     public static void kuponGirisiSepetSayfasi(String kuponanahtari) {
         AlloverCommercePage alloversPage = new AlloverCommercePage();
 
-
         alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty(kuponanahtari));
         ReusableMethods.scroll(alloversPage.applyCoupon);
         ReusableMethods.bekle(2);
@@ -246,7 +245,6 @@ public class ReusableMethods {
         ReusableMethods.bekle(3);
         System.out.println(alloversPage.couponAlert.getText());
     }
-
 
     //clear to cart method
     public static void clearCard() {
@@ -281,6 +279,4 @@ public class ReusableMethods {
 
     }
 
-
 }
-
