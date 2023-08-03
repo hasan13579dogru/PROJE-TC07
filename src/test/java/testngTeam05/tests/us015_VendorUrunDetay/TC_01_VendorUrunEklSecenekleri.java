@@ -22,7 +22,7 @@ public class TC_01_VendorUrunEklSecenekleri extends ExtentReport {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        ReusableMethods.vendorSignIn();
+       // ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 

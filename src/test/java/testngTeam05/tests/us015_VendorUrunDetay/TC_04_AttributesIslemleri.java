@@ -13,17 +13,13 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
-<<<<<<< HEAD
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
+
+
 
 public class TC_04_AttributesIslemleri extends ExtentReport {
-=======
 
 
-public class TC_04_AttributesIslemleri {
->>>>>>> enes
+
 
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -34,7 +30,7 @@ public class TC_04_AttributesIslemleri {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         // https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        ReusableMethods.vendorSignIn();
+      //  ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 

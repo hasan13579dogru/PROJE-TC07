@@ -9,6 +9,9 @@ import testngTeam05.utilities.Driver;
 import java.util.List;
 
 public class AlloverCommercePage {
+    @FindBy(xpath="//input[@name='password']")
+    public WebElement passWord;
+
     public AlloverCommercePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
