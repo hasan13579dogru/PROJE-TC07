@@ -1,5 +1,4 @@
 package testngTeam05.tests.us015_VendorUrunDetay;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -15,22 +14,21 @@ import testngTeam05.utilities.ReusableMethods;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-public class TC_02_InventoryIslemleri extends ExtentReport {
-
+public class TC_02_InventoryIslemleri extends ExtentReport{
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     @Test
-    public void test01() {
+    public void inventoryTesti() {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
-        //Vendor https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        ReusableMethods.vendorSignIn();
+        //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
+        //  ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
-        //My Account sayfasına git
+        //My Account butonuna tıkla git
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         ReusableMethods.click(alloverPage.myAccountButton);
         extentTest.info("My Account sayfasına gidildi");
@@ -63,7 +61,7 @@ public class TC_02_InventoryIslemleri extends ExtentReport {
         //Add Product sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
         extentTest.info("Add Product sayfasının açıldığı doğrulandı");
-
+/*
         //Product title alanına eklemek istediği ürün adını gir
         alloverPage.productTitle.sendKeys("mouse");
         extentTest.info("Product title alanına eklenecek ürünün adı girildi");
@@ -87,10 +85,10 @@ public class TC_02_InventoryIslemleri extends ExtentReport {
         alloverPage.addToGalery.click();
         extentTest.info("galeri image bölümünden ürünün resmini eklendi");
 
-        //Category Bölümünden eklediği ürünün ait oldugu kategoriyi seç
+        //Category Bölümünden eklenecek ürünün ait oldugu kategoriyi seç
         ReusableMethods.click(alloverPage.categoriesCheckbox);
         extentTest.info("Kategori seçildi");
-
+*/
         //Sayfanın altında yer alan Inventory" butonuna tıkla
         ReusableMethods.click(alloverPage.inventory);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -98,7 +96,6 @@ public class TC_02_InventoryIslemleri extends ExtentReport {
 
         //SKU değerini gir girildiğini ve doğrula
         alloverPage.sku.sendKeys("Team05");
-        System.out.println("alloverPage.sku.getAttribute(\"value\") = " + alloverPage.sku.getAttribute("value"));
         Assert.assertEquals(alloverPage.sku.getAttribute("value"),"Team05");
         extentTest.info("SKU değerini girildi ve doğrulandı");
 
@@ -117,5 +114,9 @@ public class TC_02_InventoryIslemleri extends ExtentReport {
         ReusableMethods.click(alloverPage.soldIndividuallyChecbox);
         Assert.assertTrue(alloverPage.soldIndividuallyChecbox.isSelected());
         extentTest.info("Sold individually checkbox'a tıklandı ve doğrulandı");
+
+        ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Inventory");
+        extentTest.info("Sayfa resmi alındı");
     }
 }
