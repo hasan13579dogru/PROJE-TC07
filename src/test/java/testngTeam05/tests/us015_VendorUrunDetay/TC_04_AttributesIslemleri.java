@@ -21,6 +21,7 @@ public class TC_04_AttributesIslemleri extends ExtentReport {
 
 
 
+
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
