@@ -13,13 +13,14 @@ import testngTeam05.utilities.ReusableMethods;
     public class TC01_VCouponUseNegative {
 
 
-        @Test
-        public void test01() {
+   @Test
+         public void test01() {
 //       1- Go to mainpage url
-            Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+              Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2- Click to "sign in"
-            AlloverCommercePage alloversPage = new AlloverCommercePage();
-            alloversPage.signIn.click();
+              AlloverCommercePage alloversPage = new AlloverCommercePage();
+              alloversPage.signIn.click();
+
 
 
 //        3-Login with valid username and valid password to be vendor
