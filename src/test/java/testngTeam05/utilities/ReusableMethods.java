@@ -22,8 +22,6 @@ import java.util.List;
 import java.util.Random;
 
 public class ReusableMethods {
-
-
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
@@ -185,6 +183,9 @@ public class ReusableMethods {
         System.out.println("Attribute Value: = " + attribute_Value);
     }
 
+
+
+
     // Rastgele bir kullanıcı adı oluşturmak için metot
     public static String generateRandomUsername() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.,€@#?$%^&abcdefghijklmnopqrstuvwxyz1234567890";
@@ -279,4 +280,10 @@ public class ReusableMethods {
 
     }
 
+
 }
+
+
+
+
+

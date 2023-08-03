@@ -11,7 +11,11 @@ import testngTeam05.utilities.ReusableMethods;
 public class TC03_CouponUse {
     @Test
     public void test03() {
-       // ReusableMethods.
+
+
+
+        // ReusableMethods.
+
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2- Click to "sign in"
@@ -44,7 +48,7 @@ public class TC03_CouponUse {
         ReusableMethods.kuponGirisiSepetSayfasi("validCouponNumber");
         ReusableMethods.bekle(3);
 
-//      8-Verify subtotal price is biger than total price that, the coupon is used
+//       8-Verify subtotal price is biger than total price , and discount amount is vissible; that the coupon was  used
         System.out.println(alloversPage.couponAlert.getText());
         String subtotal = alloversPage.subtotalPrice.getText().replaceAll("[^0-9]", "");
         Integer subtotalInt = Integer.valueOf(subtotal);//aratoplam int deger
@@ -53,7 +57,8 @@ public class TC03_CouponUse {
         Integer totalInt = Integer.valueOf(total);//son kupon uygulanmıs fiyat int deger
         System.out.println(totalInt);
         Assert.assertTrue(subtotalInt > totalInt);
-
+        Assert.assertTrue(alloversPage.removedPrice.isDisplayed());
+        ReusableMethods.tumSayfaResmi("User entered VALİD coupon number");
 //      9- click to proceedToCheckout
         ReusableMethods.bekle(2);
         ReusableMethods.click(alloversPage.proceedToCheckout);
@@ -77,12 +82,9 @@ public class TC03_CouponUse {
 //     11- Verify "Thank you. Your order has been received." text is vissible
         ReusableMethods.visibleWait(alloversPage.placeOrderButton, 5);
         Assert.assertTrue(alloversPage.orderHasBeenReceived.isDisplayed());
+        ReusableMethods.tumSayfaResmi("User order has been received");
         Driver.closeDriver();
 
 
-}
-
-
-
-
+    }
 }

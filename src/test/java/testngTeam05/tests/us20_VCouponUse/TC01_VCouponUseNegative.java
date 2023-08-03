@@ -11,7 +11,9 @@ import testngTeam05.utilities.ReusableMethods;
 
 
     public class TC01_VCouponUseNegative {
-         @Test
+
+
+   @Test
          public void test01() {
 //       1- Go to mainpage url
               Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -20,10 +22,11 @@ import testngTeam05.utilities.ReusableMethods;
               alloversPage.signIn.click();
 
 
+
 //        3-Login with valid username and valid password to be vendor
 
-              alloversPage.username.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
-              ReusableMethods.bekle(3);
+            alloversPage.username.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
+            ReusableMethods.bekle(3);
 
 //        4-Write "earphone" to searchBox click to enter
             alloversPage.search.sendKeys("earphone");
@@ -40,7 +43,7 @@ import testngTeam05.utilities.ReusableMethods;
             alloversPage.checkoutBoton.click();
             ReusableMethods.bekle(3);
 
- //     7-Enter INVALİD coupon number  to "Enter coupon code here…"area. Click to Apply coupon.
+            //     7-Enter INVALİD coupon number  to "Enter coupon code here…"area. Click to Apply coupon.
 //        Verify "This coupon has expired." text is vissible
             ReusableMethods.kuponGirisiodemeSayfasi("invalidCouponNumber");
             Assert.assertEquals(alloversPage.coupounAlertBillAdress.getText(), "This coupon has expired.");
@@ -51,21 +54,21 @@ import testngTeam05.utilities.ReusableMethods;
             ReusableMethods.kuponGirisiodemeSayfasi("emptyCouponNumber");
             Assert.assertEquals(alloversPage.coupounAlertBillAdress.getText(), "Please enter a coupon code.");
             ReusableMethods.tumSayfaResmi("Vendor doesn't Write CouponNumber");
-//      9-Enter "NOT USEFULL  for this shoping" coupon number  to "Enter coupon code here…"area.
-//       Click to Apply coupon. Verify "The minimum spend for this coupon is $50.00." text is vissible
-            ReusableMethods.bekle(2);
+//      9-Enter "NOT USEFULL  for this shoping" coupon number  to "Enter coupon code here…"area. Click to Apply coupon. Verify "The minimum spend for this coupon is $5,000.00." text is vissible    ReusableMethods.bekle(2);
             Driver.getDriver().navigate().refresh();
             ReusableMethods.bekle(2);
             ReusableMethods.kuponGirisiodemeSayfasi("notUsefullCouponNumber");
-            Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is $50.00.");
+            Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is "+ConfigReader.getProperty("mincouponuse"));
             ReusableMethods.tumSayfaResmi("Vendor Enter NOT USEFULL  for this shoping coupon number");
- //    10-Click to cart ,click to clear product,and close
+            //    10-Click to cart ,click to clear product,and close
             ReusableMethods.clearCard();
 
 
-  //     11-logout from account
+            //     11-logout from account
             ReusableMethods.logout();
             Driver.closeDriver();
 
         }
 }
+
+

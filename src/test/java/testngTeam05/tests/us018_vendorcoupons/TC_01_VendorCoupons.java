@@ -24,8 +24,7 @@ import java.time.format.DateTimeFormatter;
 import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
-
-public class TC_01_VendorCoupons extends ExtentReport {
+public class TC_01_VendorCoupons extends ExtentReport{
     //Vendor olarak Coupons oluşturabilmeliyim (My Account - Coupons - Add New)
     //Code yazabilmeliyim
     //Description yazılabilmeli
@@ -271,4 +270,5 @@ public class TC_01_VendorCoupons extends ExtentReport {
     public void test05() {
         login("denemetest", "deneme123456");
     }
+
 }
