@@ -51,13 +51,11 @@ import testngTeam05.utilities.ReusableMethods;
             ReusableMethods.kuponGirisiodemeSayfasi("emptyCouponNumber");
             Assert.assertEquals(alloversPage.coupounAlertBillAdress.getText(), "Please enter a coupon code.");
             ReusableMethods.tumSayfaResmi("Vendor doesn't Write CouponNumber");
-//      9-Enter "NOT USEFULL  for this shoping" coupon number  to "Enter coupon code here…"area.
-//       Click to Apply coupon. Verify "The minimum spend for this coupon is $50.00." text is vissible
-            ReusableMethods.bekle(2);
+//      9-Enter "NOT USEFULL  for this shoping" coupon number  to "Enter coupon code here…"area. Click to Apply coupon. Verify "The minimum spend for this coupon is $5,000.00." text is vissible    ReusableMethods.bekle(2);
             Driver.getDriver().navigate().refresh();
             ReusableMethods.bekle(2);
             ReusableMethods.kuponGirisiodemeSayfasi("notUsefullCouponNumber");
-            Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is $50.00.");
+            Assert.assertEquals(alloversPage.couponAlert.getText(), "The minimum spend for this coupon is "+ConfigReader.getProperty("mincouponuse"));
             ReusableMethods.tumSayfaResmi("Vendor Enter NOT USEFULL  for this shoping coupon number");
  //    10-Click to cart ,click to clear product,and close
             ReusableMethods.clearCard();

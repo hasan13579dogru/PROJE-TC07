@@ -47,7 +47,7 @@ public class TC03_VCouponUse {
         ReusableMethods.tumSayfaResmi("Vendor Entered VALİD coupon number");
 
 
-//        8-Verify subtotal price is biger than total price that, the coupon is used
+//        8-Verify subtotal price is biger than total price , and discount amount is vissible; that the coupon was  used
 
         ReusableMethods.scroll(alloversPage.subtotalPricePayBill);
         String subtotal = alloversPage.subtotalPricePayBill.getText().replaceAll("[^0-9]", "");
@@ -58,6 +58,7 @@ public class TC03_VCouponUse {
         System.out.println(totalInt);
         ReusableMethods.bekle(2);
         Assert.assertTrue(subtotalInt > totalInt);
+        Assert.assertTrue(alloversPage.removedPrice.isDisplayed());
 //      9-Enter the billing adress and choose payment method
         alloversPage.endBillingFirstName.sendKeys(Keys.CONTROL + "a", Keys.CLEAR, Keys.CONTROL,
                 ConfigReader.getProperty("userUserName"),
@@ -92,7 +93,7 @@ public class TC03_VCouponUse {
 //      14-Go to myaccount
         ReusableMethods.scrollEnd();
         ReusableMethods.click(alloversPage.myAccountm);
-//       15-Verify account id vendor
+//       15-Verify account  vendor is vissible
         Assert.assertTrue(alloversPage.storeManager.isEnabled());
         ReusableMethods.tumSayfaResmi("Vendor MyAccount page");
 //      16-click to order Verify product add the order

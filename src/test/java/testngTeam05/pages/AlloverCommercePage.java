@@ -60,8 +60,11 @@ public class AlloverCommercePage {
     public WebElement pleaseLoginYazisi;
 
 
+
+
     @FindBy(xpath = "(//p[@class='elementor-heading-title elementor-size-default'])[1]")
     public WebElement anasayfaTitle;
+
 
 
 
@@ -2071,8 +2074,8 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     @FindBy(xpath = "//*[@class='yith-wcwl-wishlistexistsbrowse']")
     public  WebElement wishListButton;//secilen urunun yanındaki wishlist kitchentable
 
-    @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
-    public WebElement addToCart;//urunun altında yer alan add to chart
+   /* @FindBy(xpath = "(//a[text()='Add to cart'])[10]")
+    public WebElement addToCart;//urunun altında yer alan add to chart aynisi ayni adla asagıda var suan bu locate almadı*/
 
     @FindBy(xpath = "//*[@class='button checkout wc-forward']")
     public WebElement checkoutCart;//anasayfa sepetin(CART)ALTINDAKİ checkout
@@ -2550,8 +2553,8 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     @FindBy(xpath = "(//h3)[2]")
     public  WebElement searchedFirstItem;
 
-//    @FindBy(xpath = "//*[@name='add-to-cart']")
-//    public  WebElement addToCart;
+    @FindBy(xpath = "//*[@name='add-to-cart']")
+   public  WebElement addToCart;
 
     @FindBy(xpath = "//*[@class='w-icon-cart']")
     public  WebElement cart;
@@ -2626,8 +2629,10 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
    // public WebElement storeManager ;
     @FindBy(xpath = "//*[@class=\"icon-box-icon icon-orders\"]")
     public WebElement orderInMyaccount  ;//myaccount taki order butonu
-    @FindBy(xpath = "//*[@href=\"https://allovercommerce.com/my-account-2/view-order/27008/\"]")
+    @FindBy(xpath = "(//*[@data-title=\"Order\"])[1]")
     public WebElement orderinFirstidNo  ;//myaccount taki order daki ilk urun id
+    @FindBy(xpath = "//*[text()='[Remove]']")
+    public WebElement removedPrice  ;//indirilen fiyat
 
 
 
