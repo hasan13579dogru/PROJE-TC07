@@ -18,6 +18,7 @@ public class TC03_VCouponUse {
                 alloversPage.signIn.click();
 
 
+
 //        3-Login with valid username and valid password to be vendor
 
                 alloversPage.username.sendKeys(ConfigReader.getProperty("venUserName"), Keys.TAB, ConfigReader.getProperty("venPassword"), Keys.ENTER);
@@ -104,4 +105,5 @@ public class TC03_VCouponUse {
                 Driver.closeDriver();
 
         }
+
 }
