@@ -54,11 +54,11 @@ public class TC02_CouponUse {
         Assert.assertEquals(alloversPage.couponAlert.getText(), "Coupon code already applied!");
         ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("user reEnter USED coupon number ");
- //     9-Click to cart ,click to clear product and close
+        //     9-Click to cart ,click to clear product and close
 
         ReusableMethods.clearCard();
 
- //     10-logout from account
+        //     10-logout from account
         ReusableMethods.logout();
         Driver.closeDriver();
     }

@@ -1,5 +1,4 @@
 package testngTeam05.tests.us015_VendorUrunDetay;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,19 +17,19 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-public class TC_03_ShippingIslemleri extends ExtentReport {
 
+public class TC_03_ShippingIslemleri extends ExtentReport {
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Select select;
 
     @Test
-    public void inventoryStokTest() {
+    public void shippingTesti() {
         extentTest = extentReports.createTest("Extent Report", "Inventory İşlemleri Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
-        //Vendor https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        ReusableMethods.vendorSignIn();
+        //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
+        //  ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
@@ -67,7 +66,7 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         //Add Product sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.addProductBaslik.isDisplayed());
         extentTest.info("Add Product sayfasının açıldığı doğrulandı");
-
+/*
         //Product title alanına eklemek istediği ürün adını gir
         alloverPage.productTitle.sendKeys("mouse");
         extentTest.info("Product title alanına eklenecek ürünün adı girildi");
@@ -92,7 +91,7 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         //Category Bölümünden eklediği ürünün ait oldugu kategoriyi seç
         ReusableMethods.click(alloverPage.categoriesCheckbox);
         extentTest.info("Kategori seçildi");
-
+*/
         //Sayfanın altında yer alan Shipping butonuna tıkla
         ReusableMethods.click(alloverPage.shipping);
         extentTest.info("Shipping butonuna tıklandı");
@@ -108,8 +107,6 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         Assert.assertEquals(alloverPage.width.getAttribute("value"),"10");
         alloverPage.height.sendKeys("10");
         Assert.assertEquals(alloverPage.height.getAttribute("value"),"10");
-
-       // alloverPage.weight.sendKeys("0.200",Keys.TAB,"15",Keys.TAB,"10",Keys.TAB,"10");
         extentTest.info("Ürün ağırlık ve boyut bilgileri girildi ve doğrulandı");
 
         //"Shipping Class" Ddm'den "No shipping class" seç ve seçildiğini doğrula
@@ -121,8 +118,11 @@ public class TC_03_ShippingIslemleri extends ExtentReport {
         //"Processing Time" Ddm'den süre seç ve seçildiğini doğrula
         select = new Select(alloverPage.processingTime);
         select.selectByIndex(4);
-        System.out.println("select.getFirstSelectedOption() = " + select.getFirstSelectedOption().getText());
         Assert.assertEquals(select.getFirstSelectedOption().getText(),"3-5 business days");
         extentTest.info("Processing Time Ddm'den süre seçildi ve doğrulandı");
+
+        ReusableMethods.bekle(2);
+        ReusableMethods.tumSayfaResmi("Shipping");
+        extentTest.info("Sayfa resmi alındı");
     }
 }
