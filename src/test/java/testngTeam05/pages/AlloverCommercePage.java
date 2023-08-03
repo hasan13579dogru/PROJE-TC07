@@ -635,9 +635,58 @@ public class AlloverCommercePage {
     ////button[@name='save_address']
     @FindBy(xpath = "//button[@name='save_address']")
     public WebElement ShippingSaveAdress; // vendor-adress-shipping-add-saveadress butonu
-
     @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
     public WebElement ShippingSuccesText; // vendor-adress-shipping-add-saveSucces
+     @FindBy(id="add_new_product_dashboard")
+    public WebElement productAddnew; //vendor//product//addnew button
+    @FindBy(xpath="//select[@id='product_type']")
+    public WebElement productOptionsDdm;
+
+
+    @FindBy(xpath = "//input[@value='298']")
+    public WebElement productCheckBox;
+    @FindBy(xpath = "//p[text()='+Add new Product brands']")
+    public WebElement addProductCategory;
+    @FindBy(xpath = "(//div[@class='wcfm_add_new_category_box wcfm_add_new_taxonomy_box'])[1]")
+    public WebElement categoryName;
+    @FindBy(xpath = "//input[@name='wcfm_new_cat']")
+    public WebElement categoryYaz;
+    @FindBy(xpath = "//input[@id='wcfm_new_product_brand']")
+    public WebElement brandProductNameKutusu;
+    @FindBy(xpath = "//select[@id='wcfm_new_parent_product_brand']")
+    public WebElement parentProductDdm;
+    @FindBy(xpath = "(//button[@class='button wcfm_add_category_bt wcfm_add_taxonomy_bt'])[1]")
+    public WebElement addKategoriButonu;
+    @FindBy(xpath = "//select[@id='wcfm_new_parent_cat']")
+    public WebElement parendCategory;
+
+    @FindBy(xpath = "//input[@class='wcfm-checkbox']")
+    public WebElement eklenenUrun;
+    @FindBy(xpath = "//img[@id='featured_img_display']")
+    public WebElement imgTikla;
+    @FindBy(xpath = "//button[@id='__wp-uploader-id-1']")
+    public WebElement imgSelectFile;
+    //(//button[@id='menu-item-browse'])[3]
+    @FindBy(xpath = "(//button[@id='menu-item-browse'])[3]")
+    public WebElement mediaLibraryimage;
+    //(//*[@class='button media-button button-primary button-large media-button-select'])[4]
+    @FindBy(xpath = "//*[@class='button media-button button-primary button-large media-button-select'])[3]")
+    public WebElement sonYuklemeSelect;
+    ////*[@class='product_cats_checklist_item checklist_item_513']
+    @FindBy(xpath = "//*[@class='product_cats_checklist_item checklist_item_513']")
+    public WebElement brandCheckBox;
+    @FindBy(xpath = "(//button[@class='button wcfm_add_category_bt wcfm_add_taxonomy_bt'])[2]")
+    public WebElement brandAddButonu;
+    @FindBy(xpath = "//body[@id='tinymce']")//vendor-add product shortDescription
+    public WebElement shortDescriptionSon;
+    @FindBy (xpath = "//*[@class='mce-content-body description post-type-page post-status-publish page-template-default locale-en-us mceContentBody webkit wp-editor html5-captions']")
+    public WebElement descriptionSon;
+    ////button[@id='mceu_45-button']
+
+
+
+
+
 
 
 

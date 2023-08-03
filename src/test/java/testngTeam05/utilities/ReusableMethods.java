@@ -166,6 +166,7 @@ public class ReusableMethods {
     public static void scrollHome() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+
     }
 
     //JS SendKeys
@@ -280,6 +281,28 @@ public class ReusableMethods {
         ReusableMethods.bekle(2);
         System.out.println(alloversPage.couponAlert.getText());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
