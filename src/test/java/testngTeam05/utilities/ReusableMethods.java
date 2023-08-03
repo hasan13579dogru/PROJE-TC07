@@ -223,7 +223,7 @@ public class ReusableMethods {
         }
     }
     public static void vendorSignIn(){
-        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         AlloverCommercePage alloverPage = new AlloverCommercePage();
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,

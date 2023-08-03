@@ -14,7 +14,6 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExcelReader;
 import testngTeam05.utilities.ReusableMethods;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -38,19 +37,126 @@ public class TC_01_VendorAlisVeris {
     Faker faker;
     ExcelReader excelReader;
 
-    @Test
-    public void test01() throws IOException {
 
+    @Test
+    public void test01() {
         //Vendor olarak alışveriş yapabilmeliyim.(My Account - Orders - Browse Product)--
         //Ürün ve ürünler seçilip sepete eklenebilmeli--
         //Chart - Chekout yapılarak alınacak ürün ve ürünler görülebilmeli--
+        //Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli
+        //Toplam ödenecek rakam görüntülebilmeli
+        //Wire transfer/EFT veya Pay at the door seçenekleri seçilebilmeli
+        //Place Order'a tıklanark alışverişin tamamlandığı görülebilmeli
+        //My Account -Orders yapılan alışverişin ayrıntıları görülebilmeli
 
+
+        //Siteye git
         vendorOlarakKayitOl();
-        //Vendor olorak kayit yapildigini dogrula
-        Assert.assertTrue(alloverpage.WelcometoAlloverCommerce.isDisplayed());
-    }
 
-    public void vendorOlarakKayitOl() throws IOException {
+        //vendor olarak giris yapildigi goruldu
+        Assert.assertTrue(alloverpage.WelcometoAlloverCommerce.isDisplayed());
+        alloverpage.WelcometoAlloverCommerce.click();
+
+        //Sayfa altindaki My Account'a tiklat
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        ReusableMethods.bekle(2);
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverpage.myAccountOrders2);
+        ReusableMethods.bekle(2);
+
+
+        alloverpage.myAccountOrders.click();
+        //MyAccount sayfasinda sol menude yer alan "orders" a tiklat.
+        alloverpage.myAccountOrders.click();
+        //Browse products'a tikla
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(alloverpage.browseProductText)).click();
+
+        //Urun ve urunleri sepete ekle
+        List<WebElement> urunListesi = alloverpage.addToChart;
+
+        int i = 0;
+        while (i < urunListesi.size()) {
+            try {
+                ReusableMethods.click(urunListesi.get(i));
+                ReusableMethods.bekle(1);
+                i++;
+
+            } catch (NoSuchElementException | ElementClickInterceptedException e) {
+                i++;
+            } catch (IndexOutOfBoundsException e) {
+                break;
+            }
+        }
+
+        ReusableMethods.click(alloverpage.cartIcon);
+        ReusableMethods.bekle(1);
+        //Urunlerin sepete eklendigini dogrula
+        Assert.assertTrue(alloverpage.viewCart.isDisplayed());
+
+        //Chekout butonuna tiklat.
+        alloverpage.checkoutCart.click();
+
+
+        //alınacak ürün ve ürünler görülebilmeli
+        int urunSayisi = Integer.parseInt(alloverpage.sepetSayaci.getText());
+        SoftAssert softAssert = new SoftAssert();
+
+
+        List<WebElement> sepeteEklenenUrunler = alloverpage.yourOrder;
+
+        for (WebElement each : sepeteEklenenUrunler) {
+            Assert.assertTrue(each.isDisplayed());
+            System.out.println(each.getText());
+        }
+
+
+        ////Fatura ayrıntıları (BILLING DETAILS) doldurulabilmeli-----
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String streetAddress = faker.address().streetAddress();
+        String zipCode = faker.address().zipCode();
+        String phoneNumber = faker.phoneNumber().cellPhone();
+        String emailAddress = faker.internet().emailAddress();
+
+        Select ddmCountry = new Select(alloverpage.countryDdm);
+
+        alloverpage.billingFirstName.sendKeys(firstName, Keys.TAB, lastName);
+        ddmCountry.selectByVisibleText("Turkey");
+        alloverpage.streetAdress.sendKeys(streetAddress);
+        alloverpage.postCode.sendKeys(zipCode);
+        alloverpage.townCity.sendKeys("Ankara");
+        alloverpage.phone.sendKeys(phoneNumber);
+        Select ddmProvince = new Select(alloverpage.provinceDdm);
+        ddmProvince.selectByVisibleText("Ankara");
+
+
+        alloverpage.endPaymentMethods.isSelected();
+        //Wire transfer/EFT secildigi dogrulandi
+        Assert.assertTrue(alloverpage.endPaymentMethods.isSelected());
+        ReusableMethods.scroll(alloverpage.paymentAtDoor);
+        ReusableMethods.bekle(3);
+        //Pay at the door seçenekleri seçildigi dogrulandi
+        alloverpage.paymentAtDoor.click();
+        Assert.assertTrue(alloverpage.paymentAtDoor.isSelected());
+
+        alloverpage.placeOrderButton.click();
+        ReusableMethods.bekle(20);
+        //Alisverisin tamamlandigi goruldu
+
+        Assert.assertTrue(alloverpage.orderVerification.isDisplayed());
+
+        ////My Account -Orders yapılan alışverişin ayrıntıların goruldugu dogrulandi.
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverpage.myAccountOrders2);
+        alloverpage.myAccountOrders.click();
+        alloverpage.viewMyAccount.click();
+
+        Assert.assertTrue(alloverpage.orderDetails.isDisplayed());
+    }
+    public void vendorOlarakKayitOl() {
 
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -102,7 +208,7 @@ public class TC_01_VendorAlisVeris {
 
     }
 
-    public String getEmailAdress() throws IOException {
+    public String getEmailAdress() {
 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);//yeni sekmede aciyorum
         Driver.getDriver().get("https://www.fakemail.net/");
@@ -116,7 +222,7 @@ public class TC_01_VendorAlisVeris {
         return fakeEmailAdress;
     }
 
-    public String getVerificationCode() throws IOException {
+    public String getVerificationCode() {
         ReusableMethods.switchToWindow(1);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         By xpath = xpath("//*[contains(text(), '[Allover Commerce]')]");
@@ -140,7 +246,7 @@ public class TC_01_VendorAlisVeris {
     }
 
 
-    public String sifreOlustur() throws IOException {
+    public String sifreOlustur() {
         String sifre = "";
         boolean flag = true;
         while (flag) {
@@ -173,9 +279,6 @@ public class TC_01_VendorAlisVeris {
         return sifre;
     }
 }
-
-
-
 
 
 
