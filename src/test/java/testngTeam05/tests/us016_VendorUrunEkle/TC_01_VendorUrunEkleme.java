@@ -11,8 +11,7 @@ import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
-
-public class TC_01_VendorUrunEkleme  extends ExtentReport {
+public class TC_01_VendorUrunEkleme extends ExtentReport{
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Select select;
@@ -22,7 +21,7 @@ public class TC_01_VendorUrunEkleme  extends ExtentReport {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-       // ReusableMethods.vendorSignIn();
+        // ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
@@ -131,5 +130,4 @@ public class TC_01_VendorUrunEkleme  extends ExtentReport {
         ReusableMethods.tumSayfaResmi("Eklenen Ürün");
         extentTest.info("Sayfa resmi alındı");
     }
-
 }

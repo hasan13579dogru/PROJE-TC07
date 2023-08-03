@@ -9,14 +9,12 @@ import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ReusableMethods;
 
 public class TC03_CouponUse {
-<<<<<<< HEAD
-=======
     @Test
     public void test03() {
 
 
 
-       // ReusableMethods.
+        // ReusableMethods.
 
 //        1- Go to mainpage url
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -88,10 +86,5 @@ public class TC03_CouponUse {
         Driver.closeDriver();
 
 
-}
->>>>>>> master
-
-
-
-
+    }
 }

@@ -1,5 +1,4 @@
 package testngTeam05.tests.us015_VendorUrunDetay;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -15,8 +14,7 @@ import testngTeam05.utilities.ReusableMethods;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-public class TC_02_InventoryIslemleri extends ExtentReport {
-
+public class TC_02_InventoryIslemleri extends ExtentReport{
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
@@ -26,7 +24,7 @@ public class TC_02_InventoryIslemleri extends ExtentReport {
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-      //  ReusableMethods.vendorSignIn();
+        //  ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
