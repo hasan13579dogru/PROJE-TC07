@@ -93,21 +93,18 @@ public class ReusableMethods {
     public static void visibleWait(WebElement element, int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOf(element));
-
     }
 
     //VisibleElementLocator Wait
     public static WebElement visibleWait(By locator, int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-
     }
 
     //Alert Wait
     public static void alertWait(int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.alertIsPresent());
-
     }
 
     //Tüm Sayfa ScreenShot
@@ -134,7 +131,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
 
     //WebTable
     public static void printData(int satir, int sutun) {
@@ -201,7 +197,6 @@ public class ReusableMethods {
             char randomChar = characters.charAt(randomIndex);
             username.append(randomChar);
         }
-
         return username.toString();
     }
 
@@ -226,10 +221,8 @@ public class ReusableMethods {
             bekle(3);
         } catch (AWTException e) {
             throw new RuntimeException(e);
-
-
-
-
+        }
+    }
 
     //logout method
     public static void logout() {
@@ -238,39 +231,6 @@ public class ReusableMethods {
         ReusableMethods.visibleWait(alloversPage.logout, 5);
         alloversPage.logout.click();
     }
-
-        public static void uploadFilePath (String filePath){
-            try {
-                bekle(3);
-                StringSelection stringSelection = new StringSelection(filePath);
-                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_CONTROL);
-                bekle(3);
-                robot.keyPress(KeyEvent.VK_V);
-                bekle(3);
-                robot.keyRelease(KeyEvent.VK_CONTROL);
-                bekle(3);
-                robot.keyRelease(KeyEvent.VK_V);
-                bekle(3);
-                robot.keyPress(KeyEvent.VK_ENTER);
-                bekle(3);
-                robot.keyRelease(KeyEvent.VK_ENTER);
-                bekle(3);
-            } catch (AWTException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        public static void vendorSignIn () {
-            Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
-            AlloverCommercePage alloverPage = new AlloverCommercePage();
-            alloverPage.signIn.click();
-            alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
-                    ConfigReader.getProperty("alloverVendorSifre"));
-            alloverPage.signInButton.click();
-        }
-
 
 
     //Kupon girisi sepet sayfası
@@ -301,14 +261,14 @@ public class ReusableMethods {
     }
 
     // Vendor olarak Sign In yapma methodu
-    public static void vendorSignIn(){
+    public static void vendorSignIn() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         AlloverCommercePage alloverPage = new AlloverCommercePage();
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
                 ConfigReader.getProperty("alloverVendorSifre"));
         alloverPage.signInButton.click();
-
+    }
 
     //Kupon girisi odeme sayfası
     public static void kuponGirisiodemeSayfasi(String kuponanahtari) {
