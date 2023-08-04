@@ -1,7 +1,9 @@
 package testngTeam05.utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +22,6 @@ import java.util.List;
 import java.util.Random;
 
 public class ReusableMethods {
-
-
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
         try {
@@ -91,22 +91,20 @@ public class ReusableMethods {
     public static void visibleWait(WebElement element, int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOf(element));
-
     }
 
     //VisibleElementLocator Wait
     public static WebElement visibleWait(By locator, int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-
     }
 
     //Alert Wait
     public static void alertWait(int sayi) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.alertIsPresent());
-
     }
+
     //Tüm Sayfa ScreenShot
     public static String tumSayfaResmi(String name) {
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
@@ -131,7 +129,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
 
     //WebTable
     public static void printData(int satir, int sutun) {
@@ -165,6 +162,7 @@ public class ReusableMethods {
     public static void scrollHome() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+
     }
 
     //JS SendKeys
@@ -185,6 +183,10 @@ public class ReusableMethods {
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
     }
+
+
+
+
     // Rastgele bir kullanıcı adı oluşturmak için metot
     public static String generateRandomUsername() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.,€@#?$%^&abcdefghijklmnopqrstuvwxyz1234567890";
@@ -197,9 +199,10 @@ public class ReusableMethods {
             char randomChar = characters.charAt(randomIndex);
             username.append(randomChar);
         }
-
         return username.toString();
     }
+
+    //Resim yüklemek için Robot methodu
     public static void uploadFilePath(String filePath) {
         try {
             bekle(3);
@@ -222,13 +225,95 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-    public static void vendorSignIn(){
-         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
-        AlloverCommercePage alloverPage = new AlloverCommercePage();
+
+ 
+
+
+    //logout method
+    public static void logout() {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        ReusableMethods.click(alloversPage.signOut);
+        ReusableMethods.visibleWait(alloversPage.logout, 5);
+        alloversPage.logout.click();
+    }
+
+
+
+
+    //clear to cart method
+    public static void clearCard() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        ReusableMethods.click(alloversPage.cart);
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloversPage.cartInClearProduct);
+        ReusableMethods.bekle(2);
+        alloversPage.close.click();
+    }
+
+    // Vendor olarak Sign In yapma methodu
+    public static void vendorSignIn() {
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+      
+              AlloverCommercePage alloverPage = new AlloverCommercePage();
         alloverPage.signIn.click();
         alloverPage.signInUserNameOrEmail.sendKeys(ConfigReader.getProperty("alloverVendorEmail"), Keys.TAB,
                 ConfigReader.getProperty("alloverVendorSifre"));
         alloverPage.signInButton.click();
     }
 
+    //Kupon girisi odeme sayfası
+    public static void kuponGirisiodemeSayfasi(String kuponanahtari) {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+        alloversPage.enterTCouponBillAdress.click();
+        alloversPage.enterCouponBoxBillAdress.sendKeys(ConfigReader.getProperty(kuponanahtari));
+        alloversPage.applyCouponBillAdress.click();
+        ReusableMethods.bekle(2);
+        System.out.println(alloversPage.couponAlert.getText());
+
+    }
+      //Kupon girisi sepet sayfası
+
+    public static void kuponGirisiSepetSayfasi(String kuponanahtari) {
+        AlloverCommercePage alloversPage = new AlloverCommercePage();
+
+        alloversPage.enterCoupon.sendKeys(ConfigReader.getProperty(kuponanahtari));
+        ReusableMethods.scroll(alloversPage.applyCoupon);
+        ReusableMethods.bekle(2);
+        alloversPage.applyCoupon.click();
+        ReusableMethods.bekle(3);
+        System.out.println(alloversPage.couponAlert.getText());
+    }
+
+
+<<<<<<< HEAD
+=======
 }
+>>>>>>> master
+
+
+
+
+
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+=======
+>>>>>>> master
