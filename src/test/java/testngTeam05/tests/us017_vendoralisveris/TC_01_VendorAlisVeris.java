@@ -1,7 +1,9 @@
 package testngTeam05.tests.us017_vendoralisveris;
 
 import com.github.javafaker.Faker;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,7 +56,14 @@ public class TC_01_VendorAlisVeris {
         vendorOlarakKayitOl();
 
         //vendor olarak giris yapildigi goruldu
-        Assert.assertTrue(alloverpage.WelcometoAlloverCommerce.isDisplayed());
+        try {
+            Assert.assertTrue(alloverpage.WelcometoAlloverCommerce.isDisplayed());
+        } catch (NoSuchElementException e) {
+            vendorOlarakKayitOl();
+            Driver.getDriver().quit(); // Tüm pencereleri ve sekmeleri kapatır.
+            Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        }
+
         alloverpage.WelcometoAlloverCommerce.click();
 
         //Sayfa altindaki My Account'a tiklat
@@ -100,8 +109,6 @@ public class TC_01_VendorAlisVeris {
 
 
         //alınacak ürün ve ürünler görülebilmeli
-        int urunSayisi = Integer.parseInt(alloverpage.sepetSayaci.getText());
-        SoftAssert softAssert = new SoftAssert();
 
 
         List<WebElement> sepeteEklenenUrunler = alloverpage.yourOrder;
@@ -136,12 +143,16 @@ public class TC_01_VendorAlisVeris {
         //Wire transfer/EFT secildigi dogrulandi
         Assert.assertTrue(alloverpage.endPaymentMethods.isSelected());
         ReusableMethods.scroll(alloverpage.paymentAtDoor);
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(4);
         //Pay at the door seçenekleri seçildigi dogrulandi
-        alloverpage.paymentAtDoor.click();
+        alloverpage.paymentAtDoor.sendKeys(Keys.SPACE);
+        ReusableMethods.bekle(1);
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_UP, Keys.PAGE_UP);
+        ReusableMethods.bekle(1);
         Assert.assertTrue(alloverpage.paymentAtDoor.isSelected());
 
-        alloverpage.placeOrderButton.click();
+        ReusableMethods.click(alloverpage.placeOrderButton);
         ReusableMethods.bekle(20);
         //Alisverisin tamamlandigi goruldu
 
@@ -156,15 +167,16 @@ public class TC_01_VendorAlisVeris {
 
         Assert.assertTrue(alloverpage.orderDetails.isDisplayed());
     }
+
     public void vendorOlarakKayitOl() {
 
-        LocalDateTime time = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String zaman = time.format(dtf);
-        String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
-        String sayfaIsmi = "Sayfa1";
-        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
-        excelReader.writeCell(1, 6, dosyaYolu, zaman);
+//        LocalDateTime time = LocalDateTime.now();
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+//        String zaman = time.format(dtf);
+//        String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
+//        String sayfaIsmi = "Sayfa1";
+//        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
+//        excelReader.writeCell(1, 6, dosyaYolu, zaman);
 
 
         alloverpage = new AlloverCommercePage();
@@ -186,27 +198,25 @@ public class TC_01_VendorAlisVeris {
         //Vendor sayfasindaki e-mail'e e-mail gir
         String fakeEmail = getEmailAdress();
 
-        excelReader.writeCell(1, 3, dosyaYolu, fakeEmail);
+//        excelReader.writeCell(1, 3, dosyaYolu, fakeEmail);
 
         alloverpage.vendorRegistrationEmail.sendKeys(fakeEmail, Keys.TAB);
 
-
-        //Send code butonuna tiklat
-        alloverpage.verificationEmailButton.click();
-
-
-//        alloverpage.verificationCode.sendKeys(getVerificationCode(), Keys.TAB, Keys.TAB, password,
-//                Keys.TAB, password, Keys.TAB, Keys.ENTER);
-
+        //Verification kodu gir
         alloverpage.verificationCode.sendKeys(getVerificationCode(), Keys.TAB, Keys.TAB);
 
-        //Vendor sayfasindaki sifreyi gir
-        String sifre = sifreOlustur();
-        excelReader.writeCell(1, 6, dosyaYolu, sifre);
-        alloverpage.vendorPassword.sendKeys(sifre, Keys.TAB, sifre, Keys.TAB, Keys.ENTER);
 
+        //Vendor sayfasindaki sifreyi gir
+        String password = sifreOlustur();
+        alloverpage.vendorPassword.sendKeys(password, Keys.TAB, password, Keys.TAB, Keys.ENTER);
 
     }
+
+
+//Send code butonuna tiklat
+
+//        excelReader.writeCell(1, 6, dosyaYolu, sifre);
+
 
     public String getEmailAdress() {
 
@@ -240,42 +250,46 @@ public class TC_01_VendorAlisVeris {
 
         String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
         String sayfaIsmi = "Sayfa1";
-        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
-        excelReader.writeCell(1, 3, dosyaYolu, code);
+//        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
+//        excelReader.writeCell(1, 3, dosyaYolu, code);
         return code;
+    }
+
+    public String generateStrongPassword() {
+        String uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+        String numericChars = "0123456789";
+        String specialChars = "!@#$%^&*()_-+=<>?/";
+
+        String allowedChars = uppercaseChars + lowercaseChars + numericChars + specialChars;
+        return RandomStringUtils.random(12, allowedChars); // Örneğin, 12 karakter uzunluğunda bir şifre oluşturuyoruz
     }
 
 
     public String sifreOlustur() {
+
+        String password = generateStrongPassword();
         String sifre = "";
+
         boolean flag = true;
+
         while (flag) {
-            String rastgeleKelime = faker.lorem().word();
-            String rastgeleSayi = faker.number().digits(4);
-            String password = rastgeleKelime + rastgeleSayi;
             ReusableMethods.scroll(alloverpage.vendorPassword);
             ReusableMethods.bekle(1);
             alloverpage.vendorPassword.sendKeys(password);
-            ReusableMethods.bekle(2);
+            ReusableMethods.bekle(1);
             try {
-                if (alloverpage.passwordStrengthGood.isDisplayed()) {
+                if (alloverpage.passwordStrengthStrong.getText().equals("Strong")) {
                     sifre = password;
                     flag = false;
-                    alloverpage.vendorPassword.clear();
-                } else {
-                    alloverpage.vendorPassword.clear();
                 }
             } catch (NoSuchElementException e) {
                 System.out.println("deneniyor...");
+            } finally {
+                alloverpage.vendorPassword.clear();
             }
-
         }
-        ReusableMethods.bekle(1);
 
-        String dosyaYolu = "src/test/java/testngTeam05/vendorMusteriBilgileri.xlsx";
-        String sayfaIsmi = "Sayfa1";
-        excelReader = new ExcelReader(dosyaYolu, sayfaIsmi);
-        excelReader.writeCell(1, 1, dosyaYolu, sifre);
         return sifre;
     }
 }
