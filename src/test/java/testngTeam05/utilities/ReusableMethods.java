@@ -162,6 +162,7 @@ public class ReusableMethods {
     public static void scrollHome() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+
     }
 
     //JS SendKeys
@@ -286,9 +287,33 @@ public class ReusableMethods {
     }
 
 
+<<<<<<< HEAD
+=======
 }
+>>>>>>> master
 
 
 
 
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+=======
+>>>>>>> master
