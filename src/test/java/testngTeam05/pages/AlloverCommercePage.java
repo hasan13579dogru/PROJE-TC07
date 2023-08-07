@@ -1316,8 +1316,9 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     public WebElement storeManagerBaslik; // Sayfa Başlığı
     @FindBy(xpath = "(//h2)[2]")
     public WebElement addProductBaslik; // Sayfa Başlığı
-    @FindBy(xpath = "(//*[text()='My Account'])[2]")
-    public WebElement myAccountButton; // Anasayfada en allttaki My Account butonu
+
+    @FindBy(xpath = "//a[text()='My Account']")
+    public WebElement myAccountButton;// Anasayfada en allttaki My Account butonu
     @FindBy(xpath = "//*[text()='Store Manager']")
     public WebElement storeManager; // Dashboard menu altındaki Store Manager
     @FindBy(xpath = "(//*[@class='wcfmfa fa-cube'])[1]")
@@ -1400,13 +1401,14 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
     public WebElement selectFilesButton;
     @FindBy(id = "regular_price")
     public WebElement prise;
+
+
+
     @FindBy(id = "sale_price")
     public WebElement salePrise;
 
-
-
-
-
+    @FindBy(xpath = "//span[.='Add New']")
+    public WebElement addNewButton;
 
 
 
