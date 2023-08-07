@@ -20,12 +20,12 @@ public class TC_01_VendorUrunEkleme extends ExtentReport{
         AlloverCommercePage alloverPage = new AlloverCommercePage();
 
         //https://allovercommerce.com/ adresine git, kayıtlı Vendor email adresi ve şifresiyle giriş yap
-        // ReusableMethods.vendorSignIn();
+        ReusableMethods.vendorSignIn();
         ReusableMethods.bekle(3);
         extentTest.info("allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı");
 
         //My Account sayfasına git
-        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        //js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         ReusableMethods.click(alloverPage.myAccountButton);
         extentTest.info("My Account sayfasına gidildi");
 
@@ -40,6 +40,7 @@ public class TC_01_VendorUrunEkleme extends ExtentReport{
         //Store manager'a tıkla
         alloverPage.storeManager.click();
         extentTest.info("Store manager'a tıklandı");
+        ReusableMethods.bekle(3);
 
         //Store Manager sayfasının açıldığını doğrula
         Assert.assertTrue(alloverPage.storeManager.isDisplayed());
@@ -48,10 +49,14 @@ public class TC_01_VendorUrunEkleme extends ExtentReport{
         //Product butonunun görünür olduğunu doğrula
         Assert.assertTrue(alloverPage.product.isDisplayed());
         extentTest.info("Product butonunun görünür olduğu doğrulandı");
-
+        ReusableMethods.bekle(2);
         //Products'ın üzerine gel açılan penceredeki Add New'e tıkla
-        actions.moveToElement(alloverPage.product).perform();
-        alloverPage.addNew.click();
+        ReusableMethods.click(alloverPage.product);
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverPage.addNewButton);
+        ReusableMethods.bekle(2);
+
+
         extentTest.info("Products butonu üzerine gelinip açılan penceredeki Add New'e tıklandı");
 
         //Add Product sayfasının açıldığını doğrula
@@ -100,7 +105,7 @@ public class TC_01_VendorUrunEkleme extends ExtentReport{
         ReusableMethods.bekle(2);
         //select files a tıkla
         alloverPage.selectFilesButton.click();
-        ReusableMethods.uploadFilePath("C:\\Users\\EXCALIBUR\\Pictures\\Saved Pictures\\mouse1.jpeg");
+        ReusableMethods.uploadFilePath("\"C:\\Users\\LENOVO\\Downloads\\mouse1.jpeg\"");
         //select'e tıkla
         alloverPage.selectFeature.click();
         ReusableMethods.bekle(3);
@@ -128,5 +133,6 @@ public class TC_01_VendorUrunEkleme extends ExtentReport{
         ReusableMethods.bekle(2);
         ReusableMethods.tumSayfaResmi("Eklenen Ürün");
         extentTest.info("Sayfa resmi alındı");
+        //.
     }
 }
