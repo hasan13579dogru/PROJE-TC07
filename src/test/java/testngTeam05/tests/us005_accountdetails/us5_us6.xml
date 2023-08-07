@@ -4,7 +4,8 @@
     <test name="C:/Users/LENOVO/IdeaProjects/testNGProjectTeam05/src/test/java/testngTeam05/tests/us005_accountdetails">
       <packages>
           <package name="testngTeam05.tests.us005_accountdetails"></package>
-          <package name="testngTeam05.tests.us006_addtocart_payment"></package>
+          <package name="testngTeam05.tests.us016_VendorUrunEkle.TC_01_VendorUrunEkleme"></package>
+          <package name="testngTeam05.tests.US009.TC02_NegatifTestPassword"></package>
       </packages>
     </test>
 </suite>
