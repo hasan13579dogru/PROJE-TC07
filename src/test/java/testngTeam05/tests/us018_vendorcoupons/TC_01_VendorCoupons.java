@@ -2,6 +2,7 @@ package testngTeam05.tests.us018_vendorcoupons;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import static org.openqa.selenium.By.tagName;
 import static org.openqa.selenium.By.xpath;
 
-public class TC_01_VendorCoupons extends ExtentReport{
+public class TC_01_VendorCoupons extends ExtentReport {
     //Vendor olarak Coupons oluşturabilmeliyim (My Account - Coupons - Add New)
     //Code yazabilmeliyim
     //Description yazılabilmeli
@@ -67,7 +68,6 @@ public class TC_01_VendorCoupons extends ExtentReport{
         excelReader.writeCell(1, 5, dosyaYolu, kuponNo);
 
 
-
         alloverpage.codeAdd.sendKeys(kuponNo, Keys.TAB, lorem, Keys.TAB);
         ReusableMethods.bekle(5);
 
@@ -94,15 +94,17 @@ public class TC_01_VendorCoupons extends ExtentReport{
         extentTest.info("Coupon Amount girildi");
         //Coupon expiry date gir
         LocalDate today = LocalDate.now();
-        LocalDate fiveDaysLater = today.plusDays(5);
+        LocalDate fiveDaysLater = today.plusDays(30);
         int dayOfMonth = fiveDaysLater.getDayOfMonth();
         extentTest.info("Coupon expiry date girildi");
         WebElement eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
 
 
         if (fiveDaysLater.getDayOfMonth() != today.getDayOfMonth()) {
+            ReusableMethods.bekle(5);
             alloverpage.nextMonth.click();
             eklenenGun = Driver.getDriver().findElement(xpath("//*[@data-handler='selectDay']['" + dayOfMonth + "']"));
+            ReusableMethods.bekle(5);
             eklenenGun.click();
         }
 
@@ -110,8 +112,9 @@ public class TC_01_VendorCoupons extends ExtentReport{
         alloverpage.freeShipping.click();
         alloverpage.showOnStore.click();
         extentTest.info("Allow free shipping, Show on store secildi");
-        //Sag alt kosedeki submut butonuna tikla
+        //Sag alt kosedeki submit butonuna tikla
         ReusableMethods.click(alloverpage.addButtonSubmit);
+        ReusableMethods.bekle(3);
         extentTest.info("Sag alt kosedeki submut butonuna tiklatildi");
         //Kupon olustudugu dogrulandi
         Assert.assertTrue(alloverpage.editCoupon.isDisplayed());
@@ -167,7 +170,9 @@ public class TC_01_VendorCoupons extends ExtentReport{
         //Vendor sayfasindaki sifreyi gir
         String sifre = sifreOlustur();
         excelReader.writeCell(1, 6, dosyaYolu, sifre);
-        alloverpage.vendorPassword.sendKeys(sifre, Keys.TAB, sifre, Keys.TAB, Keys.ENTER);
+        alloverpage.vendorPassword.sendKeys(sifre, Keys.TAB, sifre, Keys.TAB);
+        ReusableMethods.bekle(5);
+        Driver.getDriver().findElement(By.xpath("//input[@id='wcfm_membership_register_button']")).click();
         extentTest.info("sifre bolumune sifre girildi");
 
     }
@@ -210,29 +215,44 @@ public class TC_01_VendorCoupons extends ExtentReport{
     }
 
 
-    public String sifreOlustur() throws IOException {
+    public String generateStrongPassword() {
+        String uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+        String numericChars = "0123456789";
+        String specialChars = "!@#$%^&*()_-+=<>?/";
+
+        String allowedChars = uppercaseChars + lowercaseChars + numericChars + specialChars;
+        return RandomStringUtils.random(12, allowedChars); // Örneğin, 12 karakter uzunluğunda bir şifre oluşturuyoruz
+    }
+
+
+    public String sifreOlustur() {
+
+        String password = generateStrongPassword();
         String sifre = "";
+
         boolean flag = true;
+
         while (flag) {
-            String rastgeleKelime = faker.lorem().word();
-            String rastgeleSayi = faker.number().digits(4);
-            String password = rastgeleKelime + rastgeleSayi;
             ReusableMethods.scroll(alloverpage.vendorPassword);
             ReusableMethods.bekle(1);
             alloverpage.vendorPassword.sendKeys(password);
-            ReusableMethods.bekle(2);
+            ReusableMethods.bekle(1);
             try {
-                if (alloverpage.passwordStrengthGood.isDisplayed()) {
+                if (alloverpage.passwordStrengthStrong.getText().equals("Strong")||alloverpage.passwordStrengthGood.isDisplayed()) {
                     sifre = password;
                     flag = false;
-                    alloverpage.vendorPassword.clear();
-                } else {
-                    alloverpage.vendorPassword.clear();
                 }
             } catch (NoSuchElementException e) {
                 System.out.println("deneniyor...");
-            }
+                //alloverpage.vendorPassword.clear();
+                sifreOlustur();
+                sifre = password;
+                flag = false;
 
+            } finally {
+                alloverpage.vendorPassword.clear();
+            }
         }
         ReusableMethods.bekle(1);
 
@@ -243,32 +263,9 @@ public class TC_01_VendorCoupons extends ExtentReport{
         return sifre;
     }
 
-    public   static void login(String username,String password) {
-        WebDriverManager.chromedriver().setup();//chrome driverı projeye yükledik
-        WebDriver driver = new ChromeDriver();//obje oluşturduk
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        // Web sitesini açın
-        driver.get("https://allovercommerce.com/");
-        //signin butonuna tıkla
-        driver.findElement(By.xpath("//*[text()='Sign In']")).click();
-        ReusableMethods.bekle(2);
-        // Kullanıcı adı ve şifre alanlarını bulun
-        WebElement usernameField = driver.findElement(By.xpath("//*[@id='username']"));
-        WebElement passwordField = driver.findElement(By.xpath("//*[@id='password']"));
-        // Kullanıcı adı ve şifre alanlarına bilgileri girin
-        usernameField.sendKeys(username);
-        ReusableMethods.bekle(2);
-        passwordField.sendKeys(password);
-        ReusableMethods.bekle(2);
-        // Login butonunu bulun ve tıklayın
-        driver.findElement(By.xpath("//*[@name='login']")).click();
-        ReusableMethods.bekle(2);
-    }
 
-    @Test
-    public void test05() {
-        login("denemetest", "deneme123456");
-    }
+
+
+
 
 }
