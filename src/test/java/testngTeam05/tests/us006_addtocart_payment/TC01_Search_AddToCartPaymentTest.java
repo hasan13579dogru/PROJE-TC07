@@ -1,7 +1,5 @@
 package testngTeam05.tests.us006_addtocart_payment;
 
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -11,7 +9,6 @@ import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ReusableMethods;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class TC01_Search_AddToCartPaymentTest {

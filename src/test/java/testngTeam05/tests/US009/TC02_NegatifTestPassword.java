@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
-import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
 public class TC02_NegatifTestPassword  {
@@ -21,6 +20,7 @@ public class TC02_NegatifTestPassword  {
         String allovercommerceHandle = Driver.getDriver().getWindowHandle();
 
         //Register a tıklar
+
         AlloverCommercePage commercePage = new AlloverCommercePage();
         commercePage.registerButton.click();
         ReusableMethods.bekle(3);

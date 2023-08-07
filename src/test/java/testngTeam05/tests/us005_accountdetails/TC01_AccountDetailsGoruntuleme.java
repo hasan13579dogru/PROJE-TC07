@@ -1,11 +1,9 @@
 package testngTeam05.tests.us005_accountdetails;
 
 import com.github.javafaker.Faker;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
@@ -13,7 +11,7 @@ import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
 import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
-import javax.swing.*;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

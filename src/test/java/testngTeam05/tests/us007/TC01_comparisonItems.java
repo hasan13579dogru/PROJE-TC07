@@ -1,9 +1,8 @@
 package testngTeam05.tests.us007;
 
+import com.aventstack.extentreports.ExtentReports;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
@@ -12,32 +11,40 @@ import testngTeam05.utilities.ReusableMethods;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.util.Collections;
-import java.util.List;
 
-public class TC01_comparisonItems {
+public  class TC01_comparisonItems {
 
 
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 Actions actions=new Actions(Driver.getDriver());
     private WebDriver driver;
-    //https://allovercommerce.com sitesine git
+
+    //go to https://allovercommerce.com site
     //Click search button
-    //type pencil in the search button and click
+    //type pencil in the search button and select  product to compare
     //hover over the image and click the compare button
-    //remove all selected products
-    //add new products(wishlist)
-    //delete compared products
+    //Click "START COMPARE!" buton
+    //Click search button to add new products
+    //type pencil in the search button and select  product to compare
+    //hover over the image and click the compare button
+    //Click "START COMPARE!" buton
+   //remove all products from wishlist and screen
+
     @Test
-    public void test01() throws AWTException, InterruptedException {
+    public void test01() throws AWTException {
+
+
+
         AlloverCommercePage alloverPage = new AlloverCommercePage();
         //https://allovercommerce.com sitesine git
             Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+
+
        //Click search button
        alloverPage.searchButton.click();
+
+
        //type pencil in the search button and select  product to compare
-
-
         alloverPage.searchButton.sendKeys("pencil",Keys.ENTER);
         ReusableMethods.bekle(3);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -45,8 +52,7 @@ Actions actions=new Actions(Driver.getDriver());
         ReusableMethods.bekle(3);
 
        //  hover over the image and click the compare button
-
-        //pencil 2
+        // pencil 2
         actions.moveToElement(alloverPage.pencil2img).perform();
         alloverPage.pencil2CompBtn.click();
         ReusableMethods.bekle(3);
@@ -68,69 +74,70 @@ Actions actions=new Actions(Driver.getDriver());
 
        //Click "START COMPARE!" buton
         alloverPage.startCompare.click();
-        ReusableMethods.bekle(5);
+        ReusableMethods.bekle(3);
 
         //add the products to wishlist
         actions.moveToElement(alloverPage.wishListimgPencil2).perform();
        // alloverPage.wishListButtonPencil2.click();
+        ReusableMethods.bekle(2);
         ReusableMethods.click(alloverPage.wishListButtonPencil2);
 
-        ReusableMethods.bekle(5);
+        ReusableMethods.bekle(3);
        actions.moveToElement(alloverPage.wishListimgPencil3).perform();
       //  alloverPage.wishListButtonPencil3.click();
-        ReusableMethods.click(alloverPage.wishListButtonPencil3);
+        ReusableMethods.bekle(3);
+        ReusableMethods.click(alloverPage.pencil3CompekraniWishButton);
 
         //Click search button to select new products
         alloverPage.searchButton.sendKeys("ball",Keys.ENTER);
         ReusableMethods.bekle(3);
 
-        //  hover over the image and click the compare button
 
+
+
+        //add new products(wishlist)
         //BALL
+        //  hover over the image and click the compare button
         actions.moveToElement(alloverPage.ballimg).perform();
         ReusableMethods.bekle(2);
         alloverPage.ballCompButton.click();
         ReusableMethods.bekle(3);
 
-       //BASKETBALL
+        //COMPARE SIYAH EKRAN KAPATMA MOUSE TEK TIKLAMA
+
+        robot.mouseMove(500,500);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        ReusableMethods.bekle(1);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        ReusableMethods.bekle(2);
+        //BASKETBALL
         actions.moveToElement(alloverPage.basketballimg).perform();
         ReusableMethods.bekle(2);
         alloverPage.basketballCompButton.click();
         ReusableMethods.bekle(3);
 
 
-        //type pencil in the search button and click
-        //hover over the image and click the compare button
-        //remove all selected products
+        //Click "START COMPARE!" buton
+        alloverPage.startCompareBall.click();
+        ReusableMethods.bekle(5);
 
 
+     //remove all products from wishlist and screen
+actions.moveToElement(alloverPage.pencil2).perform();
+ReusableMethods.bekle(2);
+ReusableMethods.click(alloverPage.pencil2);
 
-      //remove the selected products
-      //  birinci urunu sıl ve 2. urunu sil
+    // actions.moveToElement(alloverPage.pencil3).perform();
+     //ReusableMethods.bekle(3);
+    // ReusableMethods.click(alloverPage.pencil3);
 
-        //add new products(wishlist)
+     actions.moveToElement(alloverPage.ball).perform();
+     ReusableMethods.bekle(3);
+     ReusableMethods.click(alloverPage.ball);
 
-        //delete compared products
-
-
-        //  hover over the image and click the compare button
-
-        /*actions.sendKeys(Keys.PAGE_DOWN).perform();
-        ReusableMethods.bekle(2);
-
-        //ITEM 1
-        actions.moveToElement(alloverPage.pencil_locat).perform();
-        alloverPage.pencil2CompareBtn.click();
-        actions.sendKeys(Keys.ESCAPE);
-        ReusableMethods.bekle(2);
-
-        //ITEM 2
-        actions.moveToElement(alloverPage.pencil6_locat).perform();
-        alloverPage.pencil3CompareBtn.click();
-        actions.sendKeys(Keys.ESCAPE);
-        ReusableMethods.bekle(2);*/
-
-
+    // actions.moveToElement(alloverPage.basketball).perform();
+    // ReusableMethods.bekle(3);
+     //ReusableMethods.click(alloverPage.basketball);
 
 
 

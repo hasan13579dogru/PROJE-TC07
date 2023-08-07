@@ -1,8 +1,6 @@
 package testngTeam05.tests.US009;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;

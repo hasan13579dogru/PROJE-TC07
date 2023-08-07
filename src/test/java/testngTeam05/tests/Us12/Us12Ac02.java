@@ -1,6 +1,5 @@
 package testngTeam05.tests.Us12;
 
-import com.aventstack.extentreports.ExtentTest;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
