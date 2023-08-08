@@ -39,7 +39,7 @@ public abstract class ExtentReport {
         } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
             extentTest.skip("Test Case is skipped: " + result.getName());
         }
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 
     @AfterTest(alwaysRun = true)

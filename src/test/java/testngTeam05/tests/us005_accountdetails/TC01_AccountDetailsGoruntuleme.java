@@ -21,7 +21,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
     //sartlarını sağlamadığı ıcın bu sekilde bir yontem kullandım.
     Faker faker=new Faker();
     String rastgeleKelime = faker.lorem().word();
-    String rastgeleSayi = faker.number().digits(4);
+    String rastgeleSayi = faker.number().digits(8);
     String sifre = rastgeleKelime + rastgeleSayi;
 
     @Test
@@ -157,7 +157,7 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
 
         //"Account details changed successfully" mesajının görünür oldugunu doğrula
         //screenshot ekle
-/*
+
         //siteden signout ardından logout tıkla
         ReusableMethods.scrollHome();
         ReusableMethods.click(alloverCommercePage.signOut);
@@ -171,12 +171,12 @@ public class TC01_AccountDetailsGoruntuleme extends ExtentReport {
         ReusableMethods.bekle(1);
         alloverCommercePage.ilkSayfapassword.sendKeys(workbook.getSheet("Sayfa1").getRow(1).getCell(1).toString());
         ReusableMethods.bekle(1);
-        ReusableMethods.click(alloverCommercePage.submitButton);
+        ReusableMethods.click(alloverCommercePage.signInButton);
 
 
-        ReusableMethods.bekle(6);
+        ReusableMethods.bekle(10);
 
-*/
+
 
     }
 }
