@@ -1,8 +1,11 @@
 package testngTeam05.tests.us007;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
@@ -12,7 +15,7 @@ import testngTeam05.utilities.ReusableMethods;
 import java.awt.*;
 import java.awt.event.InputEvent;
 
-public  class TC01_comparisonItems {
+public  class TC01_comparisonItems  {
 
 
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
