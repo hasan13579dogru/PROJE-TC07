@@ -285,16 +285,6 @@ public class ReusableMethods {
     }
 
 
-<<<<<<< HEAD
-=======
-}
->>>>>>> master
-
-
-
-
-
-<<<<<<< HEAD
 
 
 
@@ -313,5 +303,3 @@ public class ReusableMethods {
 
 
 }
-=======
->>>>>>> master

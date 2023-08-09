@@ -1602,6 +1602,9 @@ public WebElement vendorPasswordSG; //vendor sayfasindaki password
 
     @FindBy(xpath = "//*[text()='Billing Phone']")
     public WebElement billingPhone;
+
+    @FindBy(xpath = "//*[@id=\"password_strength\" and contains(@class, 'strong')]")
+    public WebElement passwordStrengthStrong;//Istenilen sartlari saglayan sifreyi girmek icin yaziyi aliyoruz.
 //////////////////////////////////US2//////////////////////////
     @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
     public WebElement coupons;
