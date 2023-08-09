@@ -44,7 +44,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Aug 3, 2023 08:25:02 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Aug 6, 2023 11:57:14 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -59,7 +59,7 @@
 				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+										<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -102,10 +102,10 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> test(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
                 </div>
             </div>
         </div>
@@ -123,19 +123,19 @@
 </div>	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Extent Report</span>
-						<span class='test-time'>Aug 3, 2023 08:25:03 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-time'>Aug 6, 2023 11:57:14 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Aug 3, 2023 08:25:03 PM</span>
-	<span class='label end-time'>Aug 3, 2023 08:26:01 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 58s+577ms</span>
+	<span class='label start-time'>Aug 6, 2023 11:57:14 PM</span>
+	<span class='label end-time'>Aug 6, 2023 11:58:11 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 57s+77ms</span>
 </div>
-<div class='test-desc'>Inventory İşlemleri Test Raporu </div>
+<div class='test-desc'>TC_01_VendorCoupons </div>
 <div class='test-steps'>
 	<table class='bordered table-results'>
 		<thead>
@@ -148,143 +148,82 @@
 		<tbody>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:15 PM</td>
+				<td class='timestamp'>11:57:25 PM</td>
 				<td class='step-details'>
-						allovercommerce sitesine gidildi,kayıtlı Vendor email adresi ve şifresiyle giriş yapıldı
+						Siteye gidildi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:21 PM</td>
+				<td class='timestamp'>11:57:26 PM</td>
 				<td class='step-details'>
-						My Account sayfasına gidildi
+						Register butonuna tiklandi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:21 PM</td>
+				<td class='timestamp'>11:57:26 PM</td>
 				<td class='step-details'>
-						My Account sayfasının açıldığı doğrulandı
+						signup as a vendor? yazisina tiklandi
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>11:57:31 PM</td>
+				<td class='step-details'>
+						Vendor Registration" yazisinin gorundugunu dogrulandi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:21 PM</td>
+				<td class='timestamp'>11:57:35 PM</td>
 				<td class='step-details'>
-						Açılan my account sayfasında Store Manager Menüsünün görünür oldugu doğrulandı
+						Vendor sayfasindaki e-mail'e e-mail girildi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:26 PM</td>
+				<td class='timestamp'>11:57:35 PM</td>
 				<td class='step-details'>
-						Store manager'a tıklandı
+						Send code butonuna tiklatildi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:26 PM</td>
+				<td class='timestamp'>11:57:47 PM</td>
 				<td class='step-details'>
-						Store Manager sayfasının açıldığı doğrulandı
+						Dogrulama kodu girildi
 					
 				</td>
 			</tr>
 			<tr class='log' status='info'>
 				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:26 PM</td>
+				<td class='timestamp'>11:57:56 PM</td>
 				<td class='step-details'>
-						Product butonunun görünür olduğu doğrulandı
+						sifre bolumune sifre girildi
 					
 				</td>
 			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:31 PM</td>
+			<tr class='log' status='fail'>
+				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+				<td class='timestamp'>11:58:11 PM</td>
 				<td class='step-details'>
-						Products butonu üzerine gelinip açılan penceredeki Add New'e tıklandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:31 PM</td>
-				<td class='step-details'>
-						Add Product sayfasının açıldığı doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:31 PM</td>
-				<td class='step-details'>
-						Simple Product'ın default olarak geldiği doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:33 PM</td>
-				<td class='step-details'>
-						Vitrual kutucuğunun seçilebilir olduğu doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:33 PM</td>
-				<td class='step-details'>
-						Downloadable kutucuğunun seçilebilir olduğu doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:33 PM</td>
-				<td class='step-details'>
-						Price alanına bir değer yazıldı ve yazılabildiğini doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:33 PM</td>
-				<td class='step-details'>
-						Sale Price alanına bir değer yazıldı ve yazılabildiğini doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:33 PM</td>
-				<td class='step-details'>
-						Product Title alanına ürün başlığı yazıldı ve yazılabildiği doğrulandı
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:25:35 PM</td>
-				<td class='step-details'>
-						Kategori seçildi
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>8:26:01 PM</td>
-				<td class='step-details'>
-						feature image bölümünden ürünün resmi eklendi
+						test01
 					
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='C:\Users\livde\OneDrive\Masaüstü\testNGProjectTeam05/target/Screenshots/test01_11_58_11_06082023.png' src='C:\Users\livde\OneDrive\Masaüstü\testNGProjectTeam05/target/Screenshots/test01_11_58_11_06082023.png' data-src='C:\Users\livde\OneDrive\Masaüstü\testNGProjectTeam05/target/Screenshots/test01_11_58_11_06082023.png'></li>
+						</ul>
 					</div>
 				</li>
 			</ul>
@@ -327,19 +266,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Aug 3, 2023 08:25:02 PM</div>
+					<div class='panel-lead'>Aug 6, 2023 11:57:14 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Aug 3, 2023 08:26:01 PM</div>
+			 		<div class='panel-lead'>Aug 6, 2023 11:58:11 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 59s+43ms</div>
+					<div class='panel-lead'>0h 0m 57s+505ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -371,13 +310,13 @@
 		<script>
 			var statusGroup = {
                 parentCount: 1,
-				passParent: 1,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 1,
 				childCount: 0,
 				passChild: 0,
 				failChild: 0,
@@ -402,7 +341,7 @@
 		</script>
 		<script>
 			var timeline = {
-			        "Extent Report":58.577
+			        "Extent Report":57.077
 			};
 		</script>
 		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/js/extent.js' type='text/javascript'></script>
