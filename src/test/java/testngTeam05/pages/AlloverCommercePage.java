@@ -16,8 +16,8 @@ public class AlloverCommercePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
-
+//@FindBy(xpath = "//a[@class='button checkout wc-forward']")
+//public WebElement checkoutButton;
 
 
 

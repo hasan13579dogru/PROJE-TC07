@@ -1,11 +1,9 @@
 package testngTeam05.tests.us007;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import testngTeam05.utilities.ExtentReport;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Reporter;
+
 import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
@@ -15,7 +13,9 @@ import testngTeam05.utilities.ReusableMethods;
 import java.awt.*;
 import java.awt.event.InputEvent;
 
-public  class TC01_comparisonItems  {
+
+
+public  class TC01_comparisonItems extends ExtentReport {
 
 
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -36,67 +36,68 @@ Actions actions=new Actions(Driver.getDriver());
     @Test
     public void test01() throws AWTException {
 
-
+        extentTest = extentReports.createTest("Extent Report", "Test Raporu");
 
         AlloverCommercePage alloverPage = new AlloverCommercePage();
         //https://allovercommerce.com sitesine git
-            Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
+        extentTest.info("alloverCommerce sitesine gidildi");
 
+        //Click search button
+        alloverPage.searchButton.click();
+        extentTest.info("search butonuna tıklandı");
 
-       //Click search button
-       alloverPage.searchButton.click();
-
-
-       //type pencil in the search button and select  product to compare
-        alloverPage.searchButton.sendKeys("pencil",Keys.ENTER);
+        //type pencil in the search button and select  product to compare
+        alloverPage.searchButton.sendKeys("pencil", Keys.ENTER);
         ReusableMethods.bekle(3);
+        extentTest.info("search butonunda kalem aratıldı ve karsılastırmak icin urun secildi");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         ReusableMethods.bekle(3);
 
-       //  hover over the image and click the compare button
+        //  hover over the image and click the compare button
         // pencil 2
         actions.moveToElement(alloverPage.pencil2img).perform();
         alloverPage.pencil2CompBtn.click();
         ReusableMethods.bekle(3);
-
+        extentTest.info("karsılastırılacak urune tıklatıldı");
         //COMPARE SIYAH EKRAN KAPATMA MOUSE TEK TIKLAMA
         Robot robot = new Robot();
-        robot.mouseMove(500,500);
+        robot.mouseMove(500, 500);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         ReusableMethods.bekle(1);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         ReusableMethods.bekle(2);
-
+        extentTest.info("Robot class kullanıldı(siyah ekranı gecmek icin)");
 
 
         //PENCIL 3 UZERİNE MOUSE GELMESİ
         actions.moveToElement(alloverPage.pencil3img).perform();
         alloverPage.pencil3CompButton.click();
         ReusableMethods.bekle(3);
-
-       //Click "START COMPARE!" buton
+        extentTest.info("karsılastırma yapmak icin 2. urune tıklatıldı ");
+        //Click "START COMPARE!" buton
         alloverPage.startCompare.click();
         ReusableMethods.bekle(3);
-
+        extentTest.info("karsılastırma butonuna basıldı");
         //add the products to wishlist
         actions.moveToElement(alloverPage.wishListimgPencil2).perform();
-       // alloverPage.wishListButtonPencil2.click();
+        // alloverPage.wishListButtonPencil2.click();
         ReusableMethods.bekle(2);
         ReusableMethods.click(alloverPage.wishListButtonPencil2);
+        extentTest.info("secilen urun wishlist eklendi");
+
 
         ReusableMethods.bekle(3);
-       actions.moveToElement(alloverPage.wishListimgPencil3).perform();
-      //  alloverPage.wishListButtonPencil3.click();
+        actions.moveToElement(alloverPage.wishListimgPencil3).perform();
+        //  alloverPage.wishListButtonPencil3.click();
         ReusableMethods.bekle(3);
         ReusableMethods.click(alloverPage.pencil3CompekraniWishButton);
-
+        extentTest.info("2.urun wishlist e eklendi");
         //Click search button to select new products
-        alloverPage.searchButton.sendKeys("ball",Keys.ENTER);
+        alloverPage.searchButton.sendKeys("ball", Keys.ENTER);
         ReusableMethods.bekle(3);
-
-
-
+        extentTest.info("arama butonuna top yazdırıldı");
 
         //add new products(wishlist)
         //BALL
@@ -105,72 +106,47 @@ Actions actions=new Actions(Driver.getDriver());
         ReusableMethods.bekle(2);
         alloverPage.ballCompButton.click();
         ReusableMethods.bekle(3);
-
+       extentTest.info("karsilastıma icin 1. urun secildi");
         //COMPARE SIYAH EKRAN KAPATMA MOUSE TEK TIKLAMA
 
-        robot.mouseMove(500,500);
+        robot.mouseMove(500, 500);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         ReusableMethods.bekle(1);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         ReusableMethods.bekle(2);
+        extentTest.info("Robot class kullanıldı(siyah ekranı gecmek icin)");
         //BASKETBALL
         actions.moveToElement(alloverPage.basketballimg).perform();
         ReusableMethods.bekle(2);
         alloverPage.basketballCompButton.click();
         ReusableMethods.bekle(3);
-
+        extentTest.info("karsılastırma icin 2.urun secildi");
 
         //Click "START COMPARE!" buton
         alloverPage.startCompareBall.click();
         ReusableMethods.bekle(5);
+       extentTest.info("karsılastırma butonuna basildı");
 
+        //remove all products from wishlist and screen
+        actions.moveToElement(alloverPage.pencil2).perform();
+        ReusableMethods.bekle(2);
+        ReusableMethods.click(alloverPage.pencil2);
+        extentTest.info("urunun ustune gelindi ve kapatıldı");
+        // actions.moveToElement(alloverPage.pencil3).perform();
+        //ReusableMethods.bekle(3);
+        // ReusableMethods.click(alloverPage.pencil3);
 
-     //remove all products from wishlist and screen
-actions.moveToElement(alloverPage.pencil2).perform();
-ReusableMethods.bekle(2);
-ReusableMethods.click(alloverPage.pencil2);
-
-    // actions.moveToElement(alloverPage.pencil3).perform();
-     //ReusableMethods.bekle(3);
-    // ReusableMethods.click(alloverPage.pencil3);
-
-     actions.moveToElement(alloverPage.ball).perform();
-     ReusableMethods.bekle(3);
-     ReusableMethods.click(alloverPage.ball);
-
-    // actions.moveToElement(alloverPage.basketball).perform();
-    // ReusableMethods.bekle(3);
-     //ReusableMethods.click(alloverPage.basketball);
-
-
-
-         /*List<WebElement> compareButton= Collections.singletonList(driver.findElement
-       (By.xpath("(//a[@class='compare btn-product-icon'])")));
+        actions.moveToElement(alloverPage.ball).perform();
         ReusableMethods.bekle(3);
-        for(int i=0; i< compareButton.size();i++){
-            compareButton= (List<WebElement>) driver.findElement
-            (By.id("(//a[@class='compare btn-product-icon'])[1]"));
-            compareButton.get(i).click();
-            System.out.println(driver.getTitle());
-            driver.navigate().back();*/
+        ReusableMethods.click(alloverPage.ball);
+        extentTest.info("urunun ustune gelindi ve kapatıldı");
 
+         actions.moveToElement(alloverPage.basketball).perform();
+        ReusableMethods.bekle(3);
+        ReusableMethods.click(alloverPage.basketball);
+        extentTest.info("urunun ustune gelindi ve kapatıldı");
 
-      /*  //ÜRÜNLERİN FİYATLARINI YAZDIR
-        WebElement fiyatListesi=driver.findElement(By.className("a-price-whole"));
-        for (int i = 0; i < 50; i++) {
-            i++;
-            //System.out.println("fiyatListesi = " + fiyatListesi.getSize());
-            System.out.println("fiyatListesi = " + fiyatListesi.getText());
-        }
-
-        WebElement[] fiyatListesi2=new WebElement[100];
-        driver.findElements(By.xpath("a-price-whole"));
-        for (int i = 0; i < fiyatListesi2.length; i++) {
-            i++;
-            //System.out.println("allDates = " + fiyatListesi2[i]);*/
-        }
-
-
+    }
 
     }
 

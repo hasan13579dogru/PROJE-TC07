@@ -9,9 +9,10 @@ import org.testng.annotations.Test;
 import testngTeam05.pages.AlloverCommercePage;
 import testngTeam05.utilities.ConfigReader;
 import testngTeam05.utilities.Driver;
+import testngTeam05.utilities.ExtentReport;
 import testngTeam05.utilities.ReusableMethods;
 
-public class TC01_wishList {
+public class TC01_wishList extends ExtentReport {
     //Go to (https://allovercommerce.com )site
     //click Signin button
     //Enter username or email address and password
@@ -36,26 +37,28 @@ public class TC01_wishList {
 
     @Test
     public void test01() {
-
+        extentTest = extentReports.createTest("Extent Report", "Test Raporu");
         AlloverCommercePage alloverPage = new AlloverCommercePage();
         //Go to (https://allovercommerce.com )site
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerceUrl"));
         ReusableMethods.bekle(4);
+        extentTest.info("allovercommerce sitesine gidildi");
+
         //click Signin button
         alloverPage.anasayfaSigninButon.click();
         ReusableMethods.bekle(2);
-
+        extentTest.info("signin butonuna tıklandı");
 
 
         //Enter username or email address and password
         alloverPage.userNameEmailAddress.sendKeys(ConfigReader.getProperty("Email"),
                 Keys.TAB, ConfigReader.getProperty("password"), Keys.ENTER);
-
+       extentTest.info("username or email ve password girildi");
 
         //click Signin button(emailbutton)
         alloverPage.signInButton.click();
         ReusableMethods.bekle(2);
-
+        extentTest.info("alttaki signin butonuna tıklandı");
 
 
         //Search automatic crusher,chess,Electric Rice Cooker and press wishlist
@@ -67,23 +70,26 @@ public class TC01_wishList {
         alloverPage.searchButton.sendKeys("Electric Rice Cooker", Keys.ENTER);
         ReusableMethods.click(alloverPage.electricRiceCookerwishbtn);
         ReusableMethods.bekle(2);
-
         //Click wishlist
         alloverPage.wishListButton.click();
         ReusableMethods.bekle(2);
+
+       extentTest.info("automatic crusher,chess,Electric Rice Cooker urunler yazdırıldı ve wishlist butonuna tıklandı");
+
+
 
         //Click "Quick View" and close
         ReusableMethods.click(alloverPage.quickViewButton1);
         ReusableMethods.bekle(2);
         actions.sendKeys(Keys.ESCAPE).perform();
-        //alloverPage.quickViewKapatma.click();
+
         ReusableMethods.bekle(2);
 
         ReusableMethods.click(alloverPage.quickViewButton2);
         ReusableMethods.bekle(2);
         actions.sendKeys(Keys.ESCAPE).perform();
         ReusableMethods.bekle(2);
-
+        extentTest.info("Quick View butonuna acıldı ve kapatıldı");
 
 
 
@@ -91,20 +97,21 @@ public class TC01_wishList {
         //Add the items to Cart(Electric Rice Cooker,Atomatic Crusher,Chess)
         alloverPage.addToCartButton1.click();
         ReusableMethods.bekle(2);
-
+        extentTest.info("Electric Rice Cooker,Atomatic Crusher,Chess urunleri sepete eklendi");
 
 
         //Click the Cart button(on the right side of the page)
         ReusableMethods.click(alloverPage.cartButton);
         ReusableMethods.bekle(2);
-
+       extentTest.info("sepet acıldı");
         //Click checkout button
         alloverPage.checkoutCart.click();//kasaya gitme
         ReusableMethods.bekle(3);
+        extentTest.info("kasaya gidildi");
 
         //Verify that Billing Details is visible
         Assert.assertTrue(alloverPage.billingDetailsYazisi.isDisplayed());
-
+        extentTest.info("billing details yazisi dogrulandı");
         ReusableMethods.bekle(2);
 
         //Fill in the Billing Details Radio Buton
@@ -128,15 +135,18 @@ public class TC01_wishList {
 
         ReusableMethods.click(alloverPage.wireTransferButton);
         actions.sendKeys(Keys.PAGE_DOWN);
-
+        extentTest.info(" bosluklar dolduruldu");
         //Click PLACE ORDER button
         ReusableMethods.click(alloverPage.placeOrderButton);
+        extentTest.info("PLACE ORDER butonuna tıklandı");
 
-       //confirm place order is visible
+        //confirm place order is visible
         Assert.assertTrue(alloverPage.placeOrderButton.isDisplayed());
         ReusableMethods.webElementResmi(alloverPage.placeOrderButton);
+      extentTest.info("place order yazisi dogrulandı ve elementin fotografı cekildi");
 
         ReusableMethods.tumSayfaResmi("hasan");
+        extentTest.info("tum sayfa resmi cekildi");
     }
 }
 
